@@ -9,7 +9,7 @@ const HeroBanner = () => {
 
 
   return (
-      <header className="bg-illustration h-full bg-center bg-cover">
+    <header className="bg-illustration h-full bg-center lg:bg-cover">
 
 
 
@@ -25,10 +25,12 @@ const HeroBanner = () => {
 
 
           </p>
-          <div className="pt-4 flex items-center justify-start">
-            {/* <input className="border outline-none px-5 py-3 xl:py-5 w-full xl:w-[350px] rounded-md" type="text" placeholder="Enter email Adress" /> */}
-            <button className="ml-2 xl:ml-5 bg-[#56BBD0] hover:bg-[#3aa4b9] transition duration-600 text-white w-[180px] py-3 xl:py-5 rounded-md">Get started</button>
+          <div className="pt-4 flex items-center sm:justify-center lg:justify-start">
+            <button className="ml-2 xl:ml-5 bg-[#56BBD0] hover:bg-[#3aa4b9] transition duration-600 text-white w-[180px] py-3 xl:py-5 rounded-md">
+              Get started
+            </button>
           </div>
+
           <div className="pt-8 pb-16 xl:pb-40 md:pb-20 xl:pt-12 flex items-center justify-center md:justify-start">
             <p className="m-2 text-sm xl:text-base text-[#566272]">Our clients</p>
             <img src="/paypal.png" className="w-20 m-2 xl:m-3 xl:w-24" />

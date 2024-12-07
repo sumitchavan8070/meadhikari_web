@@ -19,7 +19,7 @@ export default function Home() {
       <Help />
       <Support />
 
-        <Company />
+      <Company />
 
 
       <section className='bg-[#F9FAFC]'>
