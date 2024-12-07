@@ -10,14 +10,18 @@ import Support from "@/components/support";
 
 export default function Home() {
   return (
-    <div >
+    <div className="bg-white">
       <HeroBanner />
-      <section className='bg-[#F9FBFD]'>
+      <section className="bg-[#F9FBFD]">
         <Features />
       </section>
-      <Support />
+
       <Help />
-      <Company />
+      <Support />
+
+        <Company />
+
+
       <section className='bg-[#F9FAFC]'>
         <Footer />
       </section>

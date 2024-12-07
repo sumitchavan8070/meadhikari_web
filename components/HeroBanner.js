@@ -9,7 +9,10 @@ const HeroBanner = () => {
 
 
   return (
-    <header className="bg-illustration h-full bg-center bg-cover">
+      <header className="bg-illustration h-full bg-center bg-cover">
+
+
+
       <Header />
 
       <div className="w-full xl:pl-24 2xl:pl-0 2xl:w-[1250px] mx-px 2xl:mx-auto">
@@ -28,41 +31,18 @@ const HeroBanner = () => {
           </div>
           <div className="pt-8 pb-16 xl:pb-40 md:pb-20 xl:pt-12 flex items-center justify-center md:justify-start">
             <p className="m-2 text-sm xl:text-base text-[#566272]">Our clients</p>
-            {/* <img src="/paypal.png" className="w-20 m-2 xl:m-3 xl:w-24" />
+            <img src="/paypal.png" className="w-20 m-2 xl:m-3 xl:w-24" />
             <img src="/google.png" className="w-20 m-2 xl:m-3 xl:w-24" />
-            <img src="/dropbox.png" className="w-20 m-2 xl:m-3 xl:w-24" /> */}
-          
-          <Image 
-  src="/paypal.png" 
-  alt="PayPal" 
-  className="w-20 m-2 xl:m-3 xl:w-24" 
-  width={80} 
-  height={80} 
-/>
-
-<Image 
-  src="/google.png" 
-  alt="Google" 
-  className="w-20 m-2 xl:m-3 xl:w-24" 
-  width={80} 
-  height={80} 
-/>
-
-<Image 
-  src="/dropbox.png" 
-  alt="Dropbox" 
-  className="w-20 m-2 xl:m-3 xl:w-24" 
-  width={80} 
-  height={80} 
-/>
+            <img src="/dropbox.png" className="w-20 m-2 xl:m-3 xl:w-24" />
           </div>
         </div>
       </div>
+
     </header>
 
   )
 
-  
+
 };
 
 export default HeroBanner;

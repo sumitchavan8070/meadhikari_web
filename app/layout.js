@@ -1,13 +1,9 @@
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import Header from "@/components/Header";
 import ContextProvider from "@/Context/Context";
-import Footer from "@/components/Footer";
-import { ProductContextProvider } from "@/Context/CreateProduct";
-import { Toaster } from "react-hot-toast";
-import CartProvider from "@/Context/CartProvider";
-import AdminProvider from "@/Context/AdminProvider";
+import { DM_Sans, Arvo } from 'next/font/google';
+
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -16,14 +12,26 @@ export const metadata = {
   description: "A store for all your needs",
 };
 
+
+const dmSans = DM_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '700'],
+});
+
+const arvo = Arvo({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
 
 
-      <body className={inter.className}>
+      <body className={`${dmSans.className} ${arvo.className}`}>
         <NextTopLoader color="#000" height={4} />
-        <div className='font-DMSans'>
+        <div>
 
           <ContextProvider>
             {children}

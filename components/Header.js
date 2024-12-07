@@ -31,8 +31,8 @@ const Header = () => {
 
 
   const sendWhatsAppMessage = () => {
-    const phoneNumber = "+918003096082"; // Replace with your WhatsApp number
-    const message = encodeURIComponent("Hello! I would like to get in touch. for clothes");
+    const phoneNumber = "+918862071189"; // Replace with your WhatsApp number
+    const message = encodeURIComponent("Hello! I would like to get in touch.");
     const url = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(url, "_blank"); // Opens in a new tab
   };
@@ -51,21 +51,25 @@ const Header = () => {
             </div> */}
           <div className="text-[#02073E] hidden lg:block ml-12">
             <a href="#" className="pr-8 hover:text-[#56BBD0] transition duration-200">Home</a>
-            <a href="#solutions" className="pr-8 hover:text-[#56BBD0] transition duration-200">Solutions</a>
+            {/* <a href="#solutions" className="pr-8 hover:text-[#56BBD0] transition duration-200">Solutions</a> */}
             <a href="#support" className="pr-8 hover:text-[#56BBD0] transition duration-200">Supports</a>
             <a href="#help" className="pr-8 hover:text-[#56BBD0] transition duration-200">Help</a>
-            <a href="#colab" className="pr-8 hover:text-[#56BBD0] transition duration-200">Collaboration</a>
-            <a href="/contact" className="pr-8 hover:text-[#56BBD0] transition duration-200">FAQ</a>
+            {/* <a href="#colab" className="pr-8 hover:text-[#56BBD0] transition duration-200">Collaboration</a> */}
+            {/* <a href="/contact" className="pr-8 hover:text-[#56BBD0] transition duration-200">FAQ</a> */}
             <Link
               className="text-gray-800 transition hover:text-gray-800/75 "
               href="/contact">
-              Contact Us
+              Contact us
             </Link>
 
           </div>
         </div>
+        <a onClick={sendWhatsAppMessage}>
+          <Image src="https://static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg" alt="image" width={120} height={50} />
+        </a>
 
         <button className="block lg:hidden">
+
           {/* <ViewListIcon className="w-5" /> */}
         </button>
       </div>
