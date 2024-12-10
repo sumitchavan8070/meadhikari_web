@@ -1,12 +1,22 @@
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-    // './app/**/*.{js,ts,jsx,tsx}', // Add this if using the /app directory in Next.js 13+
-
+    './pages/**/*.{js,jsx}',
+    './components/**/*.{js,jsx}',
+    './app/**/*.{js,jsx}',
+    './src/**/*.{js,jsx}',
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-   
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '0.8rem',
+        'sm': '1.5rem',
+        'lg': '2rem',
+        'xl': '3rem',
+        '2xl': '6rem',
+      },
+    },
     extend: {
       fontFamily: {
         DMSans: ["DM Sans"],

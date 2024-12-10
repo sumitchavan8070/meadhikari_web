@@ -1,5 +1,7 @@
+"use client"
 import { ChevronRightIcon } from "@heroicons/react/solid";
 import Image from 'next/image';
+
 
 const Company = () => {
     return (
@@ -11,7 +13,7 @@ const Company = () => {
 
                 <div className="sm:w-1/4 w-full text-center sm:text-left">
                     <h2 className="mt-3 text-2xl sm:text-3xl font-extrabold font-Arvo text-[#0F2137]">
-                        Welcome to Meadhikari - MPSC Exam Preparation App in Maharashtra
+                        Welcome to Meadhikari - MPSC sdsdsExam Preparation App in Maharashtra
                     </h2>
                     {/* Button: Improved the layout on mobile and desktop */}
                     <button className="mt-5 text-[#4F96FF] mx-auto sm:mx-0 flex items-center">

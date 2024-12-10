@@ -7,11 +7,11 @@ const Help = () => {
             id="help"
             className="w-full md:w-[750px] xl:w-[1250px] flex-col xl:flex-row px-12 xl:px-0 mx-auto flex justify-between py-16"
         >
-              <div className="mt-20 xl:mt-0">
+            <div className="mt-20 xl:mt-0">
                 <Image
                     // src="https://cf-img-a-in.tosshub.com/sites/visualstory/mptak/uploads/cropped-WhatsApp-Image-2023-11-03-at-12.40.30-PM.jpeg?size=*:900"
 
-                    src="https://im.indiatimes.in/content/2024/Jul/get---2024-07-31T145155038_66aa04a1113cf.jpg?w=720&h=1280&cc=1&webp=1&q=75"
+                    src="/help.jpg"
                     alt="meAdhikari Support"
                     width={340}
                     height={300}
@@ -49,7 +49,7 @@ const Help = () => {
                     </div>
                 </div>
             </div>
-          
+
         </div>
     );
 };

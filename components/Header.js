@@ -57,9 +57,14 @@ const Header = () => {
             {/* <a href="#colab" className="pr-8 hover:text-[#56BBD0] transition duration-200">Collaboration</a> */}
             {/* <a href="/contact" className="pr-8 hover:text-[#56BBD0] transition duration-200">FAQ</a> */}
             <Link
-              className="text-gray-800 transition hover:text-gray-800/75 "
+              className="text-gray-800 transition pr-8 hover:text-[#56BBD0]"
               href="/contact">
               Contact us
+            </Link>
+            <Link
+              className="text-gray-800 transition hover:text-[#56BBD0] "
+              href="/about">
+              About us
             </Link>
 
           </div>

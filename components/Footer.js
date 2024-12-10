@@ -9,6 +9,8 @@ import { useContext } from "react";
 const Footer = () => {
     return (
         <div className="mt-28 text-[#02073E] px-10 xl:px-0 pt-16 xl:w-[1250px] mx-auto  items-start bg-[#F9FAFC]">
+
+
             <div className="flex flex-wrap justify-start lg:justify-between gap-10 border-b-2 pb-12">
                 <div className="mr-10">
                     <h3 className="font-medium text-xl mb-7">Company</h3>
