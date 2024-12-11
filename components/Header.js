@@ -50,10 +50,9 @@ const Header = () => {
                 <a href="#"><img src="/logo.png" alt="logo"/></a>
             </div> */}
           <div className="text-[#02073E] hidden lg:block ml-12">
-            <a href="#" className="pr-8 hover:text-[#56BBD0] transition duration-200">Home</a>
+            <a href="/#" className="pr-8 hover:text-[#56BBD0] transition duration-200">Home</a>
             {/* <a href="#solutions" className="pr-8 hover:text-[#56BBD0] transition duration-200">Solutions</a> */}
             <a href="#support" className="pr-8 hover:text-[#56BBD0] transition duration-200">Supports</a>
-            <a href="#help" className="pr-8 hover:text-[#56BBD0] transition duration-200">Help</a>
             {/* <a href="#colab" className="pr-8 hover:text-[#56BBD0] transition duration-200">Collaboration</a> */}
             {/* <a href="/contact" className="pr-8 hover:text-[#56BBD0] transition duration-200">FAQ</a> */}
             <Link
@@ -62,9 +61,14 @@ const Header = () => {
               Contact us
             </Link>
             <Link
-              className="text-gray-800 transition hover:text-[#56BBD0] "
+              className="text-gray-800 transition pr-8 hover:text-[#56BBD0] "
               href="/about">
               About us
+            </Link>
+            <Link
+              className="text-gray-800 transition hover:text-[#56BBD0] "
+              href="/pricing">
+              Pricing
             </Link>
 
           </div>
