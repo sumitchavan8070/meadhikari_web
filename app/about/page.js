@@ -8,36 +8,44 @@ import Header from "@/components/Header";
 
 const page = () => {
   return (
-    <div className="bg-white ">
+    <div className="bg-white">
 
       <Header />
 
-
-
-      <div
-        class="flex flex-1 w-full flex-col items-center justify-center text-center px-4 py-20 bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50 bg-[#F5FCFF]">
-        <a href=""
-          class="text-[#5E3BEE] border border-white-700 dark:border-gray-300 rounded-lg py-2 px-4 text-sm mb-5 transition duration-300 ease-in-out hover:text-gray-500 dark:hover:text-gray-400">
-          Forget about spending hundreds $
-        </a>
-        <h1
-          class="mx-auto max-w-4xl font-display text-5xl font-bold tracking-normal text-white-300 dark:text-black-300 sm:text-7xl">
-          Revolutionize Your Insurance
-          <span class="relative whitespace-nowrap text-white-600 dark:text-black-300"> Operations</span>
-          <span class="relative whitespace-nowrap text-orange-500 dark:text-orange-300 ">
-            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute top-2/3 left-0 h-[0.58em] w-full fill-[#5E3BEE] fill-[#5E3BEE]" preserveAspectRatio="none">
-              <path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.780 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.540-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.810 23.239-7.825 27.934-10.149 28.304-14.005 .417-4.348-3.529-6-16.878-7.066Z"></path>
+      <section className="bg-[#F5FCFF]">
+        <div
+          class="flex flex-col items-center justify-center text-center sm:px-4 sm:py-20 bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50  lg:min-h-screen mx-auto max-w-xl py-20 space-y-12 lg:px-8 lg:max-w-7xl">
+          <a href=""
+            class="text-[#5E3BEE] border border-white-700 dark:border-gray-300 rounded-lg py-2 px-4 text-sm mb-5 transition duration-300 ease-in-out hover:text-gray-500 dark:hover:text-gray-400">
+            Forget about spending hundreds $
+          </a>
+          <h1
+            class="mx-auto max-w-4xl font-display text-3xl font-bold tracking-normal text-white-300 dark:text-black-300 md:text-5xl lg:text-7xl">
+            Revolutionize Your Insurance
+            <span class="relative whitespace-nowrap text-white-600 dark:text-black-300"> Operations</span>
+            {/* <span class="relative whitespace-nowrap text-orange-500 dark:text-orange-300">
+            <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute top-2/3 left-0 h-[0.58em] w-full fill-[#5E3BEE]"
+              preserveAspectRatio="none">
+              <path
+                d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.780 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.540-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.810 23.239-7.825 27.934-10.149 28.304-14.005 .417-4.348-3.529-6-16.878-7.066Z">
+              </path>
             </svg>
             <span class="relative text-[#5E3BEE]">with AI</span>
-          </span>
-        </h1>
-        <h2 class=" text-[#1C1E53] mx-auto mt-12 max-w-xl text-lg sm:text-[#1C1E53] text-[#1C1E53]-500 leading-7">
-          Experience the future of insurance with our cutting-edge AI tool. From underwriting to claims processing, our
-          intelligent system streamlines and enhances every aspect of your insurance operations.
-        </h2>
-        <a class="bg-orange-600 dark:bg-gray-800 rounded-xl text-white dark:text-gray-300 font-medium px-4 py-3 sm:mt-10 mt-8 hover:bg-orange-500 dark:hover:bg-gray-600 transition"
-          href="">Get started</a>
-      </div>
+          </span> */}
+            <span class="relative whitespace-nowrap text-blue-600 ">
+              <svg aria-hidden="true" viewBox="0 0 418 42" class="absolute top-2/3 left-0 h-[0.58em] w-full fill-blue-300/70" preserveAspectRatio="none"><path d="M203.371.916c-26.013-2.078-76.686 1.963-124.73 9.946L67.3 12.749C35.421 18.062 18.2 21.766 6.004 25.934 1.244 27.561.828 27.778.874 28.61c.07 1.214.828 1.121 9.595-1.176 9.072-2.377 17.15-3.92 39.246-7.496C123.565 7.986 157.869 4.492 195.942 5.046c7.461.108 19.25 1.696 19.17 2.582-.107 1.183-7.874 4.31-25.75 10.366-21.992 7.45-35.43 12.534-36.701 13.884-2.173 2.308-.202 4.407 4.442 4.734 2.654.187 3.263.157 15.593-.78 35.401-2.686 57.944-3.488 88.365-3.143 46.327.526 75.721 2.23 130.788 7.584 19.787 1.924 20.814 1.98 24.557 1.332l.066-.011c1.201-.203 1.53-1.825.399-2.335-2.911-1.31-4.893-1.604-22.048-3.261-57.509-5.556-87.871-7.36-132.059-7.842-23.239-.254-33.617-.116-50.627.674-11.629.54-42.371 2.494-46.696 2.967-2.359.259 8.133-3.625 26.504-9.81 23.239-7.825 27.934-10.149 28.304-14.005.417-4.348-3.529-6-16.878-7.066Z"></path></svg>
+              <span class="relative"> With AI </span></span>
+          </h1>
+          <h2
+            class="text-[#1C1E53] mx-auto mt-6 max-w-xl text-base md:text-lg lg:text-xl sm:leading-6 md:leading-7 lg:leading-8">
+            Experience the future of insurance with our cutting-edge AI tool. From underwriting to claims processing, our
+            intelligent system streamlines and enhances every aspect of your insurance operations.
+          </h2>
+          <a class="bg-orange-600 dark:bg-gray-800 rounded-xl text-white dark:text-gray-300 font-medium px-6 py-3 sm:mt-8 mt-6 hover:bg-orange-500 dark:hover:bg-gray-600 transition"
+            href="">Get started</a>
+        </div>
+      </section>
+
 
 
 
@@ -114,15 +122,15 @@ const page = () => {
 
 
       {/* hire me section  */}
-      <section className="bg-[#F5FCFF] rounded-[50px] py-[80px]">
-        <div className=" flex items-center items-center container ">
+      <section className="bg-[#F5FCFF] py-[80px] ">
+        <div className="sm:flex-col sm:p-16 items-center items-center container mx-auto max-w-xl py-20 lg:px-8 lg:max-w-7xl ">
           <Image
-            src="/Mask group.svg"
+            src="/Mask group.svg" 
             alt="meAdhikari Support"
             width={600}
             height={600}
           />
-          <div className="flex flex-col gap-[47px] ">
+          <div className="flex flex-col lg:gap-[47px] sm:p-16 ">
             <h2 className="text-[40px] font-regular">Why Choose
               <span className="text-[#fd853a]"> Meadhikari </span> for MPSC and Maharashtra Exam Preparation?</h2>
             <p className="font-medium text-[#98a2b3]">At Meadhikari, we are dedicated to helping you succeed in the Maharashtra Public Service Commission (MPSC) exams with top-notch study materials, practice papers, and personalized guidance.</p>
@@ -239,7 +247,7 @@ const page = () => {
       <div className="">
       </div>
 
-      
+
       <section className='bg-[#F9FAFC]'>
         <Footer />
       </section>

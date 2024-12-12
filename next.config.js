@@ -9,7 +9,8 @@ const nextConfig = {
       "firebasestorage.googleapis.com",
       "newstrack.com",
       "cf-img-a-in.tosshub.com",
-      "im.indiatimes.in"
+      "im.indiatimes.in", 
+      "mcqmate.com"
     ],
   },
 };
