@@ -10,9 +10,10 @@ import Support from "@/components/support";
 
 export default function Home() {
   return (
-    <div className="bg-white">
+    <div className="">
+
       <HeroBanner />
-      <section className="bg-[#F9FBFD]">
+      <section className="bg-[#FFFFFF]">
         <Features />
       </section>
 

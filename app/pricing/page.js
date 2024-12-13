@@ -8,11 +8,24 @@ import Header from "@/components/Header";
 
 const page = () => {
   return (
-    <div className="bg-white ">
+    <div className="relative">
+      <div
+        className="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]"
+        aria-hidden="true"
+      >
+        <div
+          className="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]"
+          style={{
+            clipPath:
+              "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)",
+          }}
+        ></div>
+      </div>
 
       <Header />
       {/* New Features */}
       <section className="bg-white-100">
+
         <div className="container mx-auto max-w-xl py-20 space-y-12 lg:px-8 lg:max-w-7xl">
           <div>
             <h2 className="text-3xl font-bold text-center sm:text-5xl">New Features</h2>
@@ -142,7 +155,7 @@ const page = () => {
 
 
       {/* Writing has never been so easy */}
-      <div class="bg-[#F9FAFC] px-2 py-10">
+      <div class=" px-2 py-10">
 
         <div id="features" class="mx-auto max-w-6xl">
           <p class="text-center text-base font-semibold leading-7 text-primary-500">Features</p>
@@ -150,7 +163,7 @@ const page = () => {
             Writing has never been so easy
           </h2>
           <ul class="mt-16 grid grid-cols-1 gap-6 text-center text-slate-700 md:grid-cols-3">
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl bg-[#F9FAFC] px-6 py-8 shadow-sm">
 
               <Image
                 height={40}
@@ -166,7 +179,7 @@ const page = () => {
               </p>
 
             </li>
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl  px-6 py-8 shadow-sm bg-[#F9FAFC]">
               <Image
                 height={40}
                 width={40}
@@ -183,7 +196,7 @@ const page = () => {
               </p>
 
             </li>
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl bg-[#F9FAFC] px-6 py-8 shadow-sm">
               <Image
                 height={40}
                 width={40}
@@ -200,7 +213,7 @@ const page = () => {
               </p>
 
             </li>
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl bg-[#F9FAFC] px-6 py-8 shadow-sm">
               <a href="/pricing" class="group">
                 <Image
                   height={40}
@@ -216,7 +229,7 @@ const page = () => {
                   many payment options including pay-as-you-go and subscription.</p>
               </a>
             </li>
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl bg-[#F9FAFC] px-6 py-8 shadow-sm">
               <a href="/templates" class="group">
                 <Image
                   height={40}
@@ -233,7 +246,7 @@ const page = () => {
                   education, lifestyle and creativity to inspire your potential. </p>
               </a>
             </li>
-            <li class="rounded-xl bg-white px-6 py-8 shadow-sm">
+            <li class="rounded-xl bg-[#F9FAFC] px-6 py-8 shadow-sm">
               <a href="/download" class="group">
                 <Image
                   height={40}
@@ -256,7 +269,7 @@ const page = () => {
 
       </div>
 
-{/* pricing component */}
+      {/* pricing component */}
       {/* <div class="bg-white  bg-white-800 py-20 " id="pricing">
         <div class="relative mx-auto max-w-7xl px-6 text-center lg:px-8 mb-10">
           <div class="mx-auto max-w-2xl lg:max-w-4xl">
@@ -454,451 +467,451 @@ const page = () => {
           </div>
         </div>
       </div> */}
-<div class="space-y-5 px-12 py-12 container">
-    <div class="container flex space-x-2">
-    <div class="mx-auto max-w-2xl lg:max-w-4xl text-center p-12">
+      <div class="space-y-5 px-12 pb-[100px] container">
+        <div class="container flex space-x-2">
+          <div class="mx-auto max-w-2xl lg:max-w-4xl text-center p-12">
             <h2 class="mx-auto text-lg font-semibold leading-8 text-teal-600 text-teal-400">Pricing</h2>
             <p class="mx-auto mt-2 text-4xl font-bold tracking-tight text-black-900  text-black-200">Find the right plan for your project</p>
           </div>
-        {/* <div class="no-scrollbar overflow-hidden">
+          {/* <div class="no-scrollbar overflow-hidden">
             <div class="flex no-scrollbar justify-start space-x-6 items-center overflow-x-auto">
                 <button
                     class="font-semibold whitespace-nowrap text-base text-gray-500 hover:text-gray-600 transition-colors duration-300">Monthly</button><button
                     class="font-semibold whitespace-nowrap text-base hover:text-gray-600 transition-colors duration-300 text-gray-900">Annually</button>
             </div>
         </div><button class="text-purple-500 font-semibold text-base">(2 months free)</button> */}
-    </div>
-    <div class="demo-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        <div
+        </div>
+        <div class="demo-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div
             class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
             <div class="h-full">
-                <div class="h-full z-10 relative">
-                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
-                        <div class="flex justify-between flex-col">
-                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
-                                <span>Starter</span>
-                            </div>
-                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
-                                <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
-                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>10</span>
-                                    </div><span class="pt-1.5">per month</span>
-                                </div>
-                                <div class="text-base">billed
-                                    annually
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="space-y-2 pt-8">
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Everything in Free</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>5,000 events / month</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Unlimited seats</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <a href="/billing" type="button" target="_blank"
-                                class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
-                                    class="w-full font-semibold text-base">Choose Starter</span>
-                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                        </div>
+              <div class="h-full z-10 relative">
+                <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                  <div class="flex justify-between flex-col">
+                    <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                      <span>Starter</span>
                     </div>
-                    <div class="hidden">
-                        <ul class="space-y-2 pt-8">
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Everything in Free</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>5,000 events / month</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Unlimited seats</span>
-                            </li>
-                        </ul>
+                    <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                      <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
+                        <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>10</span>
+                        </div><span class="pt-1.5">per month</span>
+                      </div>
+                      <div class="text-base">billed
+                        annually
+                      </div>
                     </div>
+                    <div class="">
+                      <ul class="space-y-2 pt-8">
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Everything in Free</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>5,000 events / month</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Unlimited seats</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <a href="/billing" type="button" target="_blank"
+                      class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                        class="w-full font-semibold text-base">Choose Starter</span>
+                      <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
+                <div class="hidden">
+                  <ul class="space-y-2 pt-8">
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Everything in Free</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>5,000 events / month</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Unlimited seats</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
-        <div
+          </div>
+          <div
             class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
             <div class="h-full">
-                <div class="h-full z-10 relative">
-                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
-                        <div class="flex justify-between flex-col">
-                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
-                                <span>Startup</span>
-                                <svg class="h-6 w-6 animate-ping-slow text-gray-500" viewBox="0 0 50 50" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M30.5 25C30.5 28.0376 28.0376 30.5 25 30.5C21.9624 30.5 19.5 28.0376 19.5 25C19.5 21.9624 21.9624 19.5 25 19.5C28.0376 19.5 30.5 21.9624 30.5 25Z"
-                                        stroke="currentColor" stroke-opacity="0.7" stroke-width="4"
-                                        stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path
-                                        d="M38.75 25C38.75 32.5939 32.5939 38.75 25 38.75C17.4061 38.75 11.25 32.5939 11.25 25C11.25 17.4061 17.4061 11.25 25 11.25C32.5939 11.25 38.75 17.4061 38.75 25Z"
-                                        stroke="currentColor" stroke-opacity="0.4" stroke-width="4.5"
-                                        stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path
-                                        d="M47.5 25C47.5 37.4264 37.4264 47.5 25 47.5C12.5736 47.5 2.5 37.4264 2.5 25C2.5 12.5736 12.5736 2.5 25 2.5C37.4264 2.5 47.5 12.5736 47.5 25Z"
-                                        stroke="currentColor" stroke-opacity="0.1" stroke-width="5"
-                                        stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </div>
-                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
-                                <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
-                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>16</span>
-                                    </div><span class="pt-1.5">per month</span>
-                                </div>
-                                <div class="text-base">billed
-                                    annually
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="space-y-2 pt-8">
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Everything in Starter</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>20,000 events / month</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Unlimited seats</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <a href="/billing" type="button" target="_blank"
-                                class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
-                                    class="w-full font-semibold text-base">Choose Startup</span>
-                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                        </div>
+              <div class="h-full z-10 relative">
+                <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                  <div class="flex justify-between flex-col">
+                    <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                      <span>Startup</span>
+                      <svg class="h-6 w-6 animate-ping-slow text-gray-500" viewBox="0 0 50 50" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M30.5 25C30.5 28.0376 28.0376 30.5 25 30.5C21.9624 30.5 19.5 28.0376 19.5 25C19.5 21.9624 21.9624 19.5 25 19.5C28.0376 19.5 30.5 21.9624 30.5 25Z"
+                          stroke="currentColor" stroke-opacity="0.7" stroke-width="4"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path
+                          d="M38.75 25C38.75 32.5939 32.5939 38.75 25 38.75C17.4061 38.75 11.25 32.5939 11.25 25C11.25 17.4061 17.4061 11.25 25 11.25C32.5939 11.25 38.75 17.4061 38.75 25Z"
+                          stroke="currentColor" stroke-opacity="0.4" stroke-width="4.5"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path
+                          d="M47.5 25C47.5 37.4264 37.4264 47.5 25 47.5C12.5736 47.5 2.5 37.4264 2.5 25C2.5 12.5736 12.5736 2.5 25 2.5C37.4264 2.5 47.5 12.5736 47.5 25Z"
+                          stroke="currentColor" stroke-opacity="0.1" stroke-width="5"
+                          stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
                     </div>
-                    <div class="hidden">
-                        <ul class="space-y-2 pt-8">
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Everything in Starter</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>20,000 events / month</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Unlimited seats</span>
-                            </li>
-                        </ul>
+                    <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                      <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
+                        <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>16</span>
+                        </div><span class="pt-1.5">per month</span>
+                      </div>
+                      <div class="text-base">billed
+                        annually
+                      </div>
                     </div>
+                    <div class="">
+                      <ul class="space-y-2 pt-8">
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Everything in Starter</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>20,000 events / month</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Unlimited seats</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <a href="/billing" type="button" target="_blank"
+                      class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                        class="w-full font-semibold text-base">Choose Startup</span>
+                      <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
+                <div class="hidden">
+                  <ul class="space-y-2 pt-8">
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Everything in Starter</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>20,000 events / month</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Unlimited seats</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
-        <div
+          </div>
+          <div
             class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative">
             <div class="h-full">
-                <div class="h-full z-10 relative">
-                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
-                        <div class="flex justify-between flex-col">
-                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
-                                <span>Professional</span>
-                            </div>
-                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
-                                <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
-                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>49</span>
-                                    </div><span class="pt-1.5">per month</span>
-                                </div>
-                                <div class="text-base">billed
-                                    annually
-                                </div>
-                            </div>
-                            <div class="">
-                                <ul class="space-y-2 pt-8">
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Everything in Startup</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>80,000 events / mo</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Unlimited seats</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <a href="/billing" type="button" target="_blank"
-                                class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
-                                    class="w-full font-semibold text-base">Choose Pro</span>
-                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                        </div>
+              <div class="h-full z-10 relative">
+                <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                  <div class="flex justify-between flex-col">
+                    <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                      <span>Professional</span>
                     </div>
-                    <div class="hidden">
-                        <ul class="space-y-2 pt-8">
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Everything in Startup</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>80,000 events / mo</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Unlimited seats</span>
-                            </li>
-                        </ul>
+                    <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                      <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
+                        <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>49</span>
+                        </div><span class="pt-1.5">per month</span>
+                      </div>
+                      <div class="text-base">billed
+                        annually
+                      </div>
                     </div>
+                    <div class="">
+                      <ul class="space-y-2 pt-8">
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Everything in Startup</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>80,000 events / mo</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Unlimited seats</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <a href="/billing" type="button" target="_blank"
+                      class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                        class="w-full font-semibold text-base">Choose Pro</span>
+                      <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
+                <div class="hidden">
+                  <ul class="space-y-2 pt-8">
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Everything in Startup</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>80,000 events / mo</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Unlimited seats</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
-        <div
+          </div>
+          <div
             class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative lg:col-span-2">
             <div class="h-full">
-                <div class="h-full z-10 relative lg:flex lg:justify-between lg:w-full lg:pr-8 lg:items-center  ">
-                    <div class="flex flex-col flex-1 justify-between h-full space-y-5">
-                        <div class="flex justify-between flex-col">
-                            <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
-                                <span>Free</span>
-                            </div>
-                            <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
-                                <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
-                                    <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>0</span>
-                                    </div><span class="pt-1.5">per month</span>
-                                </div>
-                                <div class="text-base">billed
-                                    annually
-                                </div>
-                            </div>
-                            <div class="lg:hidden">
-                                <ul class="space-y-2 pt-8 lg:pt-0">
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>No credit card required</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-black">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>Free forever</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-gray-600">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>3 seats</span>
-                                    </li>
-                                    <li class="flex items-center font-medium space-x-2 text-gray-600">
-                                        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round"></path>
-                                        </svg><span>200 events / month</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="pt-2">
-                            <a href="/billing" type="button" target="_blank"
-                                class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
-                                    class="w-full font-semibold text-base">Choose Free</span>
-                                <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
-                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </a>
-                        </div>
+              <div class="h-full z-10 relative lg:flex lg:justify-between lg:w-full lg:pr-8 lg:items-center  ">
+                <div class="flex flex-col flex-1 justify-between h-full space-y-5">
+                  <div class="flex justify-between flex-col">
+                    <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                      <span>Free</span>
                     </div>
-                    <div class="hidden lg:block">
-                        <ul class="space-y-2 pt-8 lg:pt-0">
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>No credit card required</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-black">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>Free forever</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-gray-600">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>3 seats</span>
-                            </li>
-                            <li class="flex items-center font-medium space-x-2 text-gray-600">
-                                <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
-                                        stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                </svg><span>200 events / month</span>
-                            </li>
-                        </ul>
+                    <div class="pt-5 text-gray-500 font-medium text-base space-y-1">
+                      <div class="flex items-center align-bottom"><span class="pt-1.5">$</span>
+                        <div class="ml-1 mr-2 text-2xl md:text-3xl font-bold text-gray-900"><span>0</span>
+                        </div><span class="pt-1.5">per month</span>
+                      </div>
+                      <div class="text-base">billed
+                        annually
+                      </div>
                     </div>
+                    <div class="lg:hidden">
+                      <ul class="space-y-2 pt-8 lg:pt-0">
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>No credit card required</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-black">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>Free forever</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-gray-600">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>3 seats</span>
+                        </li>
+                        <li class="flex items-center font-medium space-x-2 text-gray-600">
+                          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                              stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                              stroke-linejoin="round"></path>
+                          </svg><span>200 events / month</span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="pt-2">
+                    <a href="/billing" type="button" target="_blank"
+                      class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                        class="w-full font-semibold text-base">Choose Free</span>
+                      <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor"
+                          stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </a>
+                  </div>
                 </div>
+                <div class="hidden lg:block">
+                  <ul class="space-y-2 pt-8 lg:pt-0">
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>No credit card required</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-black">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>Free forever</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-gray-600">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>3 seats</span>
+                    </li>
+                    <li class="flex items-center font-medium space-x-2 text-gray-600">
+                      <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M16.4444 3.03947C15.1056 2.37412 13.5965 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 11.6244 21.9793 11.2537 21.939 10.8889M9 11L12 14L22 4"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                          stroke-linejoin="round"></path>
+                      </svg><span>200 events / month</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-        </div>
-        <div
+          </div>
+          <div
             class="rounded-[30px] md:rounded-[36px] bg-[#FAFAFA] overflow-hidden border-[1px] border-gray-200 p-8 relative sm:col-span-2 lg:col-span-1">
             <div class="h-full">
-                <div class="flex flex-col justify-between h-full space-y-5">
-                    <div class="flex justify-between flex-col">
-                        <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
-                            <span>Enterprise</span>
-                        </div>
-                        <div class="pt-5">Contact us for a custom quote and a custom onboarding process.</div>
-                    </div>
-                    <div class="pt-2">
-                        <a href="#" type="button"
-                            class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
-                                class="w-full font-semibold text-base">Contact Sales</span>
-                            <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round"></path>
-                            </svg>
-                        </a>
-                    </div>
+              <div class="flex flex-col justify-between h-full space-y-5">
+                <div class="flex justify-between flex-col">
+                  <div class="text-xl md:text-2xl font-bold text-gray-900 flex justify-between">
+                    <span>Enterprise</span>
+                  </div>
+                  <div class="pt-5">Contact us for a custom quote and a custom onboarding process.</div>
                 </div>
+                <div class="pt-2">
+                  <a href="#" type="button"
+                    class="appearance-none inline-flex hover:shadow-2xl transition-all duration-300 hover:scale-105 items-center group space-x-2.5 bg-black text-white py-4 px-5 rounded-2xl cursor-pointer"><span
+                      class="w-full font-semibold text-base">Contact Sales</span>
+                    <svg class="inline-block h-6" viewBox="0 0 24 25" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 12.4999H21L14 19.4999M14 5.5L18 9.5" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
 
       <section className='bg-[#F9FAFC]'>
         <Footer />

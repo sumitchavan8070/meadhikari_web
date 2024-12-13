@@ -10,7 +10,8 @@ const nextConfig = {
       "newstrack.com",
       "cf-img-a-in.tosshub.com",
       "im.indiatimes.in", 
-      "mcqmate.com"
+      "mcqmate.com", 
+      "source.unsplash.com"
     ],
   },
 };

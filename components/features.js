@@ -23,7 +23,7 @@ import {
     let iconStudyMaterial = <BookOpenIcon className="w-20 text-white bg-[#FFC75F] p-4 rounded-full" />;
   
     return (
-      <div id="solutions" className="pt-24 xl:w-[1250px] h-auto pb-12 xl:h-[1090px] mx-auto bg-[#F9FBFD]">
+      <div id="solutions" className="pt-[10px] xl:w-[1250px]  mx-auto py-[100px] ">
         <p className="text-center text-[#00A99D] text-lg font-medium">Ideal solutions for you</p>
         <h2 className="text-center mt-3 text-[#0F2137] text-2xl font-extrabold font-Arvo">Go beyond ultimate features</h2>
         <div className="flex flex-wrap justify-center my-16">

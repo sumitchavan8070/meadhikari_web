@@ -45,20 +45,29 @@ const Header = () => {
     <div className="pt-3">
       <div className="w-full 2xl:w-[1250px] mx-px lg:mx-auto py-5 md:px-24 px-8 2xl:px-0 flex items-center justify-between">
         <div className="flex items-center">
-          <h1 className="font-bold font-Arvo text-[#02073E] text-3xl md:text-[20px] lg:text-[20px] xl:text-[30px] md:leading-snug leading-tight">Meadhikari</h1>
-          {/* <div className="logo">
-                <a href="#"><img src="/logo.png" alt="logo"/></a>
-            </div> */}
+          <a href="/" class="inline-flex items-center">
+            <Image
+              src="https://mcqmate.com/public/images/logos/60x60.png"
+              alt="logo"
+              width={40}
+              height={40}
+            />
+            <span class="ml-2 text-xl font-bold tracking-wide text-gray-800">Meadhikari</span>
+          </a>
+          {/* <h1 className="font-bold font-Arvo text-[#02073E] text-3xl md:text-[20px] lg:text-[20px] xl:text-[30px] md:leading-snug leading-tight">Meadhikari</h1> */}
+
           <div className="text-[#02073E] hidden lg:block ml-12">
-            <a href="/#" className="pr-8 hover:text-[#56BBD0] transition duration-200">Home</a>
+
+            <a href="/" className="pr-8 hover:text-[#56BBD0] transition duration-200">Home</a>
 
             <Link
               className="text-gray-800 transition pr-8 hover:text-[#56BBD0] "
               href="/about">
               About us
             </Link>
+
             <Link
-              className="text-gray-800 transition pr-8 hover:text-[#56BBD0] "
+              className="text-gray-800 transition pr-8 hover:text-[#56BBD0]"
               href="/pricing">
               Pricing
             </Link>
@@ -70,6 +79,7 @@ const Header = () => {
 
           </div>
         </div>
+
         <a onClick={sendWhatsAppMessage}>
           <Image src="https://static.whatsapp.net/rsrc.php/yZ/r/JvsnINJ2CZv.svg" alt="image" width={120} height={50} />
         </a>
