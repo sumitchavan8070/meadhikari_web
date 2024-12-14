@@ -6,11 +6,13 @@ import FeaturesCard from "@/components/featurescard";
 import Footer from "@/components/Footer";
 import Help from "@/components/help";
 import HeroBanner from "@/components/HeroBanner";
+import OfferStrip from "@/components/OfferStrip";
 import Support from "@/components/support";
 
 export default function Home() {
   return (
     <div className="">
+      <OfferStrip />
 
       <HeroBanner />
       <section className="bg-[#FFFFFF]">
@@ -22,11 +24,9 @@ export default function Home() {
 
       <Company />
 
-
-      <section className='bg-[#F9FAFC]'>
+      <section className="bg-[#F9FAFC]">
         <Footer />
       </section>
-
     </div>
   );
 }
