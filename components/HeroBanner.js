@@ -3,6 +3,8 @@ import { ViewListIcon, XIcon } from "@heroicons/react/solid";
 import Header from "./Header";
 import Image from "next/image";
 import HeroSection from "./home/HeroSection";
+import Headercopy from "./Headercopy";
+import Testimonials from "./Testimonials";
 
 const HeroBanner = () => {
   return (
@@ -20,7 +22,10 @@ const HeroBanner = () => {
         ></div>
       </div>
 
-      <Header />
+      {/* <Header /> */}
+
+      <Headercopy />
+
       <section className="">
         <div class="flex flex-col items-center justify-center text-center sm:px-4 sm:py-20 bg-gradient-to-r from-green-50/50 via-teal-50 to-green-50/50  lg:min-h-screen mx-auto max-w-xl py-20 space-y-12 lg:px-8 lg:max-w-7xl">
           {/* <a href=""
