@@ -194,9 +194,9 @@ const Headercopy = () => {
           <Image
             src="/images/example.png"
             alt="Example Image"
-            width={100}
+            width={120}
             height={50}
-            className="w-36"
+            className="w-25"
           />
         </a>
 

@@ -5,6 +5,7 @@ import FAQ from "@/components/FAQ";
 import Features from "@/components/features";
 import FeaturesCard from "@/components/featurescard";
 import Footer from "@/components/Footer";
+import Headercopy from "@/components/Headercopy";
 import Help from "@/components/help";
 import HeroBanner from "@/components/HeroBanner";
 import OfferStrip from "@/components/OfferStrip";
@@ -17,7 +18,7 @@ export default function Home() {
   return (
     <div className="">
       <OfferStrip />
-
+      <Headercopy />
       <HeroBanner />
       <Stats />
 

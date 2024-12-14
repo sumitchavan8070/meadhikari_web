@@ -11,7 +11,7 @@ const OfferStrip = () => {
       <div>
         <button
           type="button"
-          className="bg-white text-blue-500 py-2.5 px-5 rounded text-sm"
+          className="bg-white text-blue-500 py-1 px-5 rounded text-sm"
         >
           Get Offer
         </button>
