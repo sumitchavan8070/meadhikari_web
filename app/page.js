@@ -13,6 +13,7 @@ import Pricing from "@/components/Pricing";
 import Stats from "@/components/Stats";
 import Support from "@/components/support";
 import Testimonials from "@/components/Testimonials";
+import TestSeries from "@/components/TestSeries";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       {/* <Help /> */}
       {/* <Support /> */}
       {/* <Company /> */}
+      <TestSeries />
       <Pricing />
       <Testimonials />
       <FAQ />

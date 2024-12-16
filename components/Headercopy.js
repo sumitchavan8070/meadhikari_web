@@ -29,15 +29,15 @@ const Headercopy = () => {
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 backdrop-blur-md ${
           isScrolled
-            ? "bg-white/80 shadow-md text-gray-900"
-            : "bg-white/40 text-white"
+            ? "bg-blue/80 shadow-md text-gray-900"
+            : "bg-blue/40 text-white"
         }`}
       >
         <div className="flex items-center justify-between px-4 sm:px-10 py-4 min-h-[70px]">
           {/* Logo */}
           <a href="/">
             <Image
-              src="/images/example.png"
+              src="/images/logo.png"
               alt="Example Image"
               width={120}
               height={50}
