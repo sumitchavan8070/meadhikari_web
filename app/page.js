@@ -17,7 +17,7 @@ import TestSeries from "@/components/TestSeries";
 
 export default function Home() {
   return (
-    <div className="pt-[30%] sm:pt-[30%] md:pt-[5%]">
+    <div className="pt-[20%] sm:pt-[20%] md:pt-[4.5%]">
       <OfferStrip />
       <Headercopy />
       <HeroBanner />

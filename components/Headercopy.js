@@ -159,7 +159,7 @@ const Headercopy = () => {
       </header>
 
       {/* Content Padding */}
-      <div className="pt-[50px]"></div>
+      <div className="pt-[10px]"></div>
     </>
   );
 };
