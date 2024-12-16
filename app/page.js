@@ -16,27 +16,20 @@ import Testimonials from "@/components/Testimonials";
 
 export default function Home() {
   return (
-    <div className="">
+    <div className="pt-[30%] sm:pt-[30%] md:pt-[5%]">
       <OfferStrip />
       <Headercopy />
       <HeroBanner />
       <Stats />
-
       {/* <section className="bg-[#FFFFFF]">
         <Features />
       </section> */}
-
       {/* <Help /> */}
       {/* <Support /> */}
-
       {/* <Company /> */}
-
       <Pricing />
-
       <Testimonials />
-
       <FAQ />
-
       <section className="bg-[#F9FAFC]">
         <Footer />
       </section>

@@ -9,12 +9,12 @@ const OfferStrip = () => {
       </p>
 
       <div>
-        <button
+        {/* <button
           type="button"
           className="bg-white text-blue-500 py-1 px-5 rounded text-sm"
         >
           Get Offer
-        </button>
+        </button> */}
         {/* <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-3.5 cursor-pointer fill-white inline-block ml-4"
