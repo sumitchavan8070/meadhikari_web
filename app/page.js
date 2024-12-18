@@ -33,7 +33,7 @@ export default function Home() {
       {/* <Company /> */}
       <TestSeries />
 
-      <ContentSectionHomePageFirst />
+      {/* <ContentSectionHomePageFirst /> */}
       <OfferBannerSecond />
 
       <HomePageBlogSection />
