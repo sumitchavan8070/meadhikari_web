@@ -2651,6 +2651,14 @@ const Headercopy = () => {
                   Contact us
                 </a>
               </li>
+              <li>
+                <a
+                  href="/paper-landing"
+                  className="block font-semibold text-sm hover:text-blue-500"
+                >
+                  Previous Year Papers
+                </a>
+              </li>
             </ul>
 
             {/* Login & Signup Buttons */}
