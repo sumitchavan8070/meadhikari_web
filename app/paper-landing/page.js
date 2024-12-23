@@ -223,14 +223,14 @@
 // "use client";
 // import React, { useRef, useState, useEffect } from "react";
 // import PaperLanding from "./PaperLanding";
-// import Headercopy from "./../../components/Headercopy";
-// import Footer from "./../../components/Footer";
+// import Headercopy from "@/components/Headercopy";
+// import Footer from "@/components/Footer";
 // import Sidebar from "./components/Sidebar";
-// import OfferStrip from "./../../components/OfferStrip";
+// import OfferStrip from "@/components/OfferStrip";
 // import axios from "axios";
 // import Lottie from "react-lottie";
-// import { BASE_URL } from "../../utils/globalStrings";
-// import loaderAnimation from "../../public/loader.json"; // Adjust path as needed
+// import { BASE_URL } from "@/utils/globalStrings";
+// import loaderAnimation from "@/public/loader.json"; // Adjust path as needed
 
 // const PaperLandingPage = () => {
 //   const [showMoveToTop, setShowMoveToTop] = useState(false);
@@ -391,32 +391,21 @@
 // export default PaperLandingPage;
 
 "use client";
-
 import React, { useRef, useState, useEffect } from "react";
-import dynamic from "next/dynamic";
+import PaperLanding from "./PaperLanding";
+import Headercopy from "@/components/Headercopy";
+import Footer from "@/components/Footer";
+import Sidebar from "./components/Sidebar";
+import OfferStrip from "@/components/OfferStrip";
 import axios from "axios";
-import { BASE_URL } from "../../utils/globalStrings";
-
-// Dynamic imports for heavy components
-const PaperLanding = dynamic(() => import("./PaperLanding"), { ssr: false });
-const Headercopy = dynamic(() => import("../../components/Headercopy"), {
-  ssr: false,
-});
-const Footer = dynamic(() => import("../../components/Footer"), { ssr: false });
-const Sidebar = dynamic(() => import("./components/Sidebar"), { ssr: false });
-const OfferStrip = dynamic(() => import("../../components/OfferStrip"), {
-  ssr: false,
-});
-const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
-
-// Import animation separately to avoid bundling it server-side
-import loaderAnimation from "../../public/loader.json";
+import { BASE_URL } from "@/utils/globalStrings";
 
 const PaperLandingPage = () => {
   const [showMoveToTop, setShowMoveToTop] = useState(false);
+  const categoryRefs = useRef([]);
+
   const [categoriesData, setCategoriesData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const categoryRefs = useRef([]);
 
   useEffect(() => {
     fetchAllData();
@@ -425,17 +414,20 @@ const PaperLandingPage = () => {
   const fetchAllData = async () => {
     try {
       setLoading(true);
+
       const categoryResponse = await axios.get(
         `${BASE_URL}/exam-categories/get-all-exam-category`
       );
-      const categories = categoryResponse.data.map((item) => ({
-        _id: item._id,
-        name: item.catName.trim(),
-        shortName: item.catShortName || "",
-        image: item.image,
-        categoryNumber: item.categoryNumber,
-        questionsData: [],
-      }));
+      const categories = categoryResponse.data.map(
+        ({ _id, catName, catShortName, image, categoryNumber }) => ({
+          _id,
+          name: catName.trim(),
+          shortName: catShortName || "",
+          image,
+          categoryNumber,
+          questionsData: [],
+        })
+      );
 
       const papersPromises = categories.map((category) =>
         axios.get(`${BASE_URL}/papers/${category._id}`)
@@ -443,7 +435,7 @@ const PaperLandingPage = () => {
       const papersResponses = await Promise.all(papersPromises);
 
       const enrichedCategories = categories.map((category, index) => {
-        const papers = papersResponses[index]?.data || [];
+        const papers = papersResponses[index].data;
         const questionsData = papers.map((paper) => ({
           title: paper.subCatName,
           time: 60,
@@ -454,6 +446,7 @@ const PaperLandingPage = () => {
           live: paper.QPYear === new Date().getFullYear().toString(),
           paper: paper,
         }));
+
         return { ...category, questionsData };
       });
 
@@ -481,28 +474,23 @@ const PaperLandingPage = () => {
     const handleScroll = () => {
       setShowMoveToTop(window.scrollY > 300);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const lottieOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: loaderAnimation,
-    rendererSettings: { preserveAspectRatio: "xMidYMid slice" },
-  };
-
   return (
     <div className="w-full overflow-x-hidden bg-gray-50">
       {loading ? (
         <div className="flex justify-center items-center h-screen bg-white">
-          <Lottie options={lottieOptions} height={200} width={200} />
+          <p className="text-lg font-semibold text-gray-600">Loading...</p>
         </div>
       ) : (
         <>
           <Headercopy />
+
           <div className="w-full pt-[23%] sm:pt-[23%] md:pt-[5%]">
             <OfferStrip />
           </div>
