@@ -495,7 +495,7 @@ const PaperLandingPage = () => {
             <OfferStrip />
           </div>
 
-          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 shadow-md sticky top-0 z-10">
+          {/* <div className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 shadow-md sticky top-0 z-10">
             <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {categoriesData.map((category, index) => (
                 <button
@@ -505,6 +505,31 @@ const PaperLandingPage = () => {
                 >
                   <span className="text-sm font-medium text-gray-800">
                     {category.name}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div> */}
+
+          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 shadow-md sticky top-0 z-10">
+            <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+              {categoriesData.map((category, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleCategoryClick(index)}
+                  className="flex flex-col items-center justify-center bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"
+                >
+                  {/* Image on top */}
+                  <div className="flex items-center justify-center mb-2">
+                    <img
+                      src={category.image} // Use category.image for the image source
+                      alt={category.name}
+                      className="w-16 h-16 object-contain" // Adjust the size of the image
+                    />
+                  </div>
+                  {/* Centered text below the image */}
+                  <span className="text-lg font-semibold text-gray-800 text-center">
+                    {category.shortName}
                   </span>
                 </button>
               ))}
