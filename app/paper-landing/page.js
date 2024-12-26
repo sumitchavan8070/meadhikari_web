@@ -436,16 +436,29 @@ const PaperLandingPage = () => {
 
       const enrichedCategories = categories.map((category, index) => {
         const papers = papersResponses[index].data;
-        const questionsData = papers.map((paper) => ({
-          title: paper.subCatName,
-          time: 60,
-          marks: paper.questions.length,
-          questions: paper.questions.length,
-          languages: ["Marathi"],
-          free: true,
-          live: paper.QPYear === new Date().getFullYear().toString(),
-          paper: paper,
-        }));
+        // const questionsData = papers.map((paper) => ({
+        //   title: paper.subCatName,
+        //   time: 60,
+        //   marks: paper.questions.length,
+        //   questions: paper.questions.length,
+        //   languages: ["Marathi"],
+        //   free: true,
+        //   live: paper.QPYear === new Date().getFullYear().toString(),
+        //   paper: paper,
+        // }));
+        const questionsData = papers.map((paper) =>
+          // console.log("------paper", paper),
+          ({
+            title: paper.questionPaperName || paper.subCatName, // Use questionPaperName if available, else subCatName
+            time: 60,
+            marks: paper.questions.length,
+            questions: paper.questions.length,
+            languages: ["Marathi"],
+            free: true,
+            live: paper.QPYear === new Date().getFullYear().toString(),
+            paper: paper,
+          })
+        );
 
         return { ...category, questionsData };
       });
