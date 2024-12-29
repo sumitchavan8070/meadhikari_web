@@ -17,6 +17,8 @@ import Stats from "@/components/Stats";
 import Support from "@/components/support";
 import Testimonials from "@/components/Testimonials";
 import TestSeries from "@/components/TestSeries";
+import OurPresenceSection from "./about/OurPresenceSection";
+import PricePage from "./pricing/PricePage";
 
 export default function Home() {
   return (
@@ -31,14 +33,17 @@ export default function Home() {
       {/* <Help /> */}
       {/* <Support /> */}
       {/* <Company /> */}
-      <TestSeries />
+      {/* <TestSeries /> */}
 
       {/* <ContentSectionHomePageFirst /> */}
       <OfferBannerSecond />
 
-      <HomePageBlogSection />
+      {/* <HomePageBlogSection /> */}
 
-      <Pricing />
+      {/* <Pricing /> */}
+      <PricePage />
+      <OurPresenceSection />
+
       <Testimonials />
       <FAQ />
       <section className="bg-[#F9FAFC]">
