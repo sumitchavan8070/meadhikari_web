@@ -1,342 +1,3 @@
-// // // // import React from "react";
-
-// // // // const LoginPopup = ({ isOpen, closePopup }) => {
-// // // //   if (!isOpen) return null;
-
-// // // //   return (
-// // // //     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50">
-// // // //       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-// // // //         <button
-// // // //           onClick={closePopup}
-// // // //           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
-// // // //         >
-// // // //           <svg
-// // // //             xmlns="http://www.w3.org/2000/svg"
-// // // //             fill="none"
-// // // //             stroke="currentColor"
-// // // //             className="w-6 h-6"
-// // // //             viewBox="0 0 24 24"
-// // // //             strokeWidth="2"
-// // // //           >
-// // // //             <path
-// // // //               strokeLinecap="round"
-// // // //               strokeLinejoin="round"
-// // // //               d="M6 18L18 6M6 6l12 12"
-// // // //             />
-// // // //           </svg>
-// // // //         </button>
-// // // //         <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">
-// // // //           Sign In
-// // // //         </h2>
-// // // //         <form className="space-y-4">
-// // // //           <div>
-// // // //             <label className="block text-gray-800 text-sm mb-2">Username</label>
-// // // //             <input
-// // // //               type="text"
-// // // //               name="username"
-// // // //               className="w-full p-3 border border-gray-300 rounded-md text-sm outline-none"
-// // // //               placeholder="Enter username"
-// // // //               required
-// // // //             />
-// // // //           </div>
-// // // //           <div>
-// // // //             <label className="block text-gray-800 text-sm mb-2">Password</label>
-// // // //             <input
-// // // //               type="password"
-// // // //               name="password"
-// // // //               className="w-full p-3 border border-gray-300 rounded-md text-sm outline-none"
-// // // //               placeholder="Enter password"
-// // // //               required
-// // // //             />
-// // // //           </div>
-// // // //           <div className="flex justify-between items-center">
-// // // //             <label className="flex items-center">
-// // // //               <input type="checkbox" name="remember" className="mr-2" />
-// // // //               Remember me
-// // // //             </label>
-// // // //             <a href="#" className="text-sm text-blue-600 hover:underline">
-// // // //               Forgot password?
-// // // //             </a>
-// // // //           </div>
-// // // //           <div>
-// // // //             <button
-// // // //               type="submit"
-// // // //               className="w-full py-3 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
-// // // //             >
-// // // //               Sign In
-// // // //             </button>
-// // // //           </div>
-// // // //         </form>
-// // // //         <p className="text-center text-sm text-gray-600 mt-6">
-// // // //           Don't have an account?{" "}
-// // // //           <a href="#" className="text-blue-600 hover:underline">
-// // // //             Register here
-// // // //           </a>
-// // // //         </p>
-// // // //       </div>
-// // // //     </div>
-// // // //   );
-// // // // };
-
-// // // // export default LoginPopup;
-
-// // // import React from "react";
-
-// // // const LoginPopup = ({ isOpen, closePopup }) => {
-// // //   if (!isOpen) return null;
-
-// // //   return (
-// // //     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50">
-// // //       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
-// // //         {/* Close Icon */}
-// // //         <button
-// // //           onClick={closePopup}
-// // //           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
-// // //         >
-// // //           <svg
-// // //             xmlns="http://www.w3.org/2000/svg"
-// // //             fill="none"
-// // //             stroke="currentColor"
-// // //             className="w-6 h-6"
-// // //             viewBox="0 0 24 24"
-// // //             strokeWidth="2"
-// // //           >
-// // //             <path
-// // //               strokeLinecap="round"
-// // //               strokeLinejoin="round"
-// // //               d="M6 18L18 6M6 6l12 12"
-// // //             />
-// // //           </svg>
-// // //         </button>
-// // //         <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">
-// // //           Sign In
-// // //         </h2>
-// // //         <form className="space-y-4">
-// // //           <div>
-// // //             <label className="block text-gray-800 text-sm mb-2">Username</label>
-// // //             <input
-// // //               type="text"
-// // //               name="username"
-// // //               className="w-full p-3 border border-gray-300 rounded-md text-sm outline-none"
-// // //               placeholder="Enter username"
-// // //               required
-// // //             />
-// // //           </div>
-// // //           <div>
-// // //             <label className="block text-gray-800 text-sm mb-2">Password</label>
-// // //             <input
-// // //               type="password"
-// // //               name="password"
-// // //               className="w-full p-3 border border-gray-300 rounded-md text-sm outline-none"
-// // //               placeholder="Enter password"
-// // //               required
-// // //             />
-// // //           </div>
-// // //           <div className="flex justify-between items-center">
-// // //             <label className="flex items-center">
-// // //               <input type="checkbox" name="remember" className="mr-2" />
-// // //               Remember me
-// // //             </label>
-// // //             <a href="#" className="text-sm text-blue-600 hover:underline">
-// // //               Forgot password?
-// // //             </a>
-// // //           </div>
-// // //           <div>
-// // //             <button
-// // //               type="submit"
-// // //               className="w-full py-3 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
-// // //             >
-// // //               Sign In
-// // //             </button>
-// // //           </div>
-// // //         </form>
-// // //         <p className="text-center text-sm text-gray-600 mt-6">
-// // //           Don't have an account?{" "}
-// // //           <a href="#" className="text-blue-600 hover:underline">
-// // //             Register here
-// // //           </a>
-// // //         </p>
-// // //       </div>
-// // //     </div>
-// // //   );
-// // // };
-
-// // // export default LoginPopup;
-
-// // import React, { useState } from "react";
-
-// // const LoginPopup = ({ isOpen, closePopup }) => {
-// //   const [isRegistering, setIsRegistering] = useState(false);
-
-// //   if (!isOpen) return null;
-
-// //   const handleToggleForm = () => {
-// //     setIsRegistering((prev) => !prev);
-// //   };
-
-// //   return (
-// //     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50">
-// //       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
-// //         {/* Close Icon */}
-// //         <button
-// //           onClick={closePopup}
-// //           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
-// //         >
-// //           <svg
-// //             xmlns="http://www.w3.org/2000/svg"
-// //             fill="none"
-// //             stroke="currentColor"
-// //             className="w-6 h-6"
-// //             viewBox="0 0 24 24"
-// //             strokeWidth="2"
-// //           >
-// //             <path
-// //               strokeLinecap="round"
-// //               strokeLinejoin="round"
-// //               d="M6 18L18 6M6 6l12 12"
-// //             />
-// //           </svg>
-// //         </button>
-// //         <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">
-// //           {isRegistering ? "Create an Account" : "Sign In"}
-// //         </h2>
-
-// //         {isRegistering ? (
-// //           <form className="space-y-6">
-// //             <div>
-// //               <label className="text-gray-800 text-sm mb-2 block">
-// //                 Email Id
-// //               </label>
-// //               <input
-// //                 name="email"
-// //                 type="text"
-// //                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
-// //                 placeholder="Enter email"
-// //               />
-// //             </div>
-// //             <div>
-// //               <label className="text-gray-800 text-sm mb-2 block">
-// //                 Password
-// //               </label>
-// //               <input
-// //                 name="password"
-// //                 type="password"
-// //                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
-// //                 placeholder="Enter password"
-// //               />
-// //             </div>
-// //             <div>
-// //               <label className="text-gray-800 text-sm mb-2 block">
-// //                 Confirm Password
-// //               </label>
-// //               <input
-// //                 name="cpassword"
-// //                 type="password"
-// //                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
-// //                 placeholder="Confirm your password"
-// //               />
-// //             </div>
-// //             <div className="flex items-center">
-// //               <input
-// //                 id="remember-me"
-// //                 name="remember-me"
-// //                 type="checkbox"
-// //                 className="h-4 w-4 shrink-0 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-// //               />
-// //               <label
-// //                 htmlFor="remember-me"
-// //                 className="text-gray-800 ml-3 block text-sm"
-// //               >
-// //                 I accept the{" "}
-// //                 <a
-// //                   href="#"
-// //                   className="text-blue-600 font-semibold hover:underline"
-// //                 >
-// //                   Terms and Conditions
-// //                 </a>
-// //               </label>
-// //             </div>
-// //             <div className="!mt-12">
-// //               <button
-// //                 type="button"
-// //                 className="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
-// //               >
-// //                 Create an account
-// //               </button>
-// //             </div>
-// //             <p className="text-gray-800 text-sm mt-6 text-center">
-// //               Already have an account?{" "}
-// //               <a
-// //                 href="#"
-// //                 onClick={handleToggleForm}
-// //                 className="text-blue-600 font-semibold hover:underline ml-1"
-// //               >
-// //                 Login here
-// //               </a>
-// //             </p>
-// //           </form>
-// //         ) : (
-// //           <form className="space-y-4">
-// //             <div>
-// //               <label className="text-gray-800 text-sm mb-2 block">
-// //                 Username
-// //               </label>
-// //               <input
-// //                 name="username"
-// //                 type="text"
-// //                 className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-// //                 placeholder="Enter username"
-// //                 required
-// //               />
-// //             </div>
-// //             <div>
-// //               <label className="text-gray-800 text-sm mb-2 block">
-// //                 Password
-// //               </label>
-// //               <input
-// //                 name="password"
-// //                 type="password"
-// //                 className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-// //                 placeholder="Enter password"
-// //                 required
-// //               />
-// //             </div>
-// //             <div className="flex justify-between items-center">
-// //               <label className="flex items-center">
-// //                 <input type="checkbox" name="remember" className="mr-2" />
-// //                 Remember me
-// //               </label>
-// //               <a href="#" className="text-sm text-blue-600 hover:underline">
-// //                 Forgot password?
-// //               </a>
-// //             </div>
-// //             <div>
-// //               <button
-// //                 type="submit"
-// //                 className="w-full py-3 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
-// //               >
-// //                 Sign In
-// //               </button>
-// //             </div>
-// //             <p className="text-center text-sm text-gray-600 mt-6">
-// //               Don't have an account?{" "}
-// //               <a
-// //                 href="#"
-// //                 onClick={handleToggleForm}
-// //                 className="text-blue-600 hover:underline"
-// //               >
-// //                 Register here
-// //               </a>
-// //             </p>
-// //           </form>
-// //         )}
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default LoginPopup;
-
 // import React, { useState } from "react";
 
 // const LoginPopup = ({ isOpen, closePopup }) => {
@@ -350,7 +11,7 @@
 
 //   return (
 //     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50">
-//       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
+//       <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative z-60">
 //         {/* Close Icon */}
 //         <button
 //           onClick={closePopup}
@@ -442,7 +103,7 @@
 //                 htmlFor="terms"
 //                 className="text-gray-800 ml-3 block text-sm"
 //               >
-//                 I accept the
+//                 I accept the{" "}
 //                 <a
 //                   href="#"
 //                   className="text-blue-600 font-semibold hover:underline"
@@ -461,7 +122,7 @@
 //               </button>
 //             </div>
 //             <p className="text-gray-800 text-sm mt-6 text-center">
-//               Already have an account?
+//               Already have an account?{" "}
 //               <a
 //                 href="#"
 //                 onClick={handleToggleForm}
@@ -519,7 +180,7 @@
 //               </button>
 //             </div>
 //             <p className="text-center text-sm text-gray-600 mt-6">
-//               Don't have an account?
+//               Don't have an account?{" "}
 //               <a
 //                 href="#"
 //                 onClick={handleToggleForm}
@@ -537,10 +198,18 @@
 
 // export default LoginPopup;
 
+// /components/LoginPopup.js
+
 import React, { useState } from "react";
+import { useAuth } from "@/Context/AuthContext"; // Import useAuth hook
 
 const LoginPopup = ({ isOpen, closePopup }) => {
+  const { login, register, loading, error } = useAuth(); // Get login, register, loading, and error from context
   const [isRegistering, setIsRegistering] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
 
   if (!isOpen) return null;
 
@@ -548,9 +217,21 @@ const LoginPopup = ({ isOpen, closePopup }) => {
     setIsRegistering((prev) => !prev);
   };
 
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    await login(email.toLowerCase(), password); // Call login function from AuthContext
+    if (!loading) closePopup(); // Close popup if login is successful
+  };
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    await register(name, username, email.toLowerCase(), password); // Call register function from AuthContext
+    if (!loading) closePopup(); // Close popup after successful registration
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-gray-500 bg-opacity-50">
-      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative">
+      <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full relative z-60">
         {/* Close Icon */}
         <button
           onClick={closePopup}
@@ -571,23 +252,25 @@ const LoginPopup = ({ isOpen, closePopup }) => {
             />
           </svg>
         </button>
+
         <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">
           {isRegistering ? "Create an Account" : "Sign In"}
         </h2>
 
         {isRegistering ? (
-          <form className="space-y-6">
+          <form onSubmit={handleRegister} className="space-y-6">
             {/* Name */}
             <div>
               <label className="text-gray-800 text-sm mb-2 block">
                 Your Name
               </label>
               <input
-                name="name"
                 type="text"
                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                 placeholder="Enter your name"
                 required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </div>
             {/* Username */}
@@ -596,11 +279,12 @@ const LoginPopup = ({ isOpen, closePopup }) => {
                 Username
               </label>
               <input
-                name="username"
                 type="text"
                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                 placeholder="Enter your username"
                 required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
               />
             </div>
             {/* Email */}
@@ -609,11 +293,12 @@ const LoginPopup = ({ isOpen, closePopup }) => {
                 Email Id
               </label>
               <input
-                name="email"
                 type="email"
                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                 placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             {/* Password */}
@@ -622,11 +307,12 @@ const LoginPopup = ({ isOpen, closePopup }) => {
                 Password
               </label>
               <input
-                name="password"
                 type="password"
                 className="text-gray-800 bg-white border border-gray-300 w-full text-sm px-4 py-3 rounded-md outline-blue-500"
                 placeholder="Enter password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             {/* Terms & Conditions */}
@@ -656,8 +342,9 @@ const LoginPopup = ({ isOpen, closePopup }) => {
               <button
                 type="submit"
                 className="w-full py-3 px-4 text-sm tracking-wider font-semibold rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+                disabled={loading}
               >
-                Create an account
+                {loading ? "Creating Account..." : "Create an account"}
               </button>
             </div>
             <p className="text-gray-800 text-sm mt-6 text-center">
@@ -672,18 +359,17 @@ const LoginPopup = ({ isOpen, closePopup }) => {
             </p>
           </form>
         ) : (
-          <form className="space-y-4">
-            {/* Username */}
+          <form onSubmit={handleLogin} className="space-y-4">
+            {/* Email */}
             <div>
-              <label className="text-gray-800 text-sm mb-2 block">
-                Username
-              </label>
+              <label className="text-gray-800 text-sm mb-2 block">Email</label>
               <input
-                name="username"
-                type="text"
+                type="email"
                 className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
-                placeholder="Enter username"
+                placeholder="Enter your email"
                 required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             {/* Password */}
@@ -692,11 +378,12 @@ const LoginPopup = ({ isOpen, closePopup }) => {
                 Password
               </label>
               <input
-                name="password"
                 type="password"
                 className="w-full text-gray-800 text-sm border border-gray-300 px-4 py-3 rounded-md outline-blue-600"
                 placeholder="Enter password"
                 required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             {/* Remember Me */}
@@ -714,12 +401,13 @@ const LoginPopup = ({ isOpen, closePopup }) => {
               <button
                 type="submit"
                 className="w-full py-3 px-4 text-white bg-blue-600 hover:bg-blue-700 rounded-md"
+                disabled={loading}
               >
-                Sign In
+                {loading ? "Logging in..." : "Sign In"}
               </button>
             </div>
             <p className="text-center text-sm text-gray-600 mt-6">
-              Doncleat have an account?{" "}
+              Dont have an account?{" "}
               <a
                 href="#"
                 onClick={handleToggleForm}
@@ -730,6 +418,8 @@ const LoginPopup = ({ isOpen, closePopup }) => {
             </p>
           </form>
         )}
+        {/* Error Message */}
+        {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
       </div>
     </div>
   );
