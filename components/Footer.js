@@ -297,13 +297,13 @@ const Footer = () => {
         <div className="flex flex-col gap-3 text-sm">
           <p className={`text-lg font-semibold ${textColorAccent}`}>Services</p>
           <a
-            href="#"
+            href="//paper-landing"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
           >
             Previous Year Question Papers
           </a>
           <a
-            href="#"
+            href="/pricing"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
           >
             Pricing
@@ -312,13 +312,13 @@ const Footer = () => {
             Who are we
           </p>
           <a
-            href="#"
+            href="/about"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
           >
             About us
           </a>
           <a
-            href="#"
+            href="/contact"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
           >
             Contact us
@@ -375,7 +375,7 @@ const Footer = () => {
         <ul className="flex space-x-5 sm:space-x-8">
           <li>
             <a
-              href="#"
+              href="/privacy-policy"
               className={`text-sm ${textColorSecondary} transition-colors duration-300 ${hoverColor}`}
             >
               Privacy &amp; Cookies Policy

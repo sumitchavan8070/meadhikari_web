@@ -121,7 +121,6 @@ const Page = () => {
     <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
       <Headercopy />
       <PricePage />
-      {/* <OurPresenceSection /> */}
       <Footer />
     </div>
   );
