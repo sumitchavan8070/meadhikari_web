@@ -66,7 +66,7 @@ const HeroBanner = () => {
             }
             onClick={handleClick} // Add the click handler here
           >
-            Get Started
+            Solve Papers
           </button>
         </div>
 

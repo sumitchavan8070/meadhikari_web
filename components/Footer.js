@@ -389,6 +389,14 @@ const Footer = () => {
               Disclaimer
             </a>
           </li>
+          <li>
+            <a
+              href="/delete-account"
+              className={`text-sm ${textColorSecondary} transition-colors duration-300 ${hoverColor}`}
+            >
+              Delete Account
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
