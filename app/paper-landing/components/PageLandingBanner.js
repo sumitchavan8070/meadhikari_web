@@ -55,16 +55,16 @@ const PageLandingBanner = () => {
             Unlock Your Potential
           </h3>
           <p className="text-sm text-gray-300 mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation.
+            Access a vast collection of previous year question papers, complete
+            with solutions, to enhance your exam preparation. Practice at your
+            own pace and solve as many papers as you need to excel.
           </p>
 
           <button
             type="button"
             className="bg-yellow-400 hover:bg-yellow-500 text-gray-800 py-4 px-8 font-semibold rounded w-max mt-8"
           >
-            Get Started
+            Solve Papers
           </button>
         </div>
       </div>

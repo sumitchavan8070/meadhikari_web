@@ -1,5 +1,8 @@
 // import React from "react";
 
+import OurPresenceSection from "@/app/about/OurPresenceSection";
+import OfferBannerSecond from "@/components/OfferBannerSecond";
+
 // const Sidebar = () => {
 //   const latestBlogs = [
 //     { title: "5 Tips to Crack Competitive Exams", link: "#" },
@@ -76,8 +79,7 @@ const Sidebar = () => {
 
   return (
     <div className="p-4 space-y-6">
-      {/* Join WhatsApp Group Section */}
-      <div className="bg-green-100 p-4 rounded-lg shadow-md">
+      {/* <div className="bg-green-100 p-4 rounded-lg shadow-md">
         <h3 className="text-lg font-semibold text-green-700 mb-2">
           Join Our WhatsApp Group
         </h3>
@@ -89,7 +91,6 @@ const Sidebar = () => {
         </button>
       </div>
 
-      {/* Latest Blogs Section */}
       <div className="bg-gray-100 p-4 rounded-lg shadow-md">
         <h3 className="text-lg font-semibold text-gray-800 mb-2">
           Latest Blogs
@@ -108,7 +109,6 @@ const Sidebar = () => {
         </ul>
       </div>
 
-      {/* Download App Banner */}
       <div className="relative bg-blue-100 p-4 rounded-lg shadow-md">
         <h3 className="text-lg font-semibold text-blue-700 mb-2">
           Download Our App
@@ -123,7 +123,9 @@ const Sidebar = () => {
         <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 bg-blue-600 text-white text-xs font-bold px-2 py-1 rounded-full">
           5% Off
         </div>
-      </div>
+      </div> */}
+      <OurPresenceSection />
+      <OfferBannerSecond />
     </div>
   );
 };

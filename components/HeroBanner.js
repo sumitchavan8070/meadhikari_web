@@ -7,6 +7,7 @@ const HeroBanner = () => {
   const colors = {
     gradientStart: "#007AFF", // Professional blue start
     gradientEnd: "#4A90E2", // Complementary blue end
+
     textPrimary: "#FFFFFF", // Primary text color (white)
     textAccent: "#FFD700", // Accent color for headings (golden yellow)
     buttonBackground: "linear-gradient(45deg, #007AFF, #4A90E2)", // Button background gradient

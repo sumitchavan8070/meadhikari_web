@@ -157,7 +157,7 @@ const PaperLanding = ({ categoriesData }) => {
         </div>
       ))}
 
-      <PageLandingBanner />
+      {/* <PageLandingBanner /> */}
 
       {/* Login Popup */}
       <LoginPopup isOpen={isLoginOpen} closePopup={closeLoginPopup} />
