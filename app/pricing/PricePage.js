@@ -5,6 +5,10 @@ import { FaCheckCircle, FaLock } from "react-icons/fa";
 import { BASE_URL } from "@/utils/globalStrings";
 import { useAuth } from "@/Context/AuthContext";
 import LoginPopup from "@/components/LoginPopup";
+import QuizCard from "../paper-landing/components/QuizCard";
+import { useQuestions } from "@/Context/QuestionsContext";
+import { useRouter } from "next/navigation";
+import { quizzesFirst, quizzesSecound } from "./demoquiz";
 
 const PricePage = () => {
   const { user } = useAuth();
@@ -21,6 +25,8 @@ const PricePage = () => {
   const [subscriptionPlanID, setSubscriptionPlanID] = useState(null);
   const [subscriptionStartDate, setSubscriptionStartDate] = useState(null);
   const [subscriptionExpiryDate, setSubscriptionExpiryDate] = useState(null);
+  const { setQuestions } = useQuestions();
+  const router = useRouter();
 
   const updateUserDetails = async () => {
     if (user?._id) {
@@ -206,6 +212,13 @@ const PricePage = () => {
     (plan) => plan._id === subscriptionPlanID
   )?.plan;
 
+  const [loadingCard, setLoadingCard] = useState(null);
+
+  const handleStartTest = async (questionsData, cardIndex) => {
+    setQuestions(questionsData);
+    router.push(`/test`);
+    setLoadingCard(null);
+  };
   return (
     <section className="bg-[#F7FAFC] py-16 px-6">
       <div className="w-[90%] mx-auto text-center">
@@ -229,6 +242,7 @@ const PricePage = () => {
                 Your current plan is active, and you have access to all the
                 features and content.
               </p>
+
               <div className="flex flex-wrap items-center justify-center gap-8 text-lg text-gray-800">
                 <p className="mb-3">
                   <strong className="font-semibold">Plan Name:</strong>{" "}
@@ -248,17 +262,131 @@ const PricePage = () => {
               </div>
             </div>
           ) : (
-            <div className="bg-blue-50 text-blue-700 p-8 rounded-xl shadow-2xl w-[90%] max-w-3xl mx-auto transition-transform transform hover:scale-105 ease-in-out duration-300">
-              <div className="text-center mb-6">
-                <h3 className="text-4xl font-semibold text-indigo-600">
+            // <div className="flex flex-col md:flex-row items-stretch gap-6 p-4">
+            //   {/* No Plan Active Section */}
+
+            //   {/* Quiz Cards Section */}
+            //   <div className="w-full md:w-1/5 flex flex-col gap-4">
+            //     {quizzes.map((quiz, qIndex) => (
+            //       <div key={qIndex} className="w-full px-2">
+            //         <QuizCard
+            //           title={quiz.title}
+            //           time={`${quiz.time} min`}
+            //           questions={`${quiz.questions} Questions`}
+            //           marks={`${quiz.marks} Marks`}
+            //           languages={quiz.languages.join(", ")}
+            //           attempted={quiz.attempted}
+            //           buttonText={
+            //             loadingCard === qIndex ? "Loading..." : "Start Test"
+            //           }
+            //           free={quiz.free}
+            //           live={quiz.live}
+            //           demo={quiz.demo}
+            //           onButtonClick={() =>
+            //             handleStartTest(quiz.paper.questions, qIndex)
+            //           }
+            //         />
+            //       </div>
+            //     ))}
+            //   </div>
+            //   <div className="w-full md:w-4/5 bg-blue-50 text-blue-700 p-8 rounded-xl shadow-2xl flex flex-col justify-center transition-transform transform hover:scale-105 ease-in-out duration-300">
+            //     <h3 className="text-3xl md:text-4xl font-semibold text-indigo-600 text-center">
+            //       No Plan Active
+            //     </h3>
+            //     <p className="text-base md:text-lg mt-4 text-gray-600 text-center leading-relaxed">
+            //       It looks like you haven’t activated a plan yet. Please choose
+            //       a plan to start your journey and unlock unlimited access to
+            //       content.
+            //     </p>
+            //   </div>
+
+            //   {/* Quiz Cards Section */}
+            //   <div className="w-full md:w-1/5 flex flex-col gap-4">
+            //     {quizzes.map((quiz, qIndex) => (
+            //       <div key={qIndex} className="w-full px-2">
+            //         <QuizCard
+            //           title={quiz.title}
+            //           time={`${quiz.time} min`}
+            //           questions={`${quiz.questions} Questions`}
+            //           marks={`${quiz.marks} Marks`}
+            //           languages={quiz.languages.join(", ")}
+            //           attempted={quiz.attempted}
+            //           buttonText={
+            //             loadingCard === qIndex ? "Loading..." : "Start Test"
+            //           }
+            //           free={quiz.free}
+            //           live={quiz.live}
+            //           demo={quiz.demo}
+            //           onButtonClick={() =>
+            //             handleStartTest(quiz.paper.questions, qIndex)
+            //           }
+            //         />
+            //       </div>
+            //     ))}
+            //   </div>
+            // </div>
+            <div className="flex flex-col md:flex-row items-stretch gap-6 p-4">
+              {/* Quiz Cards Section - Left */}
+              <div className="w-full md:w-1/5 flex flex-col gap-4">
+                {quizzesFirst.map((quiz, qIndex) => (
+                  <div key={qIndex} className="w-full px-2">
+                    <QuizCard
+                      title={quiz.title}
+                      time={`${quiz.time} min`}
+                      questions={`${quiz.questions} Questions`}
+                      marks={`${quiz.marks} Marks`}
+                      languages={quiz.languages.join(", ")}
+                      attempted={quiz.attempted}
+                      buttonText={
+                        loadingCard === qIndex ? "Loading..." : "Start Test"
+                      }
+                      free={quiz.free}
+                      live={quiz.live}
+                      demo={quiz.demo}
+                      onButtonClick={() =>
+                        handleStartTest(quiz.paper.questions, qIndex)
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* No Plan Active Section - Center */}
+              <div className="w-full md:w-3/5 bg-blue-50 text-blue-700 p-8 rounded-xl shadow-2xl flex flex-col justify-center transition-transform transform hover:scale-105 ease-in-out duration-300">
+                <h3 className="text-3xl md:text-4xl font-semibold text-indigo-600 text-center">
                   No Plan Active
                 </h3>
+                <p className="text-base md:text-lg mt-4 text-gray-600 text-center leading-relaxed">
+                  It looks like you haven’t activated a plan yet. Please choose
+                  a plan to start your journey and unlock unlimited access to
+                  content.
+                </p>
               </div>
-              <p className="text-lg mb-6 text-gray-600 text-center leading-relaxed">
-                It looks like you havent activated a plan yet. Please choose a
-                plan to start your journey and unlock unlimited access to
-                content.
-              </p>
+
+              {/* Quiz Cards Section - Right */}
+              <div className="w-full md:w-1/5 flex flex-col gap-4">
+                {quizzesSecound.map((quiz, qIndex) => (
+                  <div key={qIndex} className="w-full px-2">
+                    <QuizCard
+                      title={quiz.title}
+                      time={`${quiz.time} min`}
+                      questions={`${quiz.questions} Questions`}
+                      marks={`${quiz.marks} Marks`}
+                      languages={quiz.languages.join(", ")}
+                      attempted={quiz.attempted}
+                      buttonText={
+                        loadingCard === qIndex ? "Loading..." : "Start Test"
+                      }
+                      free={quiz.free}
+                      live={quiz.live}
+                      demo={quiz.demo}
+                      onButtonClick={() =>
+                        handleStartTest(quiz.paper.questions, qIndex)
+                      }
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           )}
         </div>

@@ -8,6 +8,7 @@ const QuizCard = ({
   buttonText,
   free,
   live,
+  demo,
   onButtonClick,
 }) => {
   return (
@@ -21,6 +22,11 @@ const QuizCard = ({
         {live && (
           <span className="px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full shadow-md">
             Live
+          </span>
+        )}
+        {demo && (
+          <span className="px-3 py-1 bg-red-500 text-white text-xs font-semibold rounded-full shadow-md">
+            Demo
           </span>
         )}
       </div>
@@ -41,7 +47,7 @@ const QuizCard = ({
           🌐 <span className="font-medium">Languages:</span> {languages}
         </p>
         <p>
-          📊 <span className="font-medium">Attempted:</span> {attempted} times
+          🔥 <span className="font-medium">Active Students:</span> {attempted}{" "}
         </p>
       </div>
       <button
