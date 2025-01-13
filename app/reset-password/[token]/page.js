@@ -1,13 +1,16 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+// app/reset-password/[token]/page.js
+"use client"; // Mark this as a Client Component
+
+import { useRouter } from "next/navigation";
+import { useState } from "react";
 import axios from "axios";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
 import Headercopy from "@/components/Headercopy";
 import { BASE_URL } from "@/utils/globalStrings";
 
-const ResetPassword = () => {
+export default function ResetPassword({ params }) {
+  const { token } = params; // Extract the token from the params
   const router = useRouter();
-  const { token } = router.query; // Extract the token from the URL
 
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -120,6 +123,4 @@ const ResetPassword = () => {
       <Footer />
     </div>
   );
-};
-
-export default ResetPassword;
+}
