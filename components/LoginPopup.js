@@ -582,7 +582,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
               </button>
             </div>
             <p className="text-center text-sm text-gray-600 mt-6">
-              Don't have an account?{" "}
+              Dont have an account?{" "}
               <a
                 href="#"
                 onClick={handleToggleForm}
