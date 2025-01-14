@@ -167,6 +167,7 @@ const PricePage = () => {
             const paymentData = {
               newPlanId: plan._id,
               purchasePaymentId: response.razorpay_payment_id,
+              couponCode: couponCode,
             };
 
             // Update subscription on success
