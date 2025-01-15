@@ -68,7 +68,7 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
     }
   };
 
-  const handleStartTest = async (questionsData, cardIndex) => {
+  const handleStartTest = async (catID, subcatId, yearId, cardIndex) => {
     if (!user) {
       setIsLoginOpen(true);
       return;
@@ -81,14 +81,22 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
       const { isSubscriptionActive } = response.data.user;
 
       if (isSubscriptionActive) {
-        setQuestions(questionsData);
+        // Fetch questions dynamically based on catID, subcatId, and yearId
+        const questionsResponse = await axios.get(
+          `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
+        );
+
+        // Set the fetched questions in the context or state
+        setQuestions(questionsResponse.data.questions);
+
+        // Redirect to the test page
         router.push(`/test`);
       } else {
-        setIsSubscriptionPopupOpen(true); // Open the subscription popup if no active subscription
+        setIsSubscriptionPopupOpen(true);
       }
     } catch (error) {
-      console.error("Error checking subscription:", error);
-      alert("Failed to check subscription. Please try again later.");
+      console.error("Error fetching questions:", error);
+      alert("Failed to fetch questions. Please try again later.");
     } finally {
       setLoadingCard(null);
     }
@@ -178,7 +186,7 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
                   <QuizCard
                     title={quiz.title}
                     time={`${quiz.time} min`}
-                    questions={`${quiz.questions} Questions`}
+                    questions={`${quiz.questions} Questions`} // Display the number of questions
                     marks={`${quiz.marks} Marks`}
                     languages={quiz.languages.join(", ")}
                     attempted={quiz.attempted}
@@ -188,7 +196,12 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
                     free={quiz.free}
                     live={quiz.live}
                     onButtonClick={() =>
-                      handleStartTest(quiz.paper.questions, qIndex)
+                      handleStartTest(
+                        quiz.paper.catID,
+                        quiz.paper.subCatId,
+                        quiz.paper.yearId,
+                        qIndex
+                      )
                     }
                     paper={quiz.paper}
                   />
