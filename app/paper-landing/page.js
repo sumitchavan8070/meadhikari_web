@@ -43,7 +43,7 @@ const PaperLandingPage = () => {
 
       // Fetch paper metadata for each category
       const papersPromises = categories.map((category) =>
-        axios.get(`${BASE_URL}/papers/${category._id}`)
+        axios.get(`${BASE_URL}/papers/web/${category._id}`)
       );
       const papersResponses = await Promise.all(papersPromises);
 
