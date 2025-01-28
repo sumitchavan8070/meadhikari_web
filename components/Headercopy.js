@@ -530,6 +530,14 @@ const Headercopy = () => {
                   Previous Year Papers
                 </a>
               </li>
+              <li>
+                <a
+                  href="/blogs"
+                  className="block font-semibold text-sm hover:text-blue-500"
+                >
+                  Blogs
+                </a>
+              </li>
             </ul>
 
             {/* User Info & Login/Logout Buttons */}
