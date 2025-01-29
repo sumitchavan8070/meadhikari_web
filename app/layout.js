@@ -11,7 +11,7 @@ const inter = Montserrat({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://www.meadhikari.com"),
   title: { default: "Meadhikari", template: "%s - Meadhikari" },
-  description: `🚀 Meadhikari: Your ultimate Maharashtra govt exam prep app! 📚 Access PYQs & resources for MPSC, Talathi, Gramsevak, Vanvibhag & more! ✅`,
+  description: `🚀 The Best Exam Preparation App in Maharashtra! 🚀 , 📚 Access PYQs & resources for MPSC, Talathi, Gramsevak, Vanvibhag & more! ✅`,
   twitter: { card: "summary_large_image" },
 };
 
