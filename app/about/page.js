@@ -29,6 +29,10 @@ import WhyChooseUsSection from "./WhyChooseUsSection";
 import Footer from "@/components/Footer";
 import OurPresenceSection from "./OurPresenceSection";
 
+export const metadata = {
+  title: "About",
+};
+
 const Page = () => {
   return (
     <div className="relative">

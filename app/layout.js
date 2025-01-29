@@ -83,9 +83,15 @@ import { AuthProvider } from "@/Context/AuthContext"; // Import AuthProvider
 
 const inter = Montserrat({ subsets: ["latin"] });
 
+// export const metadata = {
+//   title: "Meadhikari",
+//   description: "MPSC Test Preparation",
+// };
+
 export const metadata = {
-  title: "Meadhikari",
-  description: "MPSC Test Preparation",
+  title: { default: "Meadhikari", template: "%s - Meadhikari" },
+  description: `Meadhikari is your ultimate test preparation companion, designed to help you succeed in various Maharashtra government exams with confidence. Our app provides access to a vast collection of previous year question papers (PYQ) and test preparation resources for exams like MPSC, Talathi, Gramsevak, Vanvibhag, and more.`,
+  twitter: { card: "summary_large_image" },
 };
 
 const dmSans = DM_Sans({

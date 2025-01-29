@@ -19,6 +19,10 @@ import { contactInfo } from "./contactInfo";
 import OurPresenceSection from "../about/OurPresenceSection";
 import HeroSection from "../about/HeroSection";
 
+export const metadata = {
+  title: "Contact",
+};
+
 const page = () => {
   return (
     <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">

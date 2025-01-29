@@ -21,7 +21,7 @@ const HeroBanner = () => {
   const router = useRouter(); // Initialize useRouter hook
 
   const handleClick = () => {
-    router.push(`/paper-landing`); // Navigate to /paper-landing
+    router.push(`/previous-year-paper`); // Navigate to /paper-landing
   };
 
   return (
@@ -73,14 +73,14 @@ const HeroBanner = () => {
 
         {/* Image */}
         <div className="flex justify-center w-full mt-0">
-          <div className="relative w-full" style={{ maxWidth: "612px" }}>
+          <div className="relative w-full" style={{ maxWidth: "700px" }}>
             <Image
-              src="/images/Illustration1.png"
+              src="/images/heroimg.png"
               alt="Illustration"
               quality={100}
-              width={612}
+              width={700}
               height={383}
-              className="rounded-lg shadow-lg w-full h-auto"
+              // className="rounded-lg shadow-lg w-full h-auto"
             />
           </div>
         </div>
