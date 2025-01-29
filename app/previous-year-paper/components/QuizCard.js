@@ -56,9 +56,9 @@ const QuizCard = ({
         <p>
           📊 <span className="font-medium">Marks:</span> {marks}
         </p>
-        <p>
+        {/* <p>
           🌐 <span className="font-medium">Languages:</span> {languages}
-        </p>
+        </p> */}
         <p>
           🔥 <span className="font-medium">Active Students:</span> {attempted}{" "}
         </p>
