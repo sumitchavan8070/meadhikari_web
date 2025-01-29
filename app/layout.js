@@ -45,6 +45,7 @@ export default function RootLayout({ children }) {
             <ContextProvider>{children}</ContextProvider>
           </AuthProvider>
         </QuestionsProvider>
+        <Analytics />
       </body>
     </html>
   );
