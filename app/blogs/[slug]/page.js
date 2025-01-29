@@ -354,7 +354,7 @@ import Footer from "@/components/Footer";
 import Link from "next/link";
 import axios from "axios";
 import { BASE_URL } from "@/utils/globalStrings";
-import Sidebar from "@/app/paper-landing/components/Sidebar";
+import Sidebar from "@/app/previous-year-paper/components/Sidebar";
 
 export default function BlogPost({ params }) {
   const searchParams = useSearchParams();

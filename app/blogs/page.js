@@ -241,7 +241,7 @@ import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { BASE_URL } from "@/utils/globalStrings";
-import Sidebar from "../paper-landing/components/Sidebar";
+import Sidebar from "../previous-year-paper/components/Sidebar";
 
 const ITEMS_PER_PAGE = 6;
 

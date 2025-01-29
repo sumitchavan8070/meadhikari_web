@@ -297,7 +297,7 @@ const Footer = () => {
         <div className="flex flex-col gap-3 text-sm">
           <p className={`text-lg font-semibold ${textColorAccent}`}>Services</p>
           <a
-            href="//paper-landing"
+            href="/previous-year-paper"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
           >
             Previous Year Question Papers

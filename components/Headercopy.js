@@ -524,7 +524,7 @@ const Headercopy = () => {
               </li>
               <li>
                 <a
-                  href="/paper-landing"
+                  href="/previous-year-paper"
                   className="block font-semibold text-sm hover:text-blue-500"
                 >
                   Previous Year Papers

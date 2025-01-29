@@ -6,7 +6,7 @@ const HeroSection = () => {
   const router = useRouter(); // Initialize useRouter hook
 
   const handleClick = () => {
-    router.push("/paper-landing"); // Navigate to /paper-landing
+    router.push("/previous-year-paper"); // Navigate to /paper-landing
   };
 
   return (

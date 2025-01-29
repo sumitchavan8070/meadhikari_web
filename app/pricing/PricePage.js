@@ -5,7 +5,7 @@ import { FaCheckCircle, FaLock } from "react-icons/fa";
 import { BASE_URL } from "@/utils/globalStrings";
 import { useAuth } from "@/Context/AuthContext";
 import LoginPopup from "@/components/LoginPopup";
-import QuizCard from "../paper-landing/components/QuizCard";
+import QuizCard from "../previous-year-paper/components/QuizCard";
 import { useQuestions } from "@/Context/QuestionsContext";
 import { useRouter } from "next/navigation";
 import { quizzesFirst, quizzesSecound } from "./demoquiz";
