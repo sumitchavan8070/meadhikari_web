@@ -9,6 +9,7 @@ import { AuthProvider } from "@/Context/AuthContext"; // Import AuthProvider
 const inter = Montserrat({ subsets: ["latin"] });
 
 // export const metadata = {
+//   metadataBase: new URL("https://www.meadhikari.com"),
 //   title: { default: "Meadhikari", template: "%s - Meadhikari" },
 //   description: `Meadhikari is your ultimate test preparation companion, designed to help you succeed in various Maharashtra government exams with confidence. Our app provides access to a vast collection of previous year question papers (PYQ) and test preparation resources for exams like MPSC, Talathi, Gramsevak, Vanvibhag, and more.`,
 //   twitter: { card: "summary_large_image" },
@@ -17,8 +18,25 @@ const inter = Montserrat({ subsets: ["latin"] });
 export const metadata = {
   metadataBase: new URL("https://www.meadhikari.com"),
   title: { default: "Meadhikari", template: "%s - Meadhikari" },
-  description: `Meadhikari is your ultimate test preparation companion, designed to help you succeed in various Maharashtra government exams with confidence. Our app provides access to a vast collection of previous year question papers (PYQ) and test preparation resources for exams like MPSC, Talathi, Gramsevak, Vanvibhag, and more.`,
+  description: `Meadhikari is your ultimate test preparation companion, designed to help you succeed in various Maharashtra government exams with confidence.`,
   twitter: { card: "summary_large_image" },
+
+  openGraph: {
+    title: "Meadhikari - Your Test Preparation Companion",
+    description:
+      "Prepare for MPSC, Talathi, Gramsevak, Vanvibhag, and more with ease.",
+    url: "https://www.meadhikari.com",
+    siteName: "Meadhikari",
+    images: [
+      {
+        url: "https://www.meadhikari.com/opengraph-image.png", // Add your OG image URL
+        width: 1200,
+        height: 630,
+        alt: "Meadhikari - Your Test Preparation Companion",
+      },
+    ],
+    type: "website",
+  },
 };
 
 const dmSans = DM_Sans({
