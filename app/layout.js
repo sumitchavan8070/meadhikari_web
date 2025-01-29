@@ -5,6 +5,7 @@ import ContextProvider from "@/Context/Context";
 import { DM_Sans, Arvo } from "next/font/google";
 import { QuestionsProvider } from "@/Context/QuestionsContext";
 import { AuthProvider } from "@/Context/AuthContext"; // Import AuthProvider
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
