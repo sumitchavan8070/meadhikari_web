@@ -154,7 +154,9 @@ const PricePage = () => {
       const finalPrice = plan.discountedPrice || plan.price;
 
       const options = {
-        key: "rzp_test_9Oqxns8kejKZpZ", // Razorpay Test Key
+        // key: "rzp_test_9Oqxns8kejKZpZ", // Razorpay Test Key  rzp_live_ac5iKugH3uLMLO
+        key: "rzp_live_ac5iKugH3uLMLO", // Razorpay Test Key
+
         amount: finalPrice * 100,
         currency: "INR",
         name: "Meadhikari",
