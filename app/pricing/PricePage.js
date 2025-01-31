@@ -147,12 +147,16 @@ const PricePage = () => {
     if (isSubscriptionActive) {
       return; // Don't proceed with plan selection if subscription is active
     }
+    const finalPrice = plan.discountedPrice || plan.price;
+
+    if (finalPrice < 98) {
+      alert("This is free plan cant be purchased");
+      return;
+    }
 
     if (!user) {
       setIsLoginOpen(true);
     } else if (razorpayLoaded) {
-      const finalPrice = plan.discountedPrice || plan.price;
-
       const options = {
         // key: "rzp_test_9Oqxns8kejKZpZ", // Razorpay Test Key  rzp_live_ac5iKugH3uLMLO
         key: "rzp_live_ac5iKugH3uLMLO", // Razorpay Test Key
@@ -265,69 +269,6 @@ const PricePage = () => {
               </div>
             </div>
           ) : (
-            // <div className="flex flex-col md:flex-row items-stretch gap-6 p-4">
-            //   {/* No Plan Active Section */}
-
-            //   {/* Quiz Cards Section */}
-            //   <div className="w-full md:w-1/5 flex flex-col gap-4">
-            //     {quizzes.map((quiz, qIndex) => (
-            //       <div key={qIndex} className="w-full px-2">
-            //         <QuizCard
-            //           title={quiz.title}
-            //           time={`${quiz.time} min`}
-            //           questions={`${quiz.questions} Questions`}
-            //           marks={`${quiz.marks} Marks`}
-            //           languages={quiz.languages.join(", ")}
-            //           attempted={quiz.attempted}
-            //           buttonText={
-            //             loadingCard === qIndex ? "Loading..." : "Start Test"
-            //           }
-            //           free={quiz.free}
-            //           live={quiz.live}
-            //           demo={quiz.demo}
-            //           onButtonClick={() =>
-            //             handleStartTest(quiz.paper.questions, qIndex)
-            //           }
-            //         />
-            //       </div>
-            //     ))}
-            //   </div>
-            //   <div className="w-full md:w-4/5 bg-blue-50 text-blue-700 p-8 rounded-xl shadow-2xl flex flex-col justify-center transition-transform transform hover:scale-105 ease-in-out duration-300">
-            //     <h3 className="text-3xl md:text-4xl font-semibold text-indigo-600 text-center">
-            //       No Plan Active
-            //     </h3>
-            //     <p className="text-base md:text-lg mt-4 text-gray-600 text-center leading-relaxed">
-            //       It looks like you haven’t activated a plan yet. Please choose
-            //       a plan to start your journey and unlock unlimited access to
-            //       content.
-            //     </p>
-            //   </div>
-
-            //   {/* Quiz Cards Section */}
-            //   <div className="w-full md:w-1/5 flex flex-col gap-4">
-            //     {quizzes.map((quiz, qIndex) => (
-            //       <div key={qIndex} className="w-full px-2">
-            //         <QuizCard
-            //           title={quiz.title}
-            //           time={`${quiz.time} min`}
-            //           questions={`${quiz.questions} Questions`}
-            //           marks={`${quiz.marks} Marks`}
-            //           languages={quiz.languages.join(", ")}
-            //           attempted={quiz.attempted}
-            //           buttonText={
-            //             loadingCard === qIndex ? "Loading..." : "Start Test"
-            //           }
-            //           free={quiz.free}
-            //           live={quiz.live}
-            //           demo={quiz.demo}
-            //           onButtonClick={() =>
-            //             handleStartTest(quiz.paper.questions, qIndex)
-            //           }
-            //         />
-            //       </div>
-            //     ))}
-            //   </div>
-            // </div>
             <div className="flex flex-col md:flex-row items-stretch gap-6 p-4">
               {/* Quiz Cards Section - Left */}
               <div className="w-full md:w-1/5 flex flex-col gap-4">
