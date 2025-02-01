@@ -200,7 +200,7 @@ export default function RootLayout({ children }) {
         />
 
         {/* Google Analytics Script */}
-        <Script
+        {/* <Script
           strategy="afterInteractive"
           src={`https://www.googletagmanager.com/gtag/js?id=G-VVBEXR90R7`}
         />
@@ -213,6 +213,23 @@ export default function RootLayout({ children }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
               gtag('config', 'G-VVBEXR90R7');
+            `,
+          }}
+        /> */}
+
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=G-5R6BZSNQ4E`}
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-5R6BZSNQ4E');
             `,
           }}
         />
