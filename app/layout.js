@@ -157,6 +157,11 @@ export const metadata = {
   keywords: [
     "Meadhikari",
     "M Adhikari",
+    "Previous year papers",
+    "Police bharti Papers",
+    "Talathi Papers",
+    "mpsc papers",
+    "MPSC Mock Test",
     "MPSC Exam Preparation in Maharashtra",
     "Police Bharti Syllabus Maharashtra",
     "Police Bharti Maharashtra",
