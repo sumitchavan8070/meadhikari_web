@@ -149,8 +149,8 @@ const PricePage = () => {
     }
     const finalPrice = plan.discountedPrice || plan.price;
 
-    if (finalPrice < 98) {
-      alert("This is free plan cant be purchased");
+    if (finalPrice < 19) {
+      alert("This is a free plan and is not available for purchase.");
       return;
     }
 
