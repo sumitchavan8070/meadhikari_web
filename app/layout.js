@@ -162,6 +162,8 @@ export const metadata = {
     "Talathi Papers",
     "mpsc papers",
     "MPSC Mock Test",
+    "mpsc pyq",
+    "mpsc previous year paper",
     "MPSC Exam Preparation in Maharashtra",
     "Police Bharti Syllabus Maharashtra",
     "Police Bharti Maharashtra",
