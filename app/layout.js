@@ -152,7 +152,7 @@ const arvo = Arvo({ subsets: ["latin"], weight: ["400", "700"] });
 // Metadata for SEO
 export const metadata = {
   metadataBase: new URL("https://www.meadhikari.com"),
-  title: { default: "Meadhikari (M Adhikari)", template: "%s - Meadhikari" },
+  title: { default: "Meadhikari", template: "%s - Meadhikari" },
   description: `🚀 Meadhikari- The Best Exam Preparation App in Maharashtra! 🚀 Prepare for MPSC, Police Bharti 2025, Talathi, Gramsevak, and Vanvibhag exams with Previous Year Papers, Mock Tests, and Syllabus. ✅`,
   keywords: [
     "Meadhikari",
