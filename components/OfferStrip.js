@@ -22,14 +22,30 @@ const OfferStrip = () => {
   //   },
   // ];
 
+  // const newsData = [
+  //   {
+  //     text: "Check out the previous year question papers and mock tests.",
+  //     link: "https://www.meadhikari.com/previous-year-paper",
+  //   },
+  //   {
+  //     text: "Find the pricing details for all our services here.",
+  //     link: "https://www.meadhikari.com/pricing",
+  //   },
+  // ];
+
   const newsData = [
     {
-      text: "Check out the previous year question papers and mock tests.",
+      text: "📚 Check out the previous year question papers and mock tests!",
       link: "https://www.meadhikari.com/previous-year-paper",
     },
     {
-      text: "Find the pricing details for all our services here.",
+      text: "💰 Find the pricing details for all our services here.",
       link: "https://www.meadhikari.com/pricing",
+    },
+    {
+      text: "🔥 Get ₹50 OFF on the Diamond Plan 🎉 Limited time offer ⏳",
+      link: "https://www.meadhikari.com/pricing",
+      offerCode: "WOW50",
     },
   ];
 
