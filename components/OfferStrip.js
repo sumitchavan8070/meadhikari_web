@@ -38,14 +38,15 @@ const OfferStrip = () => {
       text: "📚 Check out the previous year question papers and mock tests!",
       link: "https://www.meadhikari.com/previous-year-paper",
     },
+
+    {
+      text: `❤️ Valentine’s Special! Get a "Partner Subscription" with Previous Year Papers 📖 🔥 Get ₹50 OFF on the Diamond Plan (₹299/year) 💕`,
+      link: "https://www.meadhikari.com/pricing",
+      offerCode: "LOVE50",
+    },
     {
       text: "💰 Find the pricing details for all our services here.",
       link: "https://www.meadhikari.com/pricing",
-    },
-    {
-      text: "🔥 Get ₹50 OFF on the Diamond Plan 🎉 Limited time offer ⏳",
-      link: "https://www.meadhikari.com/pricing",
-      offerCode: "WOW50",
     },
   ];
 
