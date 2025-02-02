@@ -26,7 +26,7 @@ export default function Home() {
       <OfferStrip />
       <Headercopy />
       <HeroBanner />
-      <Stats />
+      {/* <Stats /> */}
       {/* <section className="bg-[#FFFFFF]">
         <Features />
       </section> */}
