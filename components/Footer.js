@@ -383,6 +383,14 @@ const Footer = () => {
           </li>
           <li>
             <a
+              href="/terms-condtions"
+              className={`text-sm ${textColorSecondary} transition-colors duration-300 ${hoverColor}`}
+            >
+              Terms & Condtions
+            </a>
+          </li>
+          <li>
+            <a
               href="#"
               className={`text-sm ${textColorSecondary} transition-colors duration-300 ${hoverColor}`}
             >

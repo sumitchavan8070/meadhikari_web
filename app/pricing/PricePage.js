@@ -9,6 +9,7 @@ import QuizCard from "../previous-year-paper/components/QuizCard";
 import { useQuestions } from "@/Context/QuestionsContext";
 import { useRouter } from "next/navigation";
 import { quizzesFirst, quizzesSecound } from "./demoquiz";
+import ConversionStripFirst from "@/components/ConversionStripFirst";
 
 const PricePage = () => {
   const { user } = useAuth();
@@ -504,6 +505,8 @@ const PricePage = () => {
           </div>
         )}
       </div>
+
+      <ConversionStripFirst />
 
       <LoginPopup isOpen={isLoginOpen} closePopup={closeLoginPopup} />
     </section>

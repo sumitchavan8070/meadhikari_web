@@ -242,6 +242,7 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import { BASE_URL } from "@/utils/globalStrings";
 import Sidebar from "../previous-year-paper/components/Sidebar";
+import ConversionStripFirst from "@/components/ConversionStripFirst";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -350,6 +351,8 @@ export default function BlogsPage() {
   return (
     <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
       <Headercopy />
+      <ConversionStripFirst />
+
       <section className="bg-gradient-to-b from-[#F7FAFC] to-[#EFF3F6] py-16 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           {/* Language Toggle */}
@@ -504,6 +507,8 @@ export default function BlogsPage() {
           )}
         </div>
       </section>
+
+      <ConversionStripFirst />
 
       <section className="bg-[#F9FAFC]">
         <Footer />

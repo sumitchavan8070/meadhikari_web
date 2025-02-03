@@ -7,6 +7,7 @@ import Link from "next/link";
 import axios from "axios";
 import { BASE_URL } from "@/utils/globalStrings";
 import Sidebar from "@/app/previous-year-paper/components/Sidebar";
+import ConversionStripFirst from "@/components/ConversionStripFirst";
 
 export default function BlogPost({ params }) {
   const searchParams = useSearchParams();
@@ -175,6 +176,7 @@ export default function BlogPost({ params }) {
               <Sidebar />
             </aside>
           </div>
+          <ConversionStripFirst></ConversionStripFirst>
         </div>
       </section>
       <div className="w-full h-2 bg-gradient-to-r from-purple-500 to-indigo-500"></div>

@@ -254,7 +254,10 @@ const LoginPopup = ({ isOpen, closePopup }) => {
               />
               <label htmlFor="terms" className="text-sm text-gray-700">
                 I accept the{" "}
-                <a href="#" className="text-blue-600 hover:underline">
+                <a
+                  href="/terms-condtions"
+                  className="text-blue-600 hover:underline"
+                >
                   terms & conditions
                 </a>
               </label>
