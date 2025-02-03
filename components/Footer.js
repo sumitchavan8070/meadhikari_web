@@ -389,6 +389,15 @@ const Footer = () => {
               Terms & Condtions
             </a>
           </li>
+
+          <li>
+            <a
+              href="/return-and-refund"
+              className={`text-sm ${textColorSecondary} transition-colors duration-300 ${hoverColor}`}
+            >
+              Return and Refund
+            </a>
+          </li>
           <li>
             <a
               href="#"
