@@ -179,6 +179,8 @@ import React, { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Sidebar from "./components/Sidebar";
 import OfferStrip from "@/components/OfferStrip";
+import { BASE_URL } from "@/utils/globalStrings";
+import axios from "axios";
 
 const PaperLanding = dynamic(() => import("./PaperLanding"), { ssr: false });
 
