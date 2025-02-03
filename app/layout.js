@@ -47,6 +47,7 @@ export const metadata = {
     "Talathi Bharti 2023 Maharashtra",
     "Maharashtra Police Bharti Syllabus",
   ],
+  robots: "index, follow", // Allow search engines to index and follow the links
 
   twitter: {
     card: "summary_large_image",
