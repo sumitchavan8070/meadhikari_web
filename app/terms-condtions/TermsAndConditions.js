@@ -14,8 +14,9 @@ const TermsAndConditions = () => {
           previous year question papers and test preparation materials for
           government exams in Maharashtra. By using the Meadhikari app, you
           agree to comply with and be bound by the following terms and
-          conditions ("Terms"). Please read these Terms carefully before using
-          the app. If you do not agree to these Terms, you must not use the app.
+          conditions ( &quot Terms &quot ). Please read these Terms carefully
+          before using the app. If you do not agree to these Terms, you must not
+          use the app.
         </p>
 
         <h2 className="text-2xl font-semibold text-blue-600 mt-8">
@@ -55,8 +56,8 @@ const TermsAndConditions = () => {
             access to your account.
           </li>
           <li>
-            Not engage in any activity that disrupts or interferes with the
-            app's functionality or security.
+            Not engage in any activity that disrupts or interferes with the app
+            functionality or security.
           </li>
         </ul>
 
