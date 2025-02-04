@@ -226,7 +226,7 @@ export const metadata = {
   description:
     "Find MPSC previous year papers, Talathi papers, Police Bharti papers, and more. Browse various categories and get access to the latest exam papers.",
   keywords:
-    "MPSC, MPSC previous year paper, Talathi paper, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams",
+    "MPSC, MPSC previous year paper, Talathi papers, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams",
   robots: "index, follow", // Allow search engines to index and follow the links
 };
 
