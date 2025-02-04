@@ -145,7 +145,7 @@ export default function BlogsPage() {
           </div>
 
           <h2 className="text-4xl font-bold text-gray-800 mb-8 font-poppins text-center">
-            {language === "en" ? "Our Blogs" : "आमचे ब्लॉग"}
+            {language === "en" ? "Our Blogs" : "माहिती प्रसारण"}
           </h2>
 
           {/* Search Bar */}
