@@ -19,6 +19,7 @@ import Testimonials from "@/components/Testimonials";
 import TestSeries from "@/components/TestSeries";
 import OurPresenceSection from "./about/OurPresenceSection";
 import PricePage from "./pricing/PricePage";
+import ConversionStripFirst from "@/components/ConversionStripFirst";
 
 export default function Home() {
   return (
@@ -27,6 +28,8 @@ export default function Home() {
       <Headercopy />
       <HeroBanner />
       {/* <Stats /> */}
+      <ConversionStripFirst />
+
       {/* <section className="bg-[#FFFFFF]">
         <Features />
       </section> */}
@@ -36,7 +39,6 @@ export default function Home() {
       {/* <TestSeries /> */}
 
       {/* <ContentSectionHomePageFirst /> */}
-      <OfferBannerSecond />
 
       {/* <HomePageBlogSection /> */}
 
@@ -45,6 +47,8 @@ export default function Home() {
       <OurPresenceSection />
 
       <Testimonials />
+      <OfferBannerSecond />
+
       <FAQ />
       <section className="bg-[#F9FAFC]">
         <Footer />

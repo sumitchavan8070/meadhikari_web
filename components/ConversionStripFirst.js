@@ -22,7 +22,7 @@ const ConversionStripFirst = () => {
 
           <div className="lg:w-1/2 lg:ml-12 flex justify-center">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/dark pyq.png"
+              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariDarkDash.png"
               alt="Tailwind CSS"
               className="rounded-lg shadow-lg hover:shadow-xl transition duration-200"
               style={{ width: "100%", height: "auto" }} // Image now takes 90% of its container
@@ -30,7 +30,7 @@ const ConversionStripFirst = () => {
           </div>
           <div className="lg:w-1/2 lg:ml-12 flex justify-center">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/Meadhikari Question Paper Dashboard.png"
+              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariLiteDash.png"
               alt="Tailwind CSS"
               className="rounded-lg shadow-lg hover:shadow-xl transition duration-200"
               style={{ width: "100%", height: "auto" }} // Image now takes 90% of its container
