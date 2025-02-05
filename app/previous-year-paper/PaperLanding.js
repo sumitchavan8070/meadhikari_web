@@ -252,7 +252,6 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   // State for grid or carousel view
   const [isGridView, setIsGridView] = useState(false);
 
-  // Random attempted counts
   const categoriesData = initialCategoriesData.map((category) => ({
     ...category,
     questionsData: category.questionsData.map((quiz) => ({
