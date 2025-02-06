@@ -234,6 +234,190 @@
 
 // export default PaperLanding;
 
+// First two test are made free in this following logic
+
+// import React, { useState, useRef, useEffect } from "react";
+// import { useRouter } from "next/navigation";
+// import QuizCard from "./components/QuizCard";
+// import { useQuestions } from "@/Context/QuestionsContext";
+// import { useAuth } from "@/Context/AuthContext";
+// import axios from "axios";
+// import LoginPopup from "@/components/LoginPopup";
+// import { BASE_URL } from "@/utils/globalStrings";
+// import SubscriptionPopup from "./components/SubscriptionPopup";
+
+// const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
+//   const { user } = useAuth();
+//   const { setQuestions } = useQuestions();
+//   const router = useRouter();
+
+//   const [isGridView, setIsGridView] = useState(false);
+//   const [isSubscriptionActive, setIsSubscriptionActive] = useState(false);
+
+//   useEffect(() => {
+//     const fetchSubscriptionStatus = async () => {
+//       if (user) {
+//         try {
+//           const response = await axios.get(`${BASE_URL}/${user._id}`);
+//           setIsSubscriptionActive(response.data.user.isSubscriptionActive);
+//         } catch (error) {
+//           console.error("Error fetching subscription status:", error);
+//         }
+//       }
+//     };
+
+//     fetchSubscriptionStatus();
+//   }, [user]);
+
+//   const categoriesData = initialCategoriesData.map((category) => ({
+//     ...category,
+//     questionsData: category.questionsData.map((quiz) => ({
+//       ...quiz,
+//       attempted: `${(Math.random() * 4 + 1).toFixed(1)}k`,
+//     })),
+//   }));
+
+//   const scrollRefs = useRef(categoriesData.map(() => React.createRef()));
+//   const [visibleCount, setVisibleCount] = useState(2);
+//   const [isLoginOpen, setIsLoginOpen] = useState(false);
+//   const [loadingCard, setLoadingCard] = useState(null);
+//   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false);
+
+//   useEffect(() => {
+//     const getVisibleCount = () => {
+//       if (window.innerWidth >= 1024) return 5;
+//       if (window.innerWidth >= 768) return 3;
+//       return 2;
+//     };
+
+//     const handleResize = () => {
+//       setVisibleCount(getVisibleCount());
+//     };
+
+//     window.addEventListener("resize", handleResize);
+//     handleResize();
+
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   const smoothScroll = (categoryIndex, direction) => {
+//     const container = scrollRefs.current[categoryIndex].current;
+//     const scrollAmount = container.offsetWidth / visibleCount;
+
+//     container.scrollBy({
+//       left: direction === "next" ? scrollAmount : -scrollAmount,
+//       behavior: "smooth",
+//     });
+//   };
+
+//   const handleStartTest = async (catID, subcatId, yearId, cardIndex) => {
+//     if (!user) {
+//       setIsLoginOpen(true);
+//       return;
+//     }
+
+//     setLoadingCard(cardIndex);
+
+//     try {
+//       if (cardIndex < 2 || isSubscriptionActive) {
+//         const questionsResponse = await axios.get(
+//           `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
+//         );
+
+//         setQuestions(questionsResponse.data.questions);
+//         router.push(`/test`);
+//       } else {
+//         setIsSubscriptionPopupOpen(true);
+//       }
+//     } catch (error) {
+//       console.error("Error fetching questions:", error);
+//       alert("Failed to fetch questions. Please try again later.");
+//     } finally {
+//       setLoadingCard(null);
+//     }
+//   };
+
+//   return (
+//     <div className="container mx-auto p-6">
+//       {categoriesData.map((category, categoryIndex) => (
+//         <div key={categoryIndex} className="mb-8">
+//           <div className="flex items-center justify-between mb-4">
+//             <h2 className="text-2xl font-bold">{category.name}</h2>
+//           </div>
+
+//           <div
+//             ref={scrollRefs.current[categoryIndex]}
+//             className={
+//               isGridView
+//                 ? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
+//                 : "flex overflow-x-auto scrollbar-hide space-x-4"
+//             }
+//           >
+//             {category.questionsData.length > 0 ? (
+//               category.questionsData.map((quiz, qIndex) => (
+//                 <div
+//                   key={qIndex}
+//                   className={
+//                     isGridView
+//                       ? "w-full"
+//                       : "flex-shrink-0 w-60 md:w-72 lg:w-80 px-2"
+//                   }
+//                 >
+//                   <QuizCard
+//                     title={quiz.title}
+//                     time={`${quiz.time} min`}
+//                     questions={`${quiz.questions} Questions`}
+//                     marks={`${quiz.marks} Marks`}
+//                     languages={quiz.languages.join(", ")}
+//                     attempted={quiz.attempted}
+//                     buttonText={
+//                       loadingCard === qIndex
+//                         ? "Loading..."
+//                         : qIndex < 2 || isSubscriptionActive
+//                         ? "Start Test"
+//                         : "Start Test 🔒"
+//                     }
+//                     free={quiz.free}
+//                     live={quiz.live}
+//                     onButtonClick={() =>
+//                       handleStartTest(
+//                         quiz.paper.catID,
+//                         quiz.paper.subCatId,
+//                         quiz.paper.yearId,
+//                         qIndex
+//                       )
+//                     }
+//                     paper={quiz.paper}
+//                   />
+//                 </div>
+//               ))
+//             ) : (
+//               <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[25vh] md:h-[30vh] lg:h-[35vh] rounded-lg shadow-md">
+//                 <p className="text-lg md:text-xl lg:text-2xl font-semibold">
+//                   No question papers found for this category.
+//                 </p>
+//               </div>
+//             )}
+//           </div>
+//         </div>
+//       ))}
+
+//       <LoginPopup
+//         isOpen={isLoginOpen}
+//         closePopup={() => setIsLoginOpen(false)}
+//       />
+//       {isSubscriptionPopupOpen && (
+//         <SubscriptionPopup
+//           onClose={() => setIsSubscriptionPopupOpen(false)}
+//           onRedirect={() => router.push("/pricing")}
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PaperLanding;
+
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import QuizCard from "./components/QuizCard";

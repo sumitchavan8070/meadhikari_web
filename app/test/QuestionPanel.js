@@ -258,11 +258,42 @@ const QuestionPanel = ({
   const baseUrl = "https://file-hosting-app.vercel.app"; // Your base URL
 
   // Function to update image paths in HTML content
+  // const getUpdatedContentHtml = (html) => {
+  //   if (!html) return "";
+  //   return html.replace(
+  //     /<img\s+src="([^"]+)"/g,
+  //     (match, path) => `<img src="${baseUrl}${path}"`
+  //   );
+  // };
   const getUpdatedContentHtml = (html) => {
     if (!html) return "";
-    return html.replace(
-      /<img\s+src="([^"]+)"/g,
-      (match, path) => `<img src="${baseUrl}${path}"`
+
+    const baseUrl = "https://file-hosting-app.vercel.app"; // Ensure this is correct
+
+    return (
+      html
+        // Ensure images have the correct base URL if needed **without adding styles**
+        .replace(/<img\s+src="([^"]+)"(.*?)>/g, (match, path, rest) => {
+          if (path.startsWith("http") || path.startsWith("data:image")) {
+            return `<img src="${path}" ${rest}>`; // Keep original attributes
+          }
+          return `<img src="${baseUrl}${path}" ${rest}>`; // Keep original attributes
+        })
+
+        // Fix table styles
+        .replace(
+          /<table/g,
+          '<table style="width: 100%; border-collapse: collapse; margin-top: 10px;"'
+        )
+        .replace(
+          /<th/g,
+          '<th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f4f4f4; font-weight: bold;"'
+        )
+        .replace(
+          /<td/g,
+          '<td style="border: 1px solid #ddd; padding: 8px; text-align: left;"'
+        )
+        .replace(/<tr/g, '<tr style="border-bottom: 1px solid #ddd;"')
     );
   };
 
@@ -304,7 +335,7 @@ const QuestionPanel = ({
       </div>
 
       {/* Question Text or HTML */}
-      <div className="mb-4" style={{ fontSize: `${fontSize}px` }}>
+      {/* <div className="mb-4" style={{ fontSize: `${fontSize}px` }}>
         {/<[a-z][\s\S]*>/i.test(questionContent) ? (
           <div
             dangerouslySetInnerHTML={{
@@ -313,6 +344,51 @@ const QuestionPanel = ({
           />
         ) : (
           <p>{questionContent}</p>
+        )}
+      </div> */}
+      {/* Question Text or HTML */}
+      {/* <div
+        className="mb-4"
+        style={{ fontSize: `${fontSize}px`, whiteSpace: "pre-wrap" }}
+      >
+        {/<[a-z][\s\S]*>/i.test(questionContent) ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: getUpdatedContentHtml(questionContent),
+            }}
+          />
+        ) : (
+          // Split text into paragraphs based on newlines
+          questionContent?.split("\n").map((line, index) => (
+            <p key={index} className="mb-2">
+              {line}
+            </p>
+          ))
+        )}
+      </div> */}
+      {/* Question Text or HTML */}
+      <div
+        className="mb-4"
+        style={{
+          fontSize: `${fontSize}px`,
+          whiteSpace: "pre-wrap", // Ensures spaces & newlines are respected
+        }}
+      >
+        {/<[a-z][\s\S]*>/i.test(questionContent) ? (
+          <div
+            dangerouslySetInnerHTML={{
+              __html: getUpdatedContentHtml(questionContent),
+            }}
+            style={{
+              width: "100%",
+            }}
+          />
+        ) : (
+          questionContent?.split("\n").map((line, index) => (
+            <p key={index} style={{ marginBottom: "8px" }}>
+              {line}
+            </p>
+          ))
         )}
       </div>
 

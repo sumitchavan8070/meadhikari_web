@@ -119,14 +119,14 @@ const ConversionStripSecond = () => {
           {/* Images */}
           <div className="w-full max-w-md">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariQuestDashMobile.png"
+              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MobileDashWhite.png"
               alt="Conversion Image"
               className="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition duration-200"
             />
           </div>
           <div className="w-full max-w-md">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/Meadhikari Question Paper Dashboard.png"
+              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariDashWhite.png"
               alt="Conversion Image"
               className="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition duration-200"
             />
