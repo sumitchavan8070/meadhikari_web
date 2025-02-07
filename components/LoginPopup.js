@@ -80,6 +80,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
         password,
       });
       await handleLogin(e);
+      closePopup();
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
