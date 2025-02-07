@@ -167,7 +167,6 @@ export default async function Page() {
       {/* Header */}
       <Headercopy />
 
-      {/* Main Content */}
       <PaperLandingPage categoriesData={categoriesData} />
 
       {/* Footer */}
