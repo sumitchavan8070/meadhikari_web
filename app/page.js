@@ -27,7 +27,7 @@ export default function Home() {
       <OfferStrip />
       <Headercopy />
       <HeroBanner />
-      {/* <Stats /> */}
+      <Stats />
       <ConversionStripFirst />
 
       {/* <section className="bg-[#FFFFFF]">
