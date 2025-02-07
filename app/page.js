@@ -38,8 +38,6 @@ export default function Home() {
       {/* <Company /> */}
       {/* <TestSeries /> */}
 
-      {/* <ContentSectionHomePageFirst /> */}
-
       {/* <HomePageBlogSection /> */}
 
       {/* <Pricing /> */}
