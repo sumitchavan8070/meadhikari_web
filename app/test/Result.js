@@ -77,10 +77,23 @@ const Result = ({ results, formatTime, questions, onClose }) => {
   };
 
   return (
+    // <div
+    //   className={`fixed inset-0 flex justify-center items-center ${
+    //     isDarkTheme ? "bg-gray-800" : "bg-gray-900 bg-opacity-50"
+    //   } z-50`}
+    // >
     <div
       className={`fixed inset-0 flex justify-center items-center ${
         isDarkTheme ? "bg-gray-800" : "bg-gray-900 bg-opacity-50"
-      } z-50`}
+      } z-50 select-none`} // Prevent text selection
+      style={{ userSelect: "none" }} // Extra safeguard
+      onCopy={(e) => e.preventDefault()} // Prevent copy
+      onContextMenu={(e) => e.preventDefault()} // Disable right-click
+      onKeyDown={(e) => {
+        if (e.ctrlKey && (e.key === "c" || e.key === "x" || e.key === "u")) {
+          e.preventDefault();
+        }
+      }}
     >
       <div
         ref={resultRef}
@@ -199,473 +212,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           </div>
         </div>
 
-        {/* Paper Summary */}
-        {/* <h3 className="text-lg font-semibold text-center mt-6 mb-4">
-          Paper Summary
-        </h3>
-        <div className="space-y-4 max-h-96 overflow-y-auto p-2 border border-gray-300 rounded-lg">
-          {questions.map((question, index) => {
-            const selectedOptionIndex = results.selectedAnswers[index];
-            const correctOptionIndex = parseInt(
-              question.answer.replace("option", "")
-            );
-            const isCorrect = selectedOptionIndex === correctOptionIndex;
-            const isUnattempted = selectedOptionIndex === undefined;
-
-            return (
-              <div
-                key={index}
-                className={`p-4 rounded-lg ${
-                  isUnattempted
-                    ? "bg-gray-200"
-                    : isCorrect
-                    ? "bg-green-100"
-                    : "bg-red-100"
-                }`}
-              >
-                {isUnattempted && (
-                  <p className="text-gray-500 font-semibold">
-                    Unattempted - Correct Answer Highlighted
-                  </p>
-                )}
-
-                <p className="font-medium">
-                  {index + 1}. {question.question}
-                </p>
-
-                <ul className="mt-2 space-y-1">
-                  {["option1", "option2", "option3", "option4"].map(
-                    (optKey, optIdx) => {
-                      const isSelected = selectedOptionIndex === optIdx + 1;
-                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
-
-                      return (
-                        <li
-                          key={optKey}
-                          className={`p-2 rounded-md ${
-                            isSelected
-                              ? isCorrectAnswer
-                                ? "bg-purple-500 text-white"
-                                : "bg-red-500 text-white"
-                              : isCorrectAnswer
-                              ? "bg-purple-300"
-                              : "bg-gray-100"
-                          }`}
-                        >
-                          {question[optKey]}{" "}
-                          {isSelected && (isCorrectAnswer ? " ✅" : " ❌")}{" "}
-                          {isCorrectAnswer && !isSelected && " (Correct)"}
-                        </li>
-                      );
-                    }
-                  )}
-                </ul>
-              </div>
-            );
-          })}
-        </div> */}
-
-        {/* <h3
-          className={`text-lg font-semibold text-center mt-6 mb-4 ${
-            isDarkTheme ? "text-gray-100" : "text-gray-800"
-          }`}
-        >
-          Paper Summary
-        </h3>
-        <div
-          className={`space-y-4 max-h-96 overflow-y-auto p-2 border rounded-lg ${
-            isDarkTheme
-              ? "border-gray-700 bg-gray-800 text-gray-300"
-              : "border-gray-300 bg-white text-gray-800"
-          }`}
-        >
-          {questions.map((question, index) => {
-            const selectedOptionIndex = results.selectedAnswers[index];
-            const correctOptionIndex = parseInt(
-              question.answer.replace("option", "")
-            );
-            const isCorrect = selectedOptionIndex === correctOptionIndex;
-            const isUnattempted = selectedOptionIndex === undefined;
-
-            return (
-              <div
-                key={index}
-                className={`p-4 rounded-lg ${
-                  isUnattempted
-                    ? isDarkTheme
-                      ? "bg-gray-600"
-                      : "bg-gray-200"
-                    : isCorrect
-                    ? isDarkTheme
-                      ? "bg-green-700"
-                      : "bg-green-100"
-                    : isDarkTheme
-                    ? "bg-red-700"
-                    : "bg-red-100"
-                }`}
-              >
-                {isUnattempted && (
-                  <p
-                    className={`font-semibold ${
-                      isDarkTheme ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    Unattempted - Correct Answer Highlighted
-                  </p>
-                )}
-
-                <p
-                  className={`font-medium ${
-                    isDarkTheme ? "text-gray-200" : "text-gray-800"
-                  }`}
-                >
-                  {index + 1}. {question.question}
-                </p>
-
-                <ul className="mt-2 space-y-1">
-                  {["option1", "option2", "option3", "option4"].map(
-                    (optKey, optIdx) => {
-                      const isSelected = selectedOptionIndex === optIdx + 1;
-                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
-
-                      return (
-                        <li
-                          key={optKey}
-                          className={`p-2 rounded-md ${
-                            isSelected
-                              ? isCorrectAnswer
-                                ? isDarkTheme
-                                  ? "bg-purple-600 text-white"
-                                  : "bg-purple-500 text-white"
-                                : isDarkTheme
-                                ? "bg-red-500 text-white"
-                                : "bg-red-500 text-white"
-                              : isCorrectAnswer
-                              ? isDarkTheme
-                                ? "bg-purple-400"
-                                : "bg-purple-300"
-                              : isDarkTheme
-                              ? "bg-gray-700"
-                              : "bg-gray-100"
-                          }`}
-                        >
-                          {question[optKey]}{" "}
-                          {isSelected && (isCorrectAnswer ? " ✅" : " ❌")}{" "}
-                          {isCorrectAnswer && !isSelected && " (Correct)"}
-                        </li>
-                      );
-                    }
-                  )}
-                </ul>
-              </div>
-            );
-          })}
-        </div> */}
-
-        {/* Paper Summary */}
-        {/* <h3
-          className={`text-lg font-semibold text-center mt-6 mb-4 ${
-            isDarkTheme ? "text-gray-100" : "text-gray-800"
-          }`}
-        >
-          Paper Summary
-        </h3>
-        <div
-          className={`space-y-4 max-h-96 overflow-y-auto p-2 border rounded-lg ${
-            isDarkTheme
-              ? "border-gray-700 bg-gray-800 text-gray-300"
-              : "border-gray-300 bg-white text-gray-800"
-          }`}
-        >
-          {questions.map((question, index) => {
-            const selectedOptionIndex = results.selectedAnswers[index];
-            const correctOptionIndex = parseInt(
-              question.answer.replace("option", "")
-            );
-            const isCorrect = selectedOptionIndex === correctOptionIndex;
-            const isUnattempted = selectedOptionIndex === undefined;
-
-            return (
-              <div
-                key={index}
-                className={`p-4 rounded-lg ${
-                  isUnattempted
-                    ? isDarkTheme
-                      ? "bg-gray-600"
-                      : "bg-gray-200"
-                    : isCorrect
-                    ? isDarkTheme
-                      ? "bg-green-700"
-                      : "bg-green-100"
-                    : isDarkTheme
-                    ? "bg-red-700"
-                    : "bg-red-100"
-                }`}
-              >
-                {isUnattempted && (
-                  <p
-                    className={`font-semibold ${
-                      isDarkTheme ? "text-gray-400" : "text-gray-500"
-                    }`}
-                  >
-                    Unattempted - Correct Answer Highlighted
-                  </p>
-                )}
-
-                <p
-                  className={`font-medium ${
-                    isDarkTheme ? "text-gray-200" : "text-gray-800"
-                  }`}
-                  dangerouslySetInnerHTML={{
-                    __html: getUpdatedContentHtml(question.question),
-                  }}
-                />
-
-                <ul className="mt-2 space-y-1">
-                  {["option1", "option2", "option3", "option4"].map(
-                    (optKey, optIdx) => {
-                      const isSelected = selectedOptionIndex === optIdx + 1;
-                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
-
-                      return (
-                        <li
-                          key={optKey}
-                          className={`p-2 rounded-md ${
-                            isSelected
-                              ? isCorrectAnswer
-                                ? isDarkTheme
-                                  ? "bg-purple-600 text-white"
-                                  : "bg-purple-500 text-white"
-                                : isDarkTheme
-                                ? "bg-red-500 text-white"
-                                : "bg-red-500 text-white"
-                              : isCorrectAnswer
-                              ? isDarkTheme
-                                ? "bg-purple-400"
-                                : "bg-purple-300"
-                              : isDarkTheme
-                              ? "bg-gray-700"
-                              : "bg-gray-100"
-                          }`}
-                          dangerouslySetInnerHTML={{
-                            __html: getUpdatedContentHtml(question[optKey]),
-                          }}
-                        />
-                      );
-                    }
-                  )}
-                </ul>
-              </div>
-            );
-          })}
-        </div> */}
-        {/* Paper Summary */}
-        {/* <h3
-          className={`text-lg font-semibold text-center mt-6 mb-4 ${
-            isDarkTheme ? "text-gray-100" : "text-gray-800"
-          }`}
-        >
-          Paper Summary
-        </h3>
-        <div
-          className={`space-y-4 max-h-96 overflow-y-auto p-2 border rounded-lg ${
-            isDarkTheme
-              ? "border-gray-700 bg-gray-800 text-gray-300"
-              : "border-gray-300 bg-white text-gray-800"
-          }`}
-        >
-          {questions.map((question, index) => {
-            const selectedOptionIndex = results.selectedAnswers[index] || "N/A";
-            const correctOptionIndex = parseInt(
-              question.answer.replace("option", "")
-            );
-            const isCorrect = selectedOptionIndex === correctOptionIndex;
-            const isUnattempted = selectedOptionIndex === "N/A";
-            const mark = isCorrect ? 1 : 0;
-
-            return (
-              <div
-                key={index}
-                className={`p-4 rounded-lg ${
-                  isUnattempted
-                    ? isDarkTheme
-                      ? "bg-gray-600"
-                      : "bg-gray-200"
-                    : isCorrect
-                    ? isDarkTheme
-                      ? "bg-green-700"
-                      : "bg-green-100"
-                    : isDarkTheme
-                    ? "bg-red-700"
-                    : "bg-red-100"
-                }`}
-              >
-                <p className="font-semibold text-sm mb-2">
-                  <span className="text-indigo-600">Correct Option No:</span>{" "}
-                  {correctOptionIndex} |{" "}
-                  <span className="text-blue-600">Chosen Option No:</span>{" "}
-                  {selectedOptionIndex !== "N/A"
-                    ? selectedOptionIndex
-                    : "Unattempted"}{" "}
-                  |{" "}
-                  <span
-                    className={`font-bold ${
-                      mark ? "text-green-600" : "text-red-600"
-                    }`}
-                  >
-                    Mark: {mark}
-                  </span>
-                </p>
-
-                <p
-                  className={`font-medium ${
-                    isDarkTheme ? "text-gray-200" : "text-gray-800"
-                  }`}
-                  dangerouslySetInnerHTML={{
-                    __html: getUpdatedContentHtml(question.question),
-                  }}
-                />
-
-                <ul className="mt-2 space-y-1">
-                  {["option1", "option2", "option3", "option4"].map(
-                    (optKey, optIdx) => {
-                      const isSelected = selectedOptionIndex === optIdx + 1;
-                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
-
-                      return (
-                        <li
-                          key={optKey}
-                          className={`p-2 rounded-md ${
-                            isSelected
-                              ? isCorrectAnswer
-                                ? "bg-purple-500 text-white"
-                                : "bg-red-500 text-white"
-                              : isCorrectAnswer
-                              ? "bg-purple-300"
-                              : "bg-gray-100"
-                          }`}
-                          dangerouslySetInnerHTML={{
-                            __html: getUpdatedContentHtml(question[optKey]),
-                          }}
-                        />
-                      );
-                    }
-                  )}
-                </ul>
-              </div>
-            );
-          })}
-        </div> */}
-
-        {/* Paper Summary */}
-        <h3
-          className={`text-lg font-semibold text-center mt-6 mb-4 ${
-            isDarkTheme ? "text-gray-100" : "text-gray-800"
-          }`}
-        >
-          Paper Summary
-        </h3>
-        <div
-          className={`space-y-4 max-h-96 overflow-y-auto p-2 border rounded-lg ${
-            isDarkTheme
-              ? "border-gray-700 bg-gray-800 text-gray-300"
-              : "border-gray-300 bg-white text-gray-800"
-          }`}
-        >
-          {questions.map((question, index) => {
-            const selectedOptionIndex = results.selectedAnswers[index] || "N/A";
-            const correctOptionIndex = parseInt(
-              question.answer.replace("option", "")
-            );
-            const isCorrect = selectedOptionIndex === correctOptionIndex;
-            const isUnattempted = selectedOptionIndex === "N/A";
-            const mark = isCorrect ? 1 : 0;
-
-            return (
-              <div
-                key={index}
-                className={`p-4 rounded-lg ${
-                  isUnattempted
-                    ? isDarkTheme
-                      ? "bg-gray-700"
-                      : "bg-gray-200"
-                    : isCorrect
-                    ? isDarkTheme
-                      ? "bg-green-800"
-                      : "bg-green-100"
-                    : isDarkTheme
-                    ? "bg-red-800"
-                    : "bg-red-100"
-                }`}
-              >
-                {/* Correct Option, Chosen Option, and Mark */}
-                <p className="font-semibold text-sm mb-2">
-                  <span className="text-indigo-400">Correct Option No:</span>{" "}
-                  {correctOptionIndex} |{" "}
-                  <span className="text-blue-400">Chosen Option No:</span>{" "}
-                  {selectedOptionIndex !== "N/A"
-                    ? selectedOptionIndex
-                    : "Unattempted"}{" "}
-                  |{" "}
-                  <span
-                    className={`font-bold ${
-                      mark ? "text-green-400" : "text-red-400"
-                    }`}
-                  >
-                    Mark: {mark}
-                  </span>
-                </p>
-
-                {/* Question Text */}
-                <p
-                  className={`font-medium ${
-                    isDarkTheme ? "text-gray-200" : "text-gray-800"
-                  }`}
-                  dangerouslySetInnerHTML={{
-                    __html: getUpdatedContentHtml(question.question),
-                  }}
-                />
-
-                {/* Answer Options */}
-                <ul className="mt-2 space-y-1">
-                  {["option1", "option2", "option3", "option4"].map(
-                    (optKey, optIdx) => {
-                      const isSelected = selectedOptionIndex === optIdx + 1;
-                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
-
-                      return (
-                        <li
-                          key={optKey}
-                          className={`p-2 rounded-md ${
-                            isSelected
-                              ? isCorrectAnswer
-                                ? isDarkTheme
-                                  ? "bg-purple-600 text-white"
-                                  : "bg-purple-500 text-white"
-                                : isDarkTheme
-                                ? "bg-red-700 text-white"
-                                : "bg-red-500 text-white"
-                              : isCorrectAnswer
-                              ? isDarkTheme
-                                ? "bg-green-700 text-white"
-                                : "bg-green-300"
-                              : isDarkTheme
-                              ? "bg-gray-600 text-gray-200"
-                              : "bg-gray-100"
-                          }`}
-                          dangerouslySetInnerHTML={{
-                            __html: getUpdatedContentHtml(question[optKey]),
-                          }}
-                        />
-                      );
-                    }
-                  )}
-                </ul>
-              </div>
-            );
-          })}
-        </div>
-
         {/* Action Buttons */}
         <div className="mt-4 md:mt-6 flex justify-between items-center">
           <button
@@ -697,6 +243,115 @@ const Result = ({ results, formatTime, questions, onClose }) => {
               Export as PNG
             </button>
           </div>
+        </div>
+
+        {/* Paper Summary */}
+        <h3
+          className={`text-lg font-semibold text-center mt-6 mb-4 ${
+            isDarkTheme ? "text-gray-100" : "text-gray-800"
+          }`}
+        >
+          Paper Summary
+        </h3>
+        <div
+          className={`space-y-4 max-h-90 overflow-y-auto p-2 border rounded-lg ${
+            isDarkTheme
+              ? "border-gray-700 bg-gray-800 text-gray-300"
+              : "border-gray-300 bg-white text-gray-800"
+          }`}
+        >
+          {questions.map((question, index) => {
+            const selectedOptionIndex = results.selectedAnswers[index] || "N/A";
+            const correctOptionIndex = parseInt(
+              question.answer.replace("option", "")
+            );
+            const isCorrect = selectedOptionIndex === correctOptionIndex;
+            const isUnattempted = selectedOptionIndex === "N/A";
+            const mark = isCorrect ? 1 : 0;
+
+            return (
+              <div
+                key={index}
+                className={`p-4 rounded-lg ${
+                  isUnattempted
+                    ? isDarkTheme
+                      ? "bg-gray-700"
+                      : "bg-gray-200"
+                    : isCorrect
+                    ? isDarkTheme
+                      ? "bg-blue-800"
+                      : "bg-blue-100"
+                    : isDarkTheme
+                    ? "bg-red-800"
+                    : "bg-red-100"
+                }`}
+              >
+                {/* Correct Option, Chosen Option, and Mark */}
+                <p className="font-semibold text-sm mb-2">
+                  <span className="text-indigo-400">Correct Option No:</span>{" "}
+                  {correctOptionIndex} |{" "}
+                  <span className="text-blue-400">Chosen Option No:</span>{" "}
+                  {selectedOptionIndex !== "N/A"
+                    ? selectedOptionIndex
+                    : "Unattempted"}{" "}
+                  |{" "}
+                  <span
+                    className={`font-bold ${
+                      mark ? "text-green" : "text-red-400"
+                    }`}
+                  >
+                    Mark: {mark}
+                  </span>
+                </p>
+
+                {/* Question Text */}
+                <p
+                  className={`font-medium ${
+                    isDarkTheme ? "text-gray-200" : "text-gray-800"
+                  }`}
+                  dangerouslySetInnerHTML={{
+                    __html: getUpdatedContentHtml(question.question),
+                  }}
+                />
+
+                {/* Answer Options */}
+                <ul className="mt-2 space-y-1">
+                  {["option1", "option2", "option3", "option4"].map(
+                    (optKey, optIdx) => {
+                      const isSelected = selectedOptionIndex === optIdx + 1;
+                      const isCorrectAnswer = correctOptionIndex === optIdx + 1;
+
+                      return (
+                        <li
+                          key={optKey}
+                          className={`p-2 rounded-md ${
+                            isSelected
+                              ? isCorrectAnswer
+                                ? isDarkTheme
+                                  ? "bg-green text-white"
+                                  : "bg-green text-white"
+                                : isDarkTheme
+                                ? "bg-red-700 text-white"
+                                : "bg-red-500 text-white"
+                              : isCorrectAnswer
+                              ? isDarkTheme
+                                ? "bg-blue-700 text-white"
+                                : "bg-blue-300"
+                              : isDarkTheme
+                              ? "bg-gray-600 text-gray-200"
+                              : "bg-gray-100"
+                          }`}
+                          dangerouslySetInnerHTML={{
+                            __html: getUpdatedContentHtml(question[optKey]),
+                          }}
+                        />
+                      );
+                    }
+                  )}
+                </ul>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

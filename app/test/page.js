@@ -233,7 +233,7 @@ const Page = () => {
     const wrongAnswers = Object.keys(selectedAnswers).length - correctAnswers;
     const unattempted = totalQuestions - Object.keys(selectedAnswers).length;
     const markedForReview = markedQuestions.length;
-    const totalMarks = correctAnswers * 4 - wrongAnswers * 1;
+    const totalMarks = correctAnswers;
 
     return {
       totalQuestions,
