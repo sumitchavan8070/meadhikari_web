@@ -110,7 +110,7 @@ import Image from "next/image";
 const Stats = () => {
   const colors = {
     primary: "#007AFF",
-    text: "#2D3748", // Dark gray for better readability
+    text: "#2D3748", // Dark gray for better
     background: "#F4F4F4", // Light gray for a clean and professional look
   };
 
