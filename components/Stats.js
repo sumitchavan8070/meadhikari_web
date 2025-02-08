@@ -156,7 +156,7 @@ const Stats = () => {
     },
     {
       label: "Registered Users",
-      value: "55k+",
+      value: "7k+",
       icon: (
         <Image
           src="/icon/registered-users.png"
