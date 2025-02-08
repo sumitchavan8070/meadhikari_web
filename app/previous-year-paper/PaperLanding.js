@@ -687,7 +687,7 @@ import LoginPopup from "@/components/LoginPopup";
 import { BASE_URL } from "@/utils/globalStrings";
 import SubscriptionPopup from "./components/SubscriptionPopup";
 
-const FREE_QUIZ_NUMBER = 2; // Number of free quizzes allowed
+const FREE_QUIZ_NUMBER = 2; // Number of free quizze
 
 const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   const { user } = useAuth();
