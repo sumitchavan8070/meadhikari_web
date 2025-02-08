@@ -313,7 +313,8 @@ const PaperLandingPage = ({ categoriesData }) => {
           <Sidebar />
         </aside>
 
-        <main className="flex-1 p-6 lg:p-8 bg-white rounded-lg shadow-md w-full">
+        {/* <main className="flex-1 p-6 lg:p-8 bg-white rounded-lg shadow-md w-full"> */}
+        <main className="flex-1 w-full bg-white rounded-lg shadow-md">
           {loading
             ? [...Array(3)].map((_, index) => (
                 <div
