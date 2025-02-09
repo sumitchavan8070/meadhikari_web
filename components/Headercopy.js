@@ -308,7 +308,6 @@ const Headercopy = () => {
             />
           </a>
 
-          {/* Mobile Menu Toggle Button */}
           <button
             onClick={handleToggleMenu}
             className="lg:hidden p-2 border rounded-md"
