@@ -363,10 +363,10 @@ const Headercopy = () => {
               </li>
               <li>
                 <a
-                  href="/about"
+                  href="/previous-year-paper"
                   className="block font-semibold text-sm hover:text-blue-500"
                 >
-                  About us
+                  Previous Year Papers
                 </a>
               </li>
               <li>
@@ -377,28 +377,30 @@ const Headercopy = () => {
                   Pricing
                 </a>
               </li>
-              <li>
-                <a
-                  href="/contact"
-                  className="block font-semibold text-sm hover:text-blue-500"
-                >
-                  Contact us
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/previous-year-paper"
-                  className="block font-semibold text-sm hover:text-blue-500"
-                >
-                  Previous Year Papers
-                </a>
-              </li>
+
               <li>
                 <a
                   href="/blogs"
                   className="block font-semibold text-sm hover:text-blue-500"
                 >
                   Blogs
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/about"
+                  className="block font-semibold text-sm hover:text-blue-500"
+                >
+                  About us
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="/contact"
+                  className="block font-semibold text-sm hover:text-blue-500"
+                >
+                  Contact us
                 </a>
               </li>
             </ul>
