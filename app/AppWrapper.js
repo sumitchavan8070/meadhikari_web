@@ -46,7 +46,7 @@
 
 // export default AppWrapper;
 
-"use client"; // Mark this as a client-side component
+"use client"; // Mark this as a client-side
 
 import React, { useEffect, useState, useRef } from "react";
 import LoginPopup from "@/components/LoginPopup"; // Adjust the path to your LoginPopup component
