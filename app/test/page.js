@@ -183,6 +183,7 @@ import { useQuestions } from "@/Context/QuestionsContext";
 const Page = () => {
   const { questions } = useQuestions();
   const router = useRouter();
+  //...
 
   useEffect(() => {
     if (questions.length === 0) {
