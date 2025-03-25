@@ -987,7 +987,6 @@ export const quizzesSecound = [
     demo: true,
     paper: {
       questions: [
-        // Modern History of Maharashtra (10 Questions)
         {
           _id: "mh-geo-01",
           question: "महाराष्ट्र राज्याची सीमा कोणत्या राज्यांशी लागून आहे?",
