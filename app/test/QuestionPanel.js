@@ -9,7 +9,7 @@ const QuestionPanel = ({
   handleNextQuestion,
   handlePrevQuestion,
 }) => {
-  const [fontSize, setFontSize] = useState(16); // Default font size in pixels
+  const [fontSize, setFontSize] = useState(20); // Default font size in pixels
 
   const baseUrl = "https://file-hosting-app.vercel.app"; // Your base URL
 
