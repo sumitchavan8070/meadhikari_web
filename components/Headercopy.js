@@ -521,7 +521,7 @@ const Headercopy = () => {
                     isExamDropdownOpen ? "block" : "hidden group-hover:block"
                   }`}
                 >
-                  <li>
+                  {/* <li>
                     <a
                       href="/exams/mpsc"
                       className="block px-4 py-2 text-sm hover:bg-gray-100"
@@ -529,7 +529,7 @@ const Headercopy = () => {
                       MPSC
                     </a>
                   </li>
-                  <hr className="border-t border-gray-200 mx-4 lg:hidden" />
+                  <hr className="border-t border-gray-200 mx-4 lg:hidden" /> */}
                   <li>
                     <a
                       href="/exams/talathi-bharti"
@@ -548,14 +548,14 @@ const Headercopy = () => {
                     </a>
                   </li>
                   <hr className="border-t border-gray-200 mx-4 lg:hidden" />
-                  <li>
+                  {/* <li>
                     <a
                       href="/exams"
                       className="block px-4 py-2 text-sm text-blue-600 hover:bg-gray-100 font-semibold"
                     >
                       View All Exams
                     </a>
-                  </li>
+                  </li> */}
                 </ul>
               </li>
 

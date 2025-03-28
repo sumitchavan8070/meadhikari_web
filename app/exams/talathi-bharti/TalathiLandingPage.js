@@ -261,7 +261,7 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
                         ? "Loading..."
                         : qIndex < FREE_QUIZ_NUMBER || isSubscriptionActive
                         ? "Start Test"
-                        : "Unlock All @20/Day🔐"
+                        : "Start Test 🔐"
                     }
                     free={quiz.free}
                     live={quiz.live}
