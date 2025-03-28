@@ -154,7 +154,6 @@ const PricePage = () => {
       alert("This is a free plan and is not available for purchase.");
       return;
     }
-    console.log("user.mobileNumber", user.mobileNumber);
 
     if (!user) {
       setIsLoginOpen(true);
