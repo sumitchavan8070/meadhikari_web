@@ -129,7 +129,6 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
 
   return (
     <div>
-      {/* Hero Section */}
       <HeroSection />
       <LogoSlider />
 
