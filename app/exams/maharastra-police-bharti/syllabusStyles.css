@@ -1,0 +1,94 @@
+/* Scoped Styles for Syllabus Content */
+.syllabus-container h1,
+.syllabus-container h2,
+.syllabus-container h3,
+.syllabus-container h4,
+.syllabus-container h5,
+.syllabus-container h6 {
+  color: #1e40af; /* Blue color for headings */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.syllabus-container p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151; /* Dark gray text */
+  margin-bottom: 1rem;
+}
+
+.syllabus-container table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.syllabus-container th {
+  background-color: #f3f4f6; /* Light gray background */
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* Light border */
+  text-align: left;
+}
+
+.syllabus-container td {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* Light border */
+}
+
+/* Updated Styles for Lists */
+.syllabus-container ul,
+.syllabus-container ol {
+  list-style-position: inside; /* Bullet points inside the content area */
+  padding-left: 1rem; /* Add some spacing from the left */
+  margin-bottom: 1rem; /* Space between lists and other content */
+}
+
+.syllabus-container ul li,
+.syllabus-container ol li {
+  margin-bottom: 0.5rem; /* Space between individual list items */
+  position: relative; /* For pseudo-element styling */
+  padding-left: 1rem; /* Space for custom bullet styling */
+}
+
+.syllabus-container ul li::before {
+  content: "•"; /* Custom bullet symbol */
+  color: #1e40af; /* Match heading blue color */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.syllabus-container ol {
+  counter-reset: item; /* Reset numbering for ordered lists */
+}
+
+.syllabus-container ol li {
+  padding-left: 1.5rem; /* More space for numbers */
+}
+
+.syllabus-container ol li::before {
+  content: counter(item) "."; /* Custom numbering */
+  counter-increment: item;
+  color: #1e40af; /* Match heading blue color */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.syllabus-container a {
+  color: #2563eb; /* Blue color for links */
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.syllabus-container a:hover {
+  color: #1d4ed8; /* Darker blue on hover */
+}
+
+.syllabus-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}

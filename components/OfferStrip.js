@@ -1,38 +1,7 @@
+"use client";
 import React, { useEffect, useRef } from "react";
 
 const OfferStrip = () => {
-  // const newsData = [
-  //   {
-  //     text: "Hurry up! Flat 50% off on yearly subscription.",
-  //     offerCode: "WINTER50",
-  //     link: "https://example.com/winter-sale",
-  //   },
-  //   {
-  //     text: "Get 30% off on all test series. Limited time offer!",
-  //     offerCode: "TEST30",
-  //     link: "https://example.com/test-series",
-  //   },
-  //   {
-  //     text: "Refer your friends and earn rewards. Start now!",
-  //     link: "https://example.com/referral-program",
-  //   },
-  //   {
-  //     text: "Exclusive deal for new users. Join now and save big!",
-  //     offerCode: "NEWUSER20",
-  //   },
-  // ];
-
-  // const newsData = [
-  //   {
-  //     text: "Check out the previous year question papers and mock tests.",
-  //     link: "https://www.meadhikari.com/previous-year-paper",
-  //   },
-  //   {
-  //     text: "Find the pricing details for all our services here.",
-  //     link: "https://www.meadhikari.com/pricing",
-  //   },
-  // ];
-
   const newsData = [
     {
       text: "📚 Check out the previous year question papers and mock tests!",

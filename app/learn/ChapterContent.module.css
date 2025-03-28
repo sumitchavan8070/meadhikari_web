@@ -1,0 +1,207 @@
+/* General Container */
+.chapter-content {
+    font-family: "DM Sans", sans-serif; /* Use a modern font */
+    line-height: 1.6;
+    color: #374151; /* Dark gray for readability */
+  }
+  
+  /* Headings */
+  .chapter-content h1,
+  .chapter-content h2,
+  .chapter-content h3 {
+    font-family: "Arvo", serif; /* Use a serif font for headings */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #02073E; /* Dark blue */
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .chapter-content h1:hover,
+  .chapter-content h2:hover,
+  .chapter-content h3:hover {
+    color: #00A99D; /* Green on hover */
+  }
+  
+  .chapter-content h1 {
+    font-size: 2.25rem;
+    font-weight: bold;
+  }
+  
+  .chapter-content h2 {
+    font-size: 1.875rem;
+    font-weight: bold;
+  }
+  
+  .chapter-content h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  /* Paragraphs */
+  .chapter-content p {
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    color: #4B5563; /* Slightly lighter gray */
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .chapter-content p:hover {
+    color: #374151; /* Darker gray on hover */
+  }
+  
+  /* Lists */
+  .chapter-content ul,
+  .chapter-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chapter-content li {
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-left: 1rem;
+  }
+  
+  .chapter-content li::before {
+    content: "•"; /* Custom bullet */
+    color: #00A99D; /* Green bullet */
+    font-size: 1.25rem;
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+  }
+  
+  .chapter-content ol li::before {
+    content: counter(list-item) "."; /* Numbered list */
+    color: #02073E; /* Dark blue */
+    font-size: 1rem;
+    font-weight: bold;
+    position: absolute;
+    left: -1.5rem;
+  }
+  
+  /* Tables */
+  .chapter-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    border: 1px solid #E5E7EB; /* Light gray border */
+    overflow-x: auto;
+    display: block;
+  }
+  
+  .chapter-content th,
+  .chapter-content td {
+    padding: 0.75rem;
+    border: 1px solid #E5E7EB; /* Light gray border */
+    text-align: left;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .chapter-content th {
+    background-color: #F9FAFB; /* Light background */
+    font-weight: bold;
+    color: #02073E; /* Dark blue */
+  }
+  
+  .chapter-content td:hover,
+  .chapter-content th:hover {
+    background-color: #F3F4F6; /* Light gray on hover */
+  }
+  
+  /* Code Blocks */
+  .chapter-content pre {
+    background-color: #1E293B; /* Dark background */
+    color: #F3F4F6; /* Light text */
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    overflow-x: auto; /* Horizontal scrolling for long lines */
+    margin-bottom: 2rem;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    white-space: pre-wrap; /* Wrap long lines */
+    word-break: break-word; /* Break long words if necessary */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .chapter-content code {
+    font-family: "Courier New", Courier, monospace;
+    font-size: 0.9rem;
+    color: #02073E; /* Dark blue */
+    background-color: #F3F4F6; /* Light gray */
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    display: inline-block; /* Prevents layout issues */
+  }
+  
+  /* Nested <code> inside <pre> */
+  .chapter-content pre code {
+    background-color: transparent; /* Remove background for nested <code> */
+    padding: 0; /* Remove padding for nested <code> */
+    color: inherit; /* Inherit text color from <pre> */
+    font-size: inherit; /* Inherit font size from <pre> */
+  }
+  
+  /* Blockquotes */
+  .chapter-content blockquote {
+    border-left: 4px solid #00A99D; /* Green border */
+    padding-left: 1rem;
+    margin: 2rem 0;
+    color: #4B5563; /* Gray */
+    font-style: italic;
+    position: relative;
+  }
+  
+  .chapter-content blockquote::before {
+    content: "“"; /* Quotation mark */
+    font-size: 3rem;
+    color: #00A99D; /* Green */
+    position: absolute;
+    left: -1.5rem;
+    top: -0.5rem;
+  }
+  
+  /* Links */
+  .chapter-content a {
+    color: #00A99D; /* Green */
+    text-decoration: underline;
+    transition: color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .chapter-content a:hover {
+    color: #008075; /* Darker green */
+    text-decoration: none;
+  }
+  
+  /* Images */
+  .chapter-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .chapter-content h1 {
+      font-size: 2rem;
+    }
+  
+    .chapter-content h2 {
+      font-size: 1.5rem;
+    }
+  
+    .chapter-content h3 {
+      font-size: 1.25rem;
+    }
+  
+    .chapter-content p {
+      font-size: 0.9rem;
+    }
+  
+    .chapter-content table {
+      font-size: 0.875rem;
+    }
+  }
