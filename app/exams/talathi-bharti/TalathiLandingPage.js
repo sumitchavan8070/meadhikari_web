@@ -27,18 +27,6 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
 
   // State to store enriched data with random attempted counts
   const [enrichedQuestionsData, setEnrichedQuestionsData] = useState([]);
-
-  // Validate data structure
-  if (!Array.isArray(questionsData) || questionsData.length === 0) {
-    return (
-      <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[50vh] rounded-lg shadow-md">
-        <p className="text-lg md:text-xl lg:text-2xl font-semibold">
-          No quizzes available.
-        </p>
-      </div>
-    );
-  }
-
   // Fetch subscription status when the component mounts or when the user changes
   useEffect(() => {
     const fetchSubscriptionStatus = async () => {
@@ -84,6 +72,17 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  // Validate data structure
+  if (!Array.isArray(questionsData) || questionsData.length === 0) {
+    return (
+      <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[50vh] rounded-lg shadow-md">
+        <p className="text-lg md:text-xl lg:text-2xl font-semibold">
+          No quizzes available.
+        </p>
+      </div>
+    );
+  }
 
   // Smooth scrolling function
   const smoothScroll = (direction) => {

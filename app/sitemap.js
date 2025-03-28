@@ -34,7 +34,6 @@
 //     },
 //   ];
 // }
-
 const BASE_URL = "https://www.meadhikari.com";
 
 export default function sitemap() {
@@ -57,7 +56,7 @@ export default function sitemap() {
     },
     {
       url: `${BASE_URL}/pricing`,
-      priority: 0.9, // High priority for the Pricing Page
+      priority: 0.8, // High priority for the Pricing Page
     },
     {
       url: `${BASE_URL}/about`,
