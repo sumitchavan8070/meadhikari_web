@@ -58,7 +58,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        {/* Canonical URL for /previous-year-papers */}
         <link rel="canonical" href="https://www.meadhikari.com" />
 
         {/* Google Analytics Script */}

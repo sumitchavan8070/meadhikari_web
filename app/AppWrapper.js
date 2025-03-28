@@ -77,10 +77,10 @@ const AppWrapper = ({ children }) => {
       return;
     }
 
-    // Set up the interval to show the popup every 15 seconds
+    // Set up the interval to show the popup every 60 seconds
     intervalRef.current = setInterval(() => {
       setShowLoginPopup(true); // Open the popup
-    }, 60000); // 60 seconds
+    }, 90000); // 60 seconds
 
     // Cleanup the interval when the component unmounts or the user logs in
     return () => {

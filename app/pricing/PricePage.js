@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaCheckCircle, FaLock } from "react-icons/fa";
-import { BASE_URL } from "@/utils/globalStrings";
+import { BASE_URL, RAZORPAY_LIVE_KEY } from "@/utils/globalStrings";
 import { useAuth } from "@/Context/AuthContext";
 import LoginPopup from "@/components/LoginPopup";
 import QuizCard from "../previous-year-paper/components/QuizCard";
@@ -154,21 +154,21 @@ const PricePage = () => {
       alert("This is a free plan and is not available for purchase.");
       return;
     }
+    console.log("user.mobileNumber", user.mobileNumber);
 
     if (!user) {
       setIsLoginOpen(true);
     } else if (razorpayLoaded) {
       const options = {
-        // key: "rzp_test_9Oqxns8kejKZpZ", // Razorpay Test Key  rzp_live_ac5iKugH3uLMLO
-        key: "rzp_live_ac5iKugH3uLMLO", // Razorpay Test Key
-
+        key: RAZORPAY_LIVE_KEY,
         amount: finalPrice * 100,
         currency: "INR",
         name: "Meadhikari",
         description: `${
           plan.plan.charAt(0).toUpperCase() + plan.plan.slice(1)
         } Plan`,
-        image: "https://your-logo-url.com/logo.png",
+        image:
+          "https://res.cloudinary.com/sdchavan/image/upload/v1743161076/fj7e0wrrgygdpwalbptw.png",
         handler: async function (response) {
           try {
             const paymentData = {
@@ -195,9 +195,11 @@ const PricePage = () => {
             console.error("Error updating subscription", error);
           }
         },
+
         prefill: {
           name: user.name,
           email: user.email,
+          contact: user.mobileNumber,
         },
         notes: {
           plan: plan.plan,
@@ -443,7 +445,7 @@ const PricePage = () => {
                       plan.popular ? "text-gray-100" : "text-gray-600"
                     }`}
                   >
-                    {plan.description || "No description available"}
+                    {plan.description || "All test series included"}
                   </p>
                   <p
                     className={`text-4xl font-bold mb-4 ${
