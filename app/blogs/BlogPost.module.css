@@ -1,0 +1,198 @@
+/* General container styling */
+.blogContainer {
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Header styling */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Title styling */
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #6D28D9;
+}
+
+/* Metadata styling */
+.metadata {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+/* Image styling */
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+/* Content styling */
+.content {
+  line-height: 1.6;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Language button styling */
+.languageButton {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.languageButton.active {
+  background-color: #6D28D9;
+  color: white;
+}
+
+.languageButton.inactive {
+  background-color: #f0f0f0;
+}
+
+/* Warning message styling */
+.warningMessage {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Table of Contents Styling (Improved Design) */
+.tocBox {
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  border: 1px solid #e5e7eb; /* Subtle border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 1.5rem; /* Inner padding */
+  margin-bottom: 2rem; /* Space below the ToC box */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+}
+
+.tocBox h2 {
+  font-size: 1.25rem; /* Larger font size for heading */
+  color: #1e40af; /* Blue color for heading */
+  margin-bottom: 1rem; /* Space below the heading */
+}
+
+.tocBox ul {
+  list-style-type: none; /* Remove default bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.tocBox li {
+  margin-bottom: 0.75rem; /* Space between list items */
+}
+
+.tocBox a {
+  text-decoration: none; /* Remove underline */
+  color: #374151; /* Dark gray text */
+  font-weight: 500; /* Semi-bold font */
+  transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+.tocBox a:hover {
+  color: #1e40af; /* Change color on hover */
+}
+
+/* Scoped Styles for Blog Content */
+.blogContent h1,
+.blogContent h2,
+.blogContent h3,
+.blogContent h4,
+.blogContent h5,
+.blogContent h6 {
+  color: #1e40af; /* Blue color for headings */
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.blogContent p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #374151; /* Dark gray text */
+  margin-bottom: 1rem;
+}
+
+.blogContent table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.blogContent th {
+  background-color: #f3f4f6; /* Light gray background */
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* Light border */
+  text-align: left;
+}
+
+.blogContent td {
+  padding: 0.75rem;
+  border: 1px solid #d1d5db; /* Light border */
+}
+
+/* Updated Styles for Lists */
+.blogContent ul,
+.blogContent ol {
+  list-style-position: inside; /* Bullet points inside the content area */
+  padding-left: 1rem; /* Add some spacing from the left */
+  margin-bottom: 1rem; /* Space between lists and other content */
+}
+
+.blogContent ul li,
+.blogContent ol li {
+  margin-bottom: 0.5rem; /* Space between individual list items */
+  position: relative; /* For pseudo-element styling */
+  padding-left: 1rem; /* Space for custom bullet styling */
+}
+
+.blogContent ul li::before {
+  content: "•"; /* Custom bullet symbol */
+  color: #1e40af; /* Match heading blue color */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.blogContent ol {
+  counter-reset: item; /* Reset numbering for ordered lists */
+}
+
+.blogContent ol li {
+  padding-left: 1.5rem; /* More space for numbers */
+}
+
+.blogContent ol li::before {
+  content: counter(item) "."; /* Custom numbering */
+  counter-increment: item;
+  color: #1e40af; /* Match heading blue color */
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.blogContent a {
+  color: #2563eb; /* Blue color for links */
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.blogContent a:hover {
+  color: #1d4ed8; /* Darker blue on hover */
+}
+
+.blogContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
