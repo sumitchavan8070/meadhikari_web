@@ -77,7 +77,7 @@ export const metadata = {
   description:
     "Prepare for the Maharashtra Police Bharti exam with expert-curated syllabus, previous year papers, and practice tests. Get the latest updates on Police Bharti exam patterns and ace your preparation.",
   keywords:
-    "police, maharashtra police, police bharti maharashtra, police bharti syllabus, maha police bharti syllabus, police bharti paper pattern, police bharti maths syllabus, police bharti marathi syllabus, police bharti questions, police bharti subject, police bharti syllabus in marathi, police bharti syllabus in marathi pdf, police bharti papers",
+    "police bharti 2025 ,police, maharashtra police, police bharti maharashtra, police bharti syllabus, maha police bharti syllabus, police bharti paper pattern, police bharti maths syllabus, police bharti marathi syllabus, police bharti questions, police bharti subject, police bharti syllabus in marathi, police bharti syllabus in marathi pdf, police bharti papers",
   robots: "index, follow",
   canonical: `${PRODUCTION_URL}/exams/maharashtra-police-bharti`, // Canonical URL
   // openGraph: {

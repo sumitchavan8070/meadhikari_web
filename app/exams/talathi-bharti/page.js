@@ -75,7 +75,7 @@ export const metadata = {
   description:
     "Prepare for the Talathi Bharti exam with previous year question papers, syllabus, and expert resources. Get the latest updates and ace your Talathi exam preparation.",
   keywords:
-    "talathi, talathi bharti, talathi papers, exam for talathi, question paper talathi, syllabus for talathi, syllabus for talathi exam, talathi bharti previous year question paper, talathi bharti question paper, talathi bharti syllabus, talathi bharti update, talathi exam paper, talathi exam question paper, talathi previous year question paper",
+    "talathi bharti 2025,talathi, talathi bharti, talathi papers, exam for talathi, question paper talathi, syllabus for talathi, syllabus for talathi exam, talathi bharti previous year question paper, talathi bharti question paper, talathi bharti syllabus, talathi bharti update, talathi exam paper, talathi exam question paper, talathi previous year question paper",
   robots: "index, follow",
   canonical: `${PRODUCTION_URL}/exams/talathi-bharti`, // Canonical URL (always production)
   // openGraph: {
