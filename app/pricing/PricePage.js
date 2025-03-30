@@ -54,6 +54,8 @@ const PricePage = () => {
     const fetchPlans = async () => {
       try {
         const response = await axios.get(`${BASE_URL}/plans/get-all`);
+        console.log("----", response.data);
+
         setPlans(response.data);
       } catch (error) {
         setError("Failed to load plans. Please try again later.");
@@ -385,7 +387,7 @@ const PricePage = () => {
         )}
 
         {/* Plans Section */}
-        {isFetchingPlans ? (
+        {/* {isFetchingPlans ? (
           <div className="relative w-[80%] h-64 mx-auto bg-gray-200 rounded-lg overflow-hidden">
             <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-gray-300 via-gray-200 to-gray-300"></div>
           </div>
@@ -504,7 +506,122 @@ const PricePage = () => {
               );
             })}
           </div>
-        )}
+        )} */}
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          {plans
+            .filter((plan) => plan.plan.toLowerCase() !== "free") // Exclude "free" plan
+            .map((plan, index) => {
+              const finalPrice = plan.discountedPrice || plan.price;
+              const formattedPrice =
+                plan.price === "0" ? "Free" : `₹${finalPrice}`;
+              const features = plan.features || [];
+              let planIcon = "📘";
+
+              if (plan.popular) {
+                planIcon = "🔥";
+              }
+
+              return (
+                <div
+                  key={index}
+                  className={`relative rounded-lg p-6 transition-transform transform group flex flex-col justify-between shadow-xl ${
+                    plan.popular
+                      ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-2xl scale-105 hover:scale-110"
+                      : "bg-white hover:shadow-2xl"
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute top-0 left-0 bg-yellow-400 text-white text-sm font-bold px-4 py-1 rounded-tr-lg rounded-bl-lg shadow-lg z-10">
+                      Most Popular
+                    </div>
+                  )}
+
+                  <div className="flex items-center justify-center">
+                    <div
+                      className={`text-6xl mb-6 group-hover:scale-110 transition-transform duration-300 ${
+                        plan.popular
+                          ? "text-white"
+                          : "text-yellow-500 group-hover:text-yellow-400"
+                      }`}
+                    >
+                      {planIcon}
+                    </div>
+                  </div>
+
+                  <h3
+                    className={`text-2xl font-semibold mb-4 ${
+                      plan.popular ? "text-white" : "text-gray-800"
+                    }`}
+                  >
+                    {plan.plan.charAt(0).toUpperCase() + plan.plan.slice(1)}{" "}
+                    Plan
+                  </h3>
+                  <p
+                    className={`text-xl font-medium mb-4 ${
+                      plan.popular ? "text-gray-100" : "text-gray-600"
+                    }`}
+                  >
+                    {plan.description || "All test series included"}
+                  </p>
+                  <p
+                    className={`text-4xl font-bold mb-4 ${
+                      plan.popular ? "text-white" : "text-primary"
+                    }`}
+                  >
+                    {formattedPrice}{" "}
+                    <span
+                      className={`text-lg ${
+                        plan.popular ? "text-gray-300" : "text-gray-600"
+                      }`}
+                    >
+                      {plan.durationInDays
+                        ? `${plan.durationInDays} days`
+                        : "Unlimited"}
+                    </span>
+                  </p>
+
+                  <ul className="text-left mb-6">
+                    {features.map((feature, index) => (
+                      <li
+                        key={index}
+                        className={`flex items-center mb-3 text-sm sm:text-base ${
+                          plan.popular ? "text-gray-200" : "text-gray-700"
+                        }`}
+                      >
+                        <FaCheckCircle
+                          className={`mr-2 ${
+                            plan.popular ? "text-white" : "text-green-500"
+                          }`}
+                        />
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <button
+                    onClick={() => handleChoosePlan(plan)}
+                    className={`w-full py-3 px-6 rounded-lg text-center font-semibold transition duration-300 hover:scale-105 hover:shadow-lg mt-4 ${
+                      plan.popular
+                        ? "bg-white text-blue-700 hover:bg-gray-200"
+                        : "bg-gradient-to-r from-blue-500 to-blue-700 text-white"
+                    }`}
+                    disabled={isSubscriptionActive}
+                    aria-label={`Subscribe to ${plan.plan}`}
+                  >
+                    {isSubscriptionActive ? (
+                      <div className="flex justify-center items-center">
+                        <FaLock className="mr-2" />
+                        Subscribed
+                      </div>
+                    ) : (
+                      "Choose Plan"
+                    )}
+                  </button>
+                </div>
+              );
+            })}
+        </div>
       </div>
 
       <ConversionStripFirst />

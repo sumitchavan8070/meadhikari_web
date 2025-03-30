@@ -48,7 +48,7 @@ const ExamCategoryGrid = () => {
 
   const handleCategoryClick = (category) => {
     if (category.landingPageSlug) {
-      window.location.href = `/${category.landingPageSlug}`;
+      window.location.href = `/exams/${category.landingPageSlug}`;
     } else {
       window.location.href = `/previous-year-paper`;
     }
