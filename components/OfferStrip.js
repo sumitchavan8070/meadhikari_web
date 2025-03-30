@@ -1,26 +1,45 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import axios from "axios";
+import { BASE_URL } from "@/utils/globalStrings";
 
 const OfferStrip = () => {
+  const [coupons, setCoupons] = useState([]); // State to store fetched coupons
+  const textRef = useRef(null);
+
+  // Fetch coupons from the server
+  useEffect(() => {
+    const fetchCoupons = async () => {
+      try {
+        const response = await axios.get(`${BASE_URL}/coupons/all`); // Fetch all coupons
+        const activeCoupons = response.data.filter(
+          (coupon) =>
+            coupon.isActive && new Date(coupon.expiryDate) > new Date()
+        ); // Filter active and unexpired coupons
+        setCoupons(activeCoupons); // Set only active coupons in state
+      } catch (error) {
+        console.error("Error fetching coupons:", error);
+      }
+    };
+
+    fetchCoupons();
+  }, []);
+
+  // Combine static offers and fetched active coupons
   const newsData = [
     {
       text: "📚 Check out the previous year question papers and mock tests!",
       link: "https://www.meadhikari.com/previous-year-paper",
     },
 
-    {
-      text: `❤️ Valentine’s Special! Get a "Partner Subscription" with Previous Year Papers 📖 🔥 Get ₹50 OFF on the Diamond Plan (₹299/year) 💕`,
-      link: "https://www.meadhikari.com/pricing",
-      offerCode: "LOVE50",
-    },
-    {
-      text: "💰 Find the pricing details for all our services here.",
-      link: "https://www.meadhikari.com/pricing",
-    },
+    ...coupons.map((coupon) => ({
+      text: coupon.text,
+      link: coupon.link,
+      offerCode: coupon.code, // Include coupon code as a special offer code
+    })),
   ];
 
-  const textRef = useRef(null);
-
+  // Scrolling logic
   useEffect(() => {
     const scrollText = () => {
       if (textRef.current) {
@@ -39,7 +58,7 @@ const OfferStrip = () => {
     <div className="relative flex items-center bg-gradient-to-tr from-blue-700 to-purple-400 text-white overflow-hidden px-6 py-3.5 font-[sans-serif]">
       {/* Full-Height Flashing Offer Label */}
       <div className="absolute top-0 left-0 h-full bg-red-600 text-white font-bold px-10 flex items-center animate-pulse text-lg">
-        Offer
+        Offers
       </div>
 
       {/* Scrolling News Text */}
