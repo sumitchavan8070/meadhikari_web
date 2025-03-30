@@ -57,7 +57,7 @@ const OfferStrip = () => {
   return (
     <div className="relative flex items-center bg-gradient-to-tr from-blue-700 to-purple-400 text-white overflow-hidden px-6 py-3.5 font-[sans-serif]">
       {/* Full-Height Flashing Offer Label */}
-      <div className="absolute top-0 left-0 h-full bg-red-600 text-white font-bold px-10 flex items-center animate-pulse text-lg">
+      <div className="absolute top-0 left-0 h-full bg-red-600 text-white font-bold px-10 flex items-center text-lg">
         Offers
       </div>
 
