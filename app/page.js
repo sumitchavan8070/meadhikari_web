@@ -20,33 +20,52 @@ import TestSeries from "@/components/TestSeries";
 import OurPresenceSection from "./about/OurPresenceSection";
 import PricePage from "./pricing/PricePage";
 import ConversionStripFirst from "@/components/ConversionStripFirst";
+import ExamCategoryGrid from "@/components/ExamCategoryGrid";
 
+// export default function Home() {
+//   return (
+//     <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
+//       <OfferStrip />
+//       <Headercopy />
+//       <HeroBanner />
+//       <Stats />
+//       <ExamCategoryGrid />
+//       {/* <ConversionStripFirst /> */}
+
+//       {/* <section className="bg-[#FFFFFF]">
+//         <Features />
+//       </section> */}
+//       {/* <Help /> */}
+//       {/* <Support /> */}
+//       {/* <Company /> */}
+//       {/* <TestSeries /> */}
+
+//       {/* <HomePageBlogSection /> */}
+
+//       {/* <Pricing /> */}
+//       <PricePage />
+//       <OurPresenceSection />
+
+//       {/* <Testimonials /> */}
+//       {/* <OfferBannerSecond /> */}
+
+//       <FAQ />
+//       <section className="bg-[#F9FAFC]">
+//         <Footer />
+//       </section>
+//     </div>
+//   );
+// }
 export default function Home() {
   return (
-    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
+    <div className="overflow-x-hidden w-full pt-[23%] sm:pt-[23%] md:pt-[5%]">
       <OfferStrip />
       <Headercopy />
       <HeroBanner />
       <Stats />
-      <ConversionStripFirst />
-
-      {/* <section className="bg-[#FFFFFF]">
-        <Features />
-      </section> */}
-      {/* <Help /> */}
-      {/* <Support /> */}
-      {/* <Company /> */}
-      {/* <TestSeries /> */}
-
-      {/* <HomePageBlogSection /> */}
-
-      {/* <Pricing /> */}
+      <ExamCategoryGrid />
       <PricePage />
       <OurPresenceSection />
-
-      <Testimonials />
-      <OfferBannerSecond />
-
       <FAQ />
       <section className="bg-[#F9FAFC]">
         <Footer />

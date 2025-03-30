@@ -1,37 +1,3 @@
-// import React from "react";
-// import Headercopy from "@/components/Headercopy";
-// import Footer from "@/components/Footer";
-// import PaperLandingPage from "./PaperLandingPage"; // Import the PaperLandingPage component
-
-// export const metadata = {
-//   title: "Previous Year Papers | MPSC, Talathi, Police Bharti Papers",
-//   description:
-//     "Find MPSC previous year papers, Talathi papers, Police Bharti papers, and more. Browse various categories and get access to the latest exam papers.",
-//   keywords:
-//     "MPSC, MPSC previous year paper, Talathi paper, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams",
-//   robots: "index, follow", // Allow search engines to index and follow the links
-// };
-
-// const Page = () => {
-//   return (
-//     <div className="w-full bg-gray-50 overflow-x-hidden">
-//       {/* Header */}
-//       <Headercopy />
-
-//       {/* Main Content */}
-//       <PaperLandingPage />
-
-//       {/* Footer */}
-//       <footer className="bg-[#F9FAFC] py-6 mt-10 w-full">
-//         <Footer />
-//       </footer>
-//     </div>
-//   );
-// };
-
-// export default Page;
-
-// app/previous-year-papers/page.js
 import React from "react";
 import Headercopy from "@/components/Headercopy";
 import Footer from "@/components/Footer";
@@ -47,60 +13,6 @@ export const metadata = {
     "MPSC, MPSC previous year paper, Talathi papers, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams",
   robots: "index, follow", // Allow search engines to index and follow the links
 };
-
-// Fetch data on the server
-// async function fetchCategoriesData() {
-//   try {
-//     // Fetch categories
-//     const categoryResponse = await axios.get(
-//       `${BASE_URL}/exam-categories/get-all-exam-category`
-//     );
-//     const categories = categoryResponse.data.map(
-//       ({ _id, catName, catShortName, image, categoryNumber }) => ({
-//         _id,
-//         name: catName.trim(),
-//         shortName: catShortName || "",
-//         image,
-//         categoryNumber,
-//         questionsData: [],
-//       })
-//     );
-
-//     console.log("=============categoryResponse=========", categoryResponse);
-
-//     // Fetch paper metadata for each category
-//     const papersPromises = categories.map((category) =>
-//       axios.get(`${BASE_URL}/papers/web/${category._id}`)
-//     );
-//     const papersResponses = await Promise.all(papersPromises);
-
-//     // Enrich categories with paper metadata
-//     const enrichedCategories = categories.map((category, index) => {
-//       const papersMetadata = papersResponses[index].data;
-
-//       // Sort papers by QPYear in ascending order
-//       const sortedPapers = papersMetadata.sort((a, b) => b.QPYear - a.QPYear);
-
-//       const questionsData = sortedPapers.map((paper) => ({
-//         title: paper.questionPaperName || paper.subCatName,
-//         time: 60,
-//         marks: paper.questionsLength,
-//         questions: paper.questionsLength,
-//         languages: ["Marathi"],
-//         free: true,
-//         live: paper.QPYear === new Date().getFullYear().toString(),
-//         paper: paper,
-//       }));
-
-//       return { ...category, questionsData };
-//     });
-
-//     return enrichedCategories;
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//     return [];
-//   }
-// }
 async function fetchCategoriesData() {
   try {
     // Fetch categories
