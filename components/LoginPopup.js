@@ -878,6 +878,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
         email,
         password,
         mobileNumber,
+        registeredThrough: "web",
       });
       await handleLogin(e);
       closePopup();
