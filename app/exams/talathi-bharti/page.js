@@ -143,7 +143,7 @@ export default async function Page() {
   const questionsData = await fetchPapers();
 
   return (
-    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
+    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%] overflow-hidden">
       <Headercopy />
       <OfferStrip />
 

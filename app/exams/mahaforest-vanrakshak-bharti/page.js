@@ -18,29 +18,6 @@ export const metadata = {
     "vanrakshak bharti 2025 ,vanrakshak, maharashtra vanrakshak bharti, vanrakshak bharti maharashtra, vanrakshak bharti syllabus, maha vanrakshak bharti syllabus, vanrakshak bharti paper pattern,  vanrakshak bharti marathi syllabus, vanrakshak bharti questions, vanrakshak bharti subject, vanrakshak bharti syllabus in marathi, vanrakshak bharti syllabus in marathi pdf, vanrakshak bharti papers",
   robots: "index, follow",
   canonical: `${PRODUCTION_URL}/exams/mahaforest-vanrakshak-bharti`, // Canonical URL
-  // openGraph: {
-  //   title: "Maharashtra Police Bharti Exam Preparation - Syllabus, Papers & Practice Tests",
-  //   description:
-  //     "Prepare for the Maharashtra Police Bharti exam with expert-curated syllabus, previous year papers, and practice tests. Get the latest updates on Police Bharti exam patterns and ace your preparation.",
-  //   url: `${PRODUCTION_URL}/exams/maharashtra-police-bharti`,
-  //   siteName: "Meadhikari",
-  //   images: [
-  //     {
-  //       url: `${PRODUCTION_URL}/images/police-bharti-banner.jpg`, // Replace with actual image URL
-  //       width: 1200,
-  //       height: 630,
-  //       alt: "Maharashtra Police Bharti Exam Preparation Banner",
-  //     },
-  //   ],
-  //   type: "website",
-  // },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Maharashtra Police Bharti Exam Preparation - Syllabus, Papers & Practice Tests",
-  //   description:
-  //     "Prepare for the Maharashtra Police Bharti exam with expert-curated syllabus, previous year papers, and practice tests. Get the latest updates on Police Bharti exam patterns and ace your preparation.",
-  //   image: `${PRODUCTION_URL}/images/police-bharti-banner.jpg`, // Replace with actual image URL
-  // },
 };
 
 // Hardcoded category ID
@@ -83,7 +60,7 @@ export default async function Page() {
   const questionsData = await fetchPapers();
 
   return (
-    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%]">
+    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%] overflow-hidden">
       <Headercopy />
       <OfferStrip />
       <VanrakshakLandingPage questionsData={questionsData} />
