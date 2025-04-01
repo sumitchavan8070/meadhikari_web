@@ -10,7 +10,7 @@ const BASE_URL = "http://www.meadhikari.com"; // Base URL for redirects
 const logos = [
   { src: "/logos/dmer.png", url: "/previous-year-paper" },
   { src: "/logos/gst.png", url: "/previous-year-paper" },
-  { src: "/logos/krushi.png", url: "/previous-year-paper" }, // No URL (not clickable)
+  { src: "/logos/krushi.png", url: "/krushi-sevak-bharti" },
   { src: "/logos/pwd.png", url: "/previous-year-paper" },
   { src: "/logos/aadivashiVibhag.png", url: "/previous-year-paper" },
   { src: "/logos/aarogya.png", url: "/previous-year-paper" },
@@ -23,7 +23,8 @@ const logos = [
   { src: "/logos/pashusanvardhan.png", url: "/previous-year-paper" },
   { src: "/logos/pcmc.png", url: "/previous-year-paper" },
   { src: "/logos/police.png", url: "/exams/maharastra-police-bharti" },
-  { src: "/logos/vanvibhag.png", url: "/previous-year-paper" },
+  { src: "/logos/vanvibhag.png", url: "/mahaforest-vanrakshak-bharti" },
+  { src: "/logos/tait.png", url: "/previous-year-paper" },
 ];
 
 export default function LogoSlider() {
