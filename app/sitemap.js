@@ -55,6 +55,10 @@ export default function sitemap() {
       priority: 0.9,
     },
     {
+      url: `${BASE_URL}/exams/mahaforest-vanrakshak-bharti`,
+      priority: 0.9,
+    },
+    {
       url: `${BASE_URL}/pricing`,
       priority: 0.8, // High priority for the Pricing Page
     },
