@@ -62,8 +62,9 @@ export default function Home() {
       <OfferStrip />
       <Headercopy />
       <HeroBanner />
-      <Stats />
       <ExamCategoryGrid />
+      <Stats />
+
       <PricePage />
       <OurPresenceSection />
       <FAQ />
