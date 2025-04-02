@@ -242,7 +242,7 @@ const ExamCategoryGrid = () => {
 
           <button
             onClick={() => (window.location.href = `/previous-year-paper`)}
-            className="group flex flex-col items-center justify-between h-full min-h-[200px] p-4 sm:p-6 bg-white rounded-3xl shadow-[0_4px_20px_rgba(5,90,171,0.1)] hover:shadow-[0_8px_25px_rgba(5,90,171,0.15)] transition-all duration-300 hover:-translate-y-1 cursor-pointer"
+            className="group flex flex-col items-center justify-center bg-white p-6 rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer"
           >
             <div className="relative w-16 h-16 sm:w-20 sm:h-20 mb-4 flex-shrink-0">
               <svg
