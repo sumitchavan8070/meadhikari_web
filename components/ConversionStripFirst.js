@@ -1,6 +1,6 @@
 const ConversionStripFirst = () => {
   return (
-    <div className="bg-gray-900 text-white py-20">
+    <div className=" bg-[linear-gradient(107.12deg,_#FFFFFF_4.81%,_#BFE0FF_96.97%)]  py-20 md:py-28 relative overflow-hidden my-10">
       <div className="max-w-10xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row items-center gap-8">
           {/* Left Section */}
