@@ -140,69 +140,66 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-2xl font-bold"></h2>
 
-            <div className="flex space-x-2 items-center">
+            <div className="flex items-center space-x-3">
               {!isGridView && (
-                <button
-                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full p-2 shadow-md"
-                  onClick={() => smoothScroll("prev")}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-6 h-6"
+                <>
+                  <button
+                    className="p-2 rounded-full bg-white shadow-[0_4px_15px_rgba(5,90,171,0.15)] hover:shadow-[0_6px_20px_rgba(5,90,171,0.25)] transition-all duration-300 border border-[rgba(5,90,171,0.2)]"
+                    onClick={() => smoothScroll(categoryIndex, "prev")}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-5 h-5 text-[#055AAB]"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    className="p-2 rounded-full bg-white shadow-[0_4px_15px_rgba(5,90,171,0.15)] hover:shadow-[0_6px_20px_rgba(5,90,171,0.25)] transition-all duration-300 border border-[rgba(5,90,171,0.2)]"
+                    onClick={() => smoothScroll(categoryIndex, "next")}
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                      stroke="currentColor"
+                      className="w-5 h-5 text-[#055AAB]"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  </button>
+                </>
               )}
 
-              {!isGridView && (
-                <button
-                  className="bg-gray-300 hover:bg-gray-400 text-gray-800 rounded-full p-2 shadow-md"
-                  onClick={() => smoothScroll("next")}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
-              )}
-
-              {/* Grid View Toggle Button */}
+              {/* View Toggle Button */}
               <button
-                className={`${
-                  isGridView
-                    ? "bg-blue-600 hover:bg-blue-700"
-                    : "bg-blue-500 hover:bg-blue-600"
-                } text-white rounded-full p-2 shadow-md transition-all duration-300 focus:outline-none`}
                 onClick={() => setIsGridView(!isGridView)}
+                className="p-2 rounded-full bg-[linear-gradient(92.91deg,_#1BA9BC_-0.48%,_#2966C1_98.9%)] text-white shadow-md hover:opacity-90 transition-opacity duration-300"
+                aria-label={
+                  isGridView ? "Switch to carousel view" : "Switch to grid view"
+                }
               >
                 {isGridView ? (
-                  // List View Icon (Switch to Carousel)
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                   >
                     <path
                       strokeLinecap="round"
@@ -211,14 +208,13 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
                     />
                   </svg>
                 ) : (
-                  // Grid View Icon (Switch to Grid)
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 24 24"
                     strokeWidth="2"
                     stroke="currentColor"
-                    className="w-6 h-6"
+                    className="w-5 h-5"
                   >
                     <rect x="3" y="3" width="7" height="7" rx="1" />
                     <rect x="14" y="3" width="7" height="7" rx="1" />
@@ -232,10 +228,10 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
 
           <div
             ref={scrollRefs.current[0]}
-            className={`transition-all ${
+            className={`relative ${
               isGridView
-                ? "grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4"
-                : "flex overflow-x-auto scrollbar-hide space-x-4"
+                ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
+                : "flex overflow-x-auto scrollbar-hide pb-4"
             }`}
           >
             {enrichedQuestionsData.length > 0 ? (
@@ -245,7 +241,7 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
                   className={
                     isGridView
                       ? "w-full"
-                      : "flex-shrink-0 w-60 md:w-72 lg:w-80 px-2"
+                      : "flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] px-2"
                   }
                 >
                   <QuizCard
@@ -277,9 +273,9 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
                 </div>
               ))
             ) : (
-              <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[25vh] md:h-[30vh] lg:h-[35vh] rounded-lg shadow-md">
-                <p className="text-lg md:text-xl lg:text-2xl font-semibold">
-                  No quizzes available.
+              <div className="col-span-full flex justify-center items-center bg-gradient-to-br from-[#f7faff] to-[#e6f1ff] text-gray-600 w-full h-[200px] rounded-xl shadow-inner">
+                <p className="text-lg md:text-xl font-medium text-[#055AAB]">
+                  No question papers found for this category.
                 </p>
               </div>
             )}
