@@ -133,7 +133,7 @@ const Page = () => {
         markedQuestions={markedQuestions}
         isDarkMode={isDarkMode}
       />
-      <FooterControls
+      {/* <FooterControls
         handleMarkForReview={() =>
           setMarkedQuestions((prev) =>
             prev.includes(currentQuestion)
@@ -142,6 +142,18 @@ const Page = () => {
           )
         }
         showEndModal={showEndModal}
+        setShowEndModal={setShowEndModal}
+        isDarkMode={isDarkMode}
+      /> */}
+      <FooterControls
+        handleMarkForReview={() =>
+          setMarkedQuestions((prev) =>
+            prev.includes(currentQuestion)
+              ? prev.filter((q) => q !== currentQuestion)
+              : [...prev, currentQuestion]
+          )
+        }
+        isCurrentMarked={markedQuestions.includes(currentQuestion)} // Add this line
         setShowEndModal={setShowEndModal}
         isDarkMode={isDarkMode}
       />
