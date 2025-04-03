@@ -85,7 +85,7 @@ export default function RootLayout({ children }) {
         ></script>
         <Script
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=G-5R6BZSNQ4E`}
+          src={`https://www.googletagmanager.com/gtag/js?id=G-VVBEXR90R7`}
         />
         <Script
           id="google-analytics"
@@ -95,10 +95,12 @@ export default function RootLayout({ children }) {
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-5R6BZSNQ4E');
+              gtag('config', 'G-VVBEXR90R7');
             `,
           }}
         />
+
+        {/* gtag('config', 'G-5R6BZSNQ4E'); */}
       </head>
       <body className={`${dmSans.className} ${arvo.className}`}>
         {/* Page Loader */}
