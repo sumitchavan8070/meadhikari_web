@@ -1,10 +1,16 @@
+import {
+  APP_IMAGE_MOCKUP1,
+  APP_IMAGE_MOCKUP2,
+  APP_IMAGE_MOCKUP3,
+  APP_IMAGE_MOCKUP5,
+} from "@/utils/globalStrings";
 import Image from "next/image";
 
 const appImages = [
-  "/app_mockups/1.png",
-  "/app_mockups/2.png",
-  "/app_mockups/3.png",
-  "/app_mockups/5.png",
+  APP_IMAGE_MOCKUP1,
+  APP_IMAGE_MOCKUP2,
+  APP_IMAGE_MOCKUP3,
+  APP_IMAGE_MOCKUP5,
 ];
 
 const AppImagesSection = () => (

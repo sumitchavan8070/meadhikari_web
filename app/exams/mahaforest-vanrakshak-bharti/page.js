@@ -1,12 +1,13 @@
 import React from "react";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
 import Headercopy from "@/components/Headercopy";
-import { BASE_URL } from "@/utils/globalStrings";
+import { BASE_URL, LIVE_DOMAIN_URL } from "@/utils/globalStrings";
 import OfferStrip from "@/components/OfferStrip";
 import VanrakshakLandingPage from "./VanrakshakLandingPage";
 
 // Hardcoded production URL for SEO
-const PRODUCTION_URL = "https://www.meadhikari.com";
+const PRODUCTION_URL = LIVE_DOMAIN_URL;
+const CANONICAL_URL = `${PRODUCTION_URL}/exams/mahaforest-vanrakshak-bharti`;
 
 // Define metadata for SEO
 export const metadata = {
@@ -17,7 +18,9 @@ export const metadata = {
   keywords:
     "vanrakshak bharti 2025 ,vanrakshak, maharashtra vanrakshak bharti, vanrakshak bharti maharashtra, vanrakshak bharti syllabus, maha vanrakshak bharti syllabus, vanrakshak bharti paper pattern,  vanrakshak bharti marathi syllabus, vanrakshak bharti questions, vanrakshak bharti subject, vanrakshak bharti syllabus in marathi, vanrakshak bharti syllabus in marathi pdf, vanrakshak bharti papers",
   robots: "index, follow",
-  canonical: `${PRODUCTION_URL}/exams/mahaforest-vanrakshak-bharti`, // Canonical URL
+  alternates: {
+    canonical: CANONICAL_URL,
+  },
 };
 
 // Hardcoded category ID

@@ -58,7 +58,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="canonical" href="https://www.meadhikari.com" />
+        {/* <link rel="canonical" href="https://www.meadhikari.com" /> */}
 
         {/* Google Analytics Script */}
         {/* <Script

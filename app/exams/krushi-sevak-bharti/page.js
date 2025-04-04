@@ -1,12 +1,13 @@
 import React from "react";
-import Footer from "@/components/Footer"; // Assuming you have a Footer component
+import Footer from "@/components/Footer";
 import Headercopy from "@/components/Headercopy";
-import { BASE_URL } from "@/utils/globalStrings";
+import { BASE_URL, LIVE_DOMAIN_URL } from "@/utils/globalStrings";
 import OfferStrip from "@/components/OfferStrip";
 import KrushisevakLandingPage from "./KrushisevakLandingPage";
 
 // Hardcoded production URL for SEO
-const PRODUCTION_URL = "https://www.meadhikari.com";
+const PRODUCTION_URL = LIVE_DOMAIN_URL;
+const CANONICAL_URL = `${PRODUCTION_URL}/exams/krushi-sevak-bharti`;
 
 // Define metadata for SEO
 export const metadata = {
@@ -17,27 +18,22 @@ export const metadata = {
   keywords:
     "krushi sevak bharti 2025 ,krushi sevak, maharashtra krushi sevak bharti, krushi sevak bharti maharashtra, krushi sevak bharti syllabus, maha krushi sevak bharti syllabus, krushi sevak bharti paper pattern, krushi sevak bharti marathi syllabus, krushi sevak bharti questions, krushi sevak bharti subject, krushi sevak bharti syllabus in marathi, krushi sevak bharti syllabus in marathi pdf, krushi sevak bharti papers",
   robots: "index, follow",
-  canonical: `${PRODUCTION_URL}/exams/krushi-sevak-bharti`,
+  alternates: {
+    canonical: CANONICAL_URL,
+  },
 };
 
 // Hardcoded category ID
 const CATEGORY_ID = "67c5383e1dd9afe5ab1cc138";
 
-// Fetch data directly in the component using async/await
 async function fetchPapers() {
   try {
-    // Fetch papers for the hardcoded category ID
     const response = await fetch(`${BASE_URL}/papers/web/${CATEGORY_ID}`);
-    if (!response.ok) {
-      throw new Error("Failed to fetch papers");
-    }
+    if (!response.ok) throw new Error("Failed to fetch papers");
     const papersMetadata = await response.json();
-
-    // Sort papers by QPYear in descending order
     const sortedPapers = papersMetadata.sort((a, b) => b.QPYear - a.QPYear);
 
-    // Create questionsData array
-    const questionsData = sortedPapers.map((paper) => ({
+    return sortedPapers.map((paper) => ({
       title: paper.questionPaperName || paper.subCatName,
       time: 60,
       marks: paper.questionsLength,
@@ -47,8 +43,6 @@ async function fetchPapers() {
       live: paper.QPYear === new Date().getFullYear().toString(),
       paper: paper,
     }));
-
-    return questionsData;
   } catch (error) {
     console.error("Error fetching data:", error);
     return [];
@@ -56,7 +50,6 @@ async function fetchPapers() {
 }
 
 export default async function Page() {
-  // Fetch data server-side
   const questionsData = await fetchPapers();
 
   return (

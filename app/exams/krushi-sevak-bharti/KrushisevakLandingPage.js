@@ -1,10 +1,15 @@
-"use client"; // Mark this as a Client Component
+"use client";
 
 import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import QuizCard from "@/app/previous-year-paper/components/QuizCard";
 import { useAuth } from "@/Context/AuthContext";
-import { BASE_URL } from "@/utils/globalStrings";
+import {
+  BASE_URL,
+  FREE_QUIZ_NUMBER,
+  QUIZ_BUTTON_NAME_WHEN_ACTIVE_SUBCRIPTION,
+  QUIZ_BUTTON_NAME_WHEN_NO_SUBCRIPTION,
+} from "@/utils/globalStrings";
 import SubscriptionPopup from "@/app/previous-year-paper/components/SubscriptionPopup";
 import LoginPopup from "@/components/LoginPopup";
 import axios from "axios";
@@ -23,8 +28,6 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false); // Login modal state
   const [loadingCard, setLoadingCard] = useState(null); // Loading state for quiz cards
   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false); // Subscription popup state
-  const FREE_QUIZ_NUMBER = 2; // Number of free quizzes available
-
   // State to store enriched data with random attempted counts
   const [enrichedQuestionsData, setEnrichedQuestionsData] = useState([]);
 
@@ -271,8 +274,8 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
                       loadingCard === qIndex
                         ? "Loading..."
                         : qIndex < FREE_QUIZ_NUMBER || isSubscriptionActive
-                        ? "Start Test"
-                        : "Start Test 🔐"
+                        ? QUIZ_BUTTON_NAME_WHEN_ACTIVE_SUBCRIPTION
+                        : QUIZ_BUTTON_NAME_WHEN_NO_SUBCRIPTION
                     }
                     free={quiz.free}
                     live={quiz.live}

@@ -1,54 +1,15 @@
-// "use client";
-
-// import { useRouter } from "next/navigation"; // Import useRouter
-
-// const HeroSection = () => {
-//   const router = useRouter(); // Initialize useRouter hook
-
-//   const handleClick = () => {
-//     router.push("/previous-year-paper"); // Navigate to /paper-landing
-//   };
-
-//   return (
-//     <div className="relative font-[sans-serif]">
-//       {/* Background Image with adjusted opacity */}
-//       <img
-//         src="https://readymadeui.com/cardImg.webp"
-//         alt="Banner Image"
-//         className="absolute inset-0 w-full h-full object-cover z-0 opacity-100" // Adjust opacity here
-//       />
-//       {/* Content Overlay */}
-//       <div className="relative z-10 flex flex-col justify-center items-center text-center p-6 py-12">
-//         <h2 className="text-white md:text-5xl text-3xl font-extrabold mb-6 leading-tight">
-//           Solve Unlimited Previous Year{" "}
-//           <span className="text-yellow-500">Question Papers</span>
-//         </h2>
-//         <p className="text-lg text-center text-gray-200 mb-8">
-//           Access a vast collection of previous year question papers, complete
-//           with solutions, to enhance your exam preparation. Practice at your own
-//           pace and solve as many papers as you need to excel.
-//         </p>
-//         <button
-//           onClick={handleClick} // Use handleClick to navigate
-//           className="mt-6 text-base font-semibold py-2.5 px-6 border-2 border-yellow-600 hover:border-yellow-400 bg-transparent text-yellow-500 rounded-lg transition duration-300 ease-in-out transform hover:scale-105"
-//         >
-//           Solve Papers
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default HeroSection;
 "use client";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaSpinner } from "react-icons/fa";
+import { useState } from "react";
 
 const HeroSection = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleClick = () => {
+    setIsLoading(true);
     router.push("/previous-year-paper");
   };
 
@@ -86,13 +47,25 @@ const HeroSection = () => {
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
             <button
               onClick={handleClick}
-              className="group relative overflow-hidden px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300"
+              disabled={isLoading}
+              className="group relative overflow-hidden px-8 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 disabled:opacity-80 disabled:cursor-not-allowed"
             >
               <span className="relative z-10 flex items-center gap-2">
-                Start Solving Now
-                <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+                {isLoading ? (
+                  <>
+                    Loading...
+                    <FaSpinner className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Start Solving Now
+                    <FaArrowRight className="transition-transform group-hover:translate-x-1" />
+                  </>
+                )}
               </span>
-              <span className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              {!isLoading && (
+                <span className="absolute inset-0 bg-gradient-to-r from-yellow-600 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              )}
             </button>
           </motion.div>
         </motion.div>

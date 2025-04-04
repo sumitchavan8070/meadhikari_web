@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import QuizCard from "@/app/previous-year-paper/components/QuizCard";
 import { useAuth } from "@/Context/AuthContext";
-import { BASE_URL } from "@/utils/globalStrings";
+import { BASE_URL, FREE_QUIZ_NUMBER } from "@/utils/globalStrings";
 import SubscriptionPopup from "@/app/previous-year-paper/components/SubscriptionPopup";
 import LoginPopup from "@/components/LoginPopup";
 import axios from "axios";
@@ -23,7 +23,6 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
   const [isLoginOpen, setIsLoginOpen] = useState(false); // Login modal state
   const [loadingCard, setLoadingCard] = useState(null); // Loading state for quiz cards
   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false); // Subscription popup state
-  const FREE_QUIZ_NUMBER = 2; // Number of free quizzes available
 
   // State to store enriched data with random attempted counts
   const [enrichedQuestionsData, setEnrichedQuestionsData] = useState([]);
