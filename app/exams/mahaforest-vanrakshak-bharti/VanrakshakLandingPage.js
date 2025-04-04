@@ -15,7 +15,7 @@ import LogoSlider from "@/components/LogoSlider";
 
 const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
   const { user } = useAuth();
-  const { setQuestions } = useQuestions(); // Use the QuestionsContext
+  const { updatePaperMeta, setQuestions } = useQuestions(); // Use the QuestionsContext
   const router = useRouter();
 
   const [isGridView, setIsGridView] = useState(true); // Toggle between grid and list view
@@ -96,34 +96,49 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
     });
   };
 
-  // Handle quiz card button click
-  const handleStartTest = async (catID, subCatId, yearId, cardIndex) => {
+  const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
     if (!user) {
-      setIsLoginOpen(true); // Open login modal if the user is not logged in
+      setIsLoginOpen(true);
       return;
     }
 
-    setLoadingCard(cardIndex); // Set loading state for the clicked card
+    setLoadingCard(cardIndex);
 
     try {
       if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
-        const questionsResponse = await axios.get(
-          `${BASE_URL}/papers/${catID}/${subCatId}/${yearId}`
+        // First, fetch all categories
+        const categoriesResponse = await axios.get(
+          `${BASE_URL}/exam-categories/get-all-exam-category`
+        );
+        const allCategories = categoriesResponse.data;
+
+        // Find the specific category by ID
+        const categoryDetail = allCategories.find((cat) => cat._id === catID);
+
+        // Then proceed with your existing paper fetch
+        const { data } = await axios.get(
+          `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
         );
 
-        // Set the fetched questions in the global context
-        setQuestions(questionsResponse.data.questions);
+        setQuestions(data.questions);
+        updatePaperMeta({
+          name: paper?.title,
+          logo: categoryDetail.image,
+          year: paper?.paper?.QPYear,
+        });
 
-        // Redirect to the test page
-        router.push(`/test`);
+        router.push("/test");
       } else {
-        setIsSubscriptionPopupOpen(true); // Open subscription popup if the quiz is locked
+        setIsSubscriptionPopupOpen(true);
       }
     } catch (error) {
-      console.error("Error fetching questions:", error);
-      alert("Failed to fetch questions. Please try again later.");
+      console.error("Fetch error:", error);
+      updatePaperMeta({
+        name: "Error Loading Paper",
+        logo: "/default-error-logo.png",
+      });
     } finally {
-      setLoadingCard(null); // Reset loading state
+      setLoadingCard(null);
     }
   };
 
@@ -266,7 +281,8 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
                         quiz.paper.catID,
                         quiz.paper.subCatId,
                         quiz.paper.yearId,
-                        qIndex
+                        qIndex,
+                        quiz
                       )
                     }
                     paper={quiz.paper}
