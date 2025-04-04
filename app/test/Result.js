@@ -5,12 +5,14 @@ import { toPng } from "html-to-image";
 import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
 import { FaSun, FaMoon, FaHome, FaDownload, FaTimes } from "react-icons/fa";
+import { useQuestions } from "@/Context/QuestionsContext";
 
 const Result = ({ results, formatTime, questions, onClose }) => {
   const router = useRouter();
   const resultRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
+  const { paperMeta, isLoading } = useQuestions();
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -157,17 +159,51 @@ const Result = ({ results, formatTime, questions, onClose }) => {
         </div>
 
         {/* Header */}
-        <div className="text-center mb-4 sm:mb-6">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">
-            Meadhikari Test Results
-          </h2>
-          <p
-            className={`mt-1 sm:mt-2 text-xs sm:text-sm md:text-base ${
-              isDarkTheme ? "text-gray-400" : "text-gray-600"
-            }`}
-          >
-            Empowering your preparation, one test at a time.
-          </p>
+
+        <div className="flex items-center flex-1 min-w-0">
+          {/* Responsive Logo */}
+          {isLoading ? (
+            <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 animate-pulse bg-gray-300 dark:bg-gray-600 rounded-full mr-3" />
+          ) : paperMeta.logo ? (
+            <img
+              src={paperMeta.logo}
+              alt="Paper Logo"
+              className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
+              onError={(e) => {
+                e.target.src = "/images/logo.png"; // Fallback logo
+                e.target.className =
+                  "h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all";
+              }}
+            />
+          ) : (
+            <img
+              src="/images/logo.png" // Default local logo
+              alt="Default Logo"
+              className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
+            />
+          )}
+
+          {/* Title Section - No truncation on desktop */}
+          <div className="flex flex-col min-w-0">
+            <h1
+              className={`text-lg md:text-xl font-bold ${
+                isDarkTheme ? "text-blue-300" : "text-blue-600"
+              } truncate md:whitespace-normal md:overflow-visible`}
+            >
+              {paperMeta.name || "Meadhikari Live Test"}
+            </h1>
+            {(paperMeta.year || paperMeta.category) && (
+              <div
+                className={`text-xs md:text-sm ${
+                  isDarkTheme ? "text-blue-200/80" : "text-blue-600/80"
+                } truncate md:whitespace-normal md:overflow-visible`}
+              >
+                {paperMeta.year && <span>{paperMeta.year}</span>}
+                {paperMeta.year && paperMeta.category && <span> | </span>}
+                {paperMeta.category && <span>{paperMeta.category}</span>}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Performance Summary */}
