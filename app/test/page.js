@@ -14,7 +14,6 @@ import { useQuestions } from "@/Context/QuestionsContext";
 const Page = () => {
   const { questions } = useQuestions();
   const router = useRouter();
-  //...
 
   useEffect(() => {
     if (questions.length === 0) {
@@ -99,16 +98,6 @@ const Page = () => {
         paused={paused}
       />
       <main className="flex-1 flex flex-col md:flex-row overflow-hidden">
-        <Sidebar
-          totalQuestions={questions.length}
-          currentQuestion={currentQuestion}
-          markedQuestions={markedQuestions}
-          selectedAnswers={selectedAnswers}
-          navigateToQuestion={setCurrentQuestion}
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-          isDarkMode={isDarkMode}
-        />
         <QuestionPanel
           currentQuestion={currentQuestion}
           questions={questions}
@@ -126,6 +115,16 @@ const Page = () => {
             setCurrentQuestion((prev) => (prev > 0 ? prev - 1 : prev))
           }
         />
+        <Sidebar
+          totalQuestions={questions.length}
+          currentQuestion={currentQuestion}
+          markedQuestions={markedQuestions}
+          selectedAnswers={selectedAnswers}
+          navigateToQuestion={setCurrentQuestion}
+          isSidebarOpen={isSidebarOpen}
+          setIsSidebarOpen={setIsSidebarOpen}
+          isDarkMode={isDarkMode}
+        />
       </main>
       <StatsRow
         totalQuestions={questions.length}
@@ -133,18 +132,7 @@ const Page = () => {
         markedQuestions={markedQuestions}
         isDarkMode={isDarkMode}
       />
-      {/* <FooterControls
-        handleMarkForReview={() =>
-          setMarkedQuestions((prev) =>
-            prev.includes(currentQuestion)
-              ? prev.filter((q) => q !== currentQuestion)
-              : [...prev, currentQuestion]
-          )
-        }
-        showEndModal={showEndModal}
-        setShowEndModal={setShowEndModal}
-        isDarkMode={isDarkMode}
-      /> */}
+
       <FooterControls
         handleMarkForReview={() =>
           setMarkedQuestions((prev) =>

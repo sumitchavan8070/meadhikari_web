@@ -1,188 +1,3 @@
-// import { useState } from "react";
-
-// const QuestionPanel = ({
-//   currentQuestion,
-//   questions,
-//   selectedAnswers,
-//   handleOptionSelect,
-//   isDarkMode,
-//   handleNextQuestion,
-//   handlePrevQuestion,
-// }) => {
-//   const [fontSize, setFontSize] = useState(20); // Default font size in pixels
-
-//   const baseUrl = "https://file-hosting-app.vercel.app"; // Your base URL
-
-//   const getUpdatedContentHtml = (html) => {
-//     if (!html) return "";
-
-//     const baseUrl = "https://file-hosting-app.vercel.app"; // Ensure this is correct
-
-//     return (
-//       html
-//         // Ensure images have the correct base URL if needed **without adding styles**
-//         .replace(/<img\s+src="([^"]+)"(.*?)>/g, (match, path, rest) => {
-//           if (path.startsWith("http") || path.startsWith("data:image")) {
-//             return `<img src="${path}" ${rest}>`; // Keep original attributes
-//           }
-//           return `<img src="${baseUrl}${path}" ${rest}>`; // Keep original attributes
-//         })
-
-//         // Fix table styles
-//         .replace(
-//           /<table/g,
-//           '<table style="width: 100%; border-collapse: collapse; margin-top: 10px;"'
-//         )
-//         .replace(
-//           /<th/g,
-//           '<th style="border: 1px solid #ddd; padding: 8px; text-align: left; background-color: #f4f4f4; font-weight: bold;"'
-//         )
-//         .replace(
-//           /<td/g,
-//           '<td style="border: 1px solid #ddd; padding: 8px; text-align: left;"'
-//         )
-//         .replace(/<tr/g, '<tr style="border-bottom: 1px solid #ddd;"')
-//     );
-//   };
-
-//   // Handlers for font size adjustment
-//   const increaseFontSize = () => {
-//     setFontSize((prevFontSize) => Math.min(prevFontSize + 2, 24)); // Max font size is 24px
-//   };
-
-//   const decreaseFontSize = () => {
-//     setFontSize((prevFontSize) => Math.max(prevFontSize - 2, 12)); // Min font size is 12px
-//   };
-
-//   const questionContent = questions[currentQuestion]?.question;
-
-//   return (
-//     // <section
-//     //   className={`flex-1 p-4 overflow-y-auto ${
-//     //     isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
-//     //   } flex flex-col`}
-//     // >
-//     <section
-//       className={`flex-1 p-4 overflow-y-auto ${
-//         isDarkMode ? "bg-gray-900 text-white" : "bg-white text-black"
-//       } flex flex-col`}
-//       style={{ userSelect: "none" }}
-//       onContextMenu={(e) => e.preventDefault()}
-//       onCopy={(e) => e.preventDefault()}
-//     >
-//       {/* Header Section */}
-//       <div className="flex justify-between items-center mb-4">
-//         <h2 className="text-lg font-bold">Question {currentQuestion + 1}</h2>
-//         {/* Font Size Controls */}
-//         <div className="flex space-x-2">
-//           <button
-//             onClick={decreaseFontSize}
-//             className="bg-gray-500 text-white px-3 py-1 rounded-full hover:bg-gray-600"
-//           >
-//             -
-//           </button>
-//           <button
-//             onClick={increaseFontSize}
-//             className="bg-gray-500 text-white px-3 py-1 rounded-full hover:bg-gray-600"
-//           >
-//             +
-//           </button>
-//         </div>
-//       </div>
-
-//       {/* Question Text or HTML */}
-//       <div
-//         className="mb-4"
-//         style={{
-//           fontSize: `${fontSize}px`,
-//           whiteSpace: "pre-wrap", // Ensures spaces & newlines are respected
-//         }}
-//       >
-//         {/<[a-z][\s\S]*>/i.test(questionContent) ? (
-//           <div
-//             dangerouslySetInnerHTML={{
-//               __html: getUpdatedContentHtml(questionContent),
-//             }}
-//             style={{
-//               width: "100%",
-//             }}
-//           />
-//         ) : (
-//           questionContent?.split("\n").map((line, index) => (
-//             <p key={index} style={{ marginBottom: "8px" }}>
-//               {line}
-//             </p>
-//           ))
-//         )}
-//       </div>
-
-//       {/* Options List */}
-//       <ul className="mt-4 space-y-2">
-//         {["option1", "option2", "option3", "option4"].map(
-//           (optionKey, index) => {
-//             const optionContent = questions[currentQuestion]?.[optionKey];
-
-//             return (
-//               <li
-//                 key={index}
-//                 onClick={() => handleOptionSelect(index + 1)} // Store one-based index
-//                 className={`flex items-center space-x-2 cursor-pointer p-3 rounded-lg ${
-//                   isDarkMode
-//                     ? "hover:bg-gray-700 bg-gray-800"
-//                     : "hover:bg-gray-200 bg-gray-100"
-//                 }`}
-//                 style={{ fontSize: `${fontSize}px` }}
-//               >
-//                 <input
-//                   type="radio"
-//                   name={`answer-${currentQuestion}`}
-//                   id={`option-${currentQuestion}-${index}`}
-//                   checked={selectedAnswers[currentQuestion] === index + 1} // Match one-based index
-//                   onChange={() => handleOptionSelect(index + 1)}
-//                   className="w-5 h-5 text-blue-500 border-gray-300 focus:ring-blue-500"
-//                 />
-//                 <label
-//                   htmlFor={`option-${currentQuestion}-${index}`}
-//                   className="flex-1"
-//                 >
-//                   {/<[a-z][\s\S]*>/i.test(optionContent) ? (
-//                     <div
-//                       dangerouslySetInnerHTML={{
-//                         __html: getUpdatedContentHtml(optionContent),
-//                       }}
-//                     />
-//                   ) : (
-//                     <span>{optionContent}</span>
-//                   )}
-//                 </label>
-//               </li>
-//             );
-//           }
-//         )}
-//       </ul>
-
-//       {/* Navigation Buttons */}
-//       <div className="mt-auto flex justify-between">
-//         <button
-//           onClick={handlePrevQuestion}
-//           className="bg-gray-600 text-white px-4 py-2 rounded disabled:opacity-50"
-//           disabled={currentQuestion === 0}
-//         >
-//           Previous
-//         </button>
-//         <button
-//           onClick={handleNextQuestion}
-//           className="bg-blue-600 text-white px-4 py-2 rounded disabled:opacity-50"
-//           disabled={currentQuestion === questions.length - 1}
-//         >
-//           Next
-//         </button>
-//       </div>
-//     </section>
-//   );
-// };
-
-// export default QuestionPanel;
 "use client";
 import { useState } from "react";
 import { FaPlus, FaMinus, FaChevronLeft, FaChevronRight } from "react-icons/fa";
@@ -196,7 +11,7 @@ const QuestionPanel = ({
   handleNextQuestion,
   handlePrevQuestion,
 }) => {
-  const [fontSize, setFontSize] = useState(20); // Default font size in pixels
+  const [fontSize, setFontSize] = useState(20);
 
   const getUpdatedContentHtml = (html) => {
     if (!html) return "";
@@ -206,13 +21,13 @@ const QuestionPanel = ({
     return html
       .replace(/<img\s+src="([^"]+)"(.*?)>/g, (match, path, rest) => {
         if (path.startsWith("http") || path.startsWith("data:image")) {
-          return `<img src="${path}" ${rest}>`;
+          return `<img src="${path}" style="max-width: 100%; height: auto;" ${rest}>`;
         }
-        return `<img src="${baseUrl}${path}" ${rest}>`;
+        return `<img src="${baseUrl}${path}" style="max-width: 100%; height: auto;" ${rest}>`;
       })
       .replace(
         /<table/g,
-        `<table style="width: 100%; border-collapse: collapse; margin: 16px 0; ${
+        `<table style="width: 100%; border-collapse: collapse; margin: 12px 0; ${
           isDarkMode ? "border-color: #374151;" : "border-color: #e5e7eb;"
         }"`
       )
@@ -220,7 +35,7 @@ const QuestionPanel = ({
         /<th/g,
         `<th style="border: 1px solid ${
           isDarkMode ? "#374151" : "#e5e7eb"
-        }; padding: 8px; text-align: left; background-color: ${
+        }; padding: 6px; text-align: left; background-color: ${
           isDarkMode ? "#1f2937" : "#f3f4f6"
         }; font-weight: bold;"`
       )
@@ -228,7 +43,7 @@ const QuestionPanel = ({
         /<td/g,
         `<td style="border: 1px solid ${
           isDarkMode ? "#374151" : "#e5e7eb"
-        }; padding: 8px; text-align: left;"`
+        }; padding: 6px; text-align: left;"`
       );
   };
 
@@ -239,28 +54,45 @@ const QuestionPanel = ({
 
   return (
     <section
-      className={`flex-1 p-6 overflow-y-auto ${
-        isDarkMode
-          ? "bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100"
-          : "bg-gradient-to-b from-gray-50 to-white text-gray-800"
-      } flex flex-col`}
-      style={{ userSelect: "none" }}
-      onContextMenu={(e) => e.preventDefault()}
-      onCopy={(e) => e.preventDefault()}
+      className={`flex-1 p-4 overflow-y-auto flex flex-col ${
+        isDarkMode ? "bg-gray-800 text-gray-100" : "bg-white text-gray-800"
+      } custom-scrollbar`}
+      style={{
+        userSelect: "none",
+      }}
     >
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: ${isDarkMode ? "#1F2937" : "#F3F4F6"};
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: ${isDarkMode ? "#4B5563" : "#D1D5DB"};
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: ${isDarkMode ? "#6B7280" : "#9CA3AF"};
+        }
+      `}</style>
+
       {/* Header Section */}
-      <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-cyan-400">
-          Question {currentQuestion + 1}
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold">
+          Question {currentQuestion + 1} of {questions.length}
         </h2>
-        <div className="flex space-x-3">
+        <div className="flex space-x-2">
           <button
             onClick={decreaseFontSize}
             className={`p-2 rounded-full ${
               isDarkMode
-                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            } transition-all duration-200 shadow-sm`}
+                ? "bg-gray-700 text-gray-300 hover:bg-gray-600 focus:ring-2 focus:ring-blue-500"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-2 focus:ring-blue-400"
+            } transition-all duration-200`}
+            aria-label="Decrease font size"
           >
             <FaMinus className="w-3 h-3" />
           </button>
@@ -268,9 +100,10 @@ const QuestionPanel = ({
             onClick={increaseFontSize}
             className={`p-2 rounded-full ${
               isDarkMode
-                ? "bg-gray-700 text-gray-300 hover:bg-gray-600"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-            } transition-all duration-200 shadow-sm`}
+                ? "bg-gray-700 text-gray-300 hover:bg-gray-600 focus:ring-2 focus:ring-blue-500"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:ring-2 focus:ring-blue-400"
+            } transition-all duration-200`}
+            aria-label="Increase font size"
           >
             <FaPlus className="w-3 h-3" />
           </button>
@@ -279,13 +112,11 @@ const QuestionPanel = ({
 
       {/* Question Content */}
       <div
-        className="mb-6 p-4 rounded-lg"
+        className="mb-4 p-3 rounded-lg flex-1"
         style={{
           fontSize: `${fontSize}px`,
           whiteSpace: "pre-wrap",
-          background: isDarkMode
-            ? "rgba(31, 41, 55, 0.5)"
-            : "rgba(243, 244, 246, 0.5)",
+          background: "transparent", // Fixed: Transparent background
         }}
       >
         {/<[a-z][\s\S]*>/i.test(questionContent) ? (
@@ -296,7 +127,7 @@ const QuestionPanel = ({
           />
         ) : (
           questionContent?.split("\n").map((line, index) => (
-            <p key={index} className="mb-3 last:mb-0">
+            <p key={index} className="mb-2 last:mb-0">
               {line}
             </p>
           ))
@@ -304,7 +135,7 @@ const QuestionPanel = ({
       </div>
 
       {/* Options List */}
-      <ul className="mt-4 space-y-3 flex-1">
+      <ul className="space-y-2 mb-4">
         {["option1", "option2", "option3", "option4"].map(
           (optionKey, index) => {
             const optionContent = questions[currentQuestion]?.[optionKey];
@@ -314,19 +145,20 @@ const QuestionPanel = ({
               <li
                 key={index}
                 onClick={() => handleOptionSelect(index + 1)}
-                className={`flex items-start space-x-3 cursor-pointer p-4 rounded-xl transition-all duration-200 ${
+                className={`flex items-start space-x-2 cursor-pointer p-3 rounded-lg transition-all duration-200 ${
                   isSelected
                     ? isDarkMode
-                      ? "bg-blue-900/50 border border-blue-500"
-                      : "bg-blue-100/80 border border-blue-400"
+                      ? "bg-blue-900/50 border border-blue-500 focus:ring-2 focus:ring-blue-500"
+                      : "bg-blue-100/80 border border-blue-400 focus:ring-2 focus:ring-blue-400"
                     : isDarkMode
                     ? "bg-gray-800 hover:bg-gray-700 border border-gray-700"
-                    : "bg-gray-100 hover:bg-gray-200 border border-gray-200"
+                    : "bg-white hover:bg-gray-100 border border-gray-200" // Fixed: White background in light mode
                 }`}
                 style={{ fontSize: `${fontSize}px` }}
+                tabIndex={0}
               >
                 <div
-                  className={`flex items-center justify-center w-6 h-6 mt-0.5 rounded-full border ${
+                  className={`flex items-center justify-center w-5 h-5 mt-0.5 rounded-full border ${
                     isSelected
                       ? "bg-blue-500 border-blue-500"
                       : isDarkMode
@@ -335,7 +167,7 @@ const QuestionPanel = ({
                   }`}
                 >
                   {isSelected && (
-                    <div className="w-3 h-3 rounded-full bg-white"></div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-white"></div>
                   )}
                 </div>
                 <div className="flex-1">
@@ -355,8 +187,8 @@ const QuestionPanel = ({
         )}
       </ul>
 
-      {/* Navigation Buttons */}
-      <div className="mt-6 flex justify-between">
+      {/* Navigation Buttons - Bottom */}
+      <div className="sticky bottom-0 mt-6 flex justify-between bg-transparent mx-5">
         <button
           onClick={handlePrevQuestion}
           disabled={currentQuestion === 0}

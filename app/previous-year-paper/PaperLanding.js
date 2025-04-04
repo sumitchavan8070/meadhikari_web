@@ -285,7 +285,7 @@ const FREE_QUIZ_NUMBER = 2; // Number of free quizzes
 
 const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   const { user } = useAuth();
-  const { setQuestions } = useQuestions();
+  const { updatePaperMeta, setQuestions } = useQuestions();
   const router = useRouter();
 
   const [isGridView, setIsGridView] = useState(false);
@@ -348,7 +348,33 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
     });
   };
 
-  const handleStartTest = async (catID, subcatId, yearId, cardIndex) => {
+  // const handleStartTest = async (catID, subcatId, yearId, cardIndex) => {
+  //   if (!user) {
+  //     setIsLoginOpen(true);
+  //     return;
+  //   }
+
+  //   setLoadingCard(cardIndex);
+
+  //   try {
+  //     if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
+  //       const questionsResponse = await axios.get(
+  //         `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
+  //       );
+
+  //       setQuestions(questionsResponse.data.questions);
+  //       router.push(`/test`);
+  //     } else {
+  //       setIsSubscriptionPopupOpen(true);
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching questions:", error);
+  //     alert("Failed to fetch questions. Please try again later.");
+  //   } finally {
+  //     setLoadingCard(null);
+  //   }
+  // };
+  const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
     if (!user) {
       setIsLoginOpen(true);
       return;
@@ -358,23 +384,30 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
 
     try {
       if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
-        const questionsResponse = await axios.get(
+        const { data } = await axios.get(
           `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
         );
+        setQuestions(data.questions);
+        updatePaperMeta({
+          name: paper?.title,
+          logo: categoriesData[0].image,
+          year: paper?.paper?.QPYear,
+        });
 
-        setQuestions(questionsResponse.data.questions);
-        router.push(`/test`);
+        router.push("/test");
       } else {
         setIsSubscriptionPopupOpen(true);
       }
     } catch (error) {
-      console.error("Error fetching questions:", error);
-      alert("Failed to fetch questions. Please try again later.");
+      console.error("Fetch error:", error);
+      updatePaperMeta({
+        name: "Error Loading Paper",
+        logo: "/default-error-logo.png",
+      });
     } finally {
       setLoadingCard(null);
     }
   };
-
   return (
     <div className="container mx-auto px-4 py-8 md:px-6 lg:px-8">
       {categoriesData.map((category, categoryIndex) => (
@@ -510,7 +543,8 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
                         quiz.paper.catID,
                         quiz.paper.subCatId,
                         quiz.paper.yearId,
-                        qIndex
+                        qIndex,
+                        quiz
                       )
                     }
                     paper={quiz.paper}

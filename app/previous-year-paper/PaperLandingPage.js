@@ -94,45 +94,6 @@ const PaperLandingPage = ({ categoriesData }) => {
         <OfferStrip />
       </div>
 
-      {/* <div className="bg-gradient-to-r from-blue-500 to-indigo-600 py-6 shadow-md sticky top-0 z-10">
-        <div className="container mx-auto px-4 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-          {loading
-            ? [...Array(6)].map((_, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col items-center justify-center p-4 bg-gray-200 rounded-lg animate-pulse"
-                >
-                  <div className="w-16 h-16 bg-gray-300 rounded-full mb-4"></div>
-                  <div className="h-4 w-3/4 bg-gray-300 rounded"></div>
-                </div>
-              ))
-            : categoriesData.map((category, index) => (
-                <button
-                  key={index}
-                  onClick={() => {
-                    if (categoryRefs.current[index]) {
-                      categoryRefs.current[index].scrollIntoView({
-                        behavior: "smooth",
-                      });
-                    }
-                  }}
-                  className="flex flex-col items-center justify-center bg-white p-4 rounded-lg shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300 ease-in-out"
-                >
-                  <div className="flex items-center justify-center mb-2">
-                    <img
-                      src={category.image}
-                      alt={category.name}
-                      className="w-16 h-16 object-contain"
-                    />
-                  </div>
-                  <span className="text-lg font-semibold text-gray-800 text-center">
-                    {category.shortName}
-                  </span>
-                </button>
-              ))}
-        </div>
-      </div> */}
-
       <div className="relative bg-[linear-gradient(107.12deg,_#E6F3FF_4.81%,_#CCE7FF_96.97%)] py-12 shadow-md sticky top-0 z-10 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.2)_0%,_transparent_70%)] animate-pulse opacity-50"></div>

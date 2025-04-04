@@ -39,6 +39,8 @@ const PricePage = () => {
     if (user?._id) {
       try {
         const response = await axios.get(`${BASE_URL}/users/${user._id}`);
+        console.log("------------", response);
+
         const {
           isSubscriptionActive,
           subscriptionPlanID,
