@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { STARTING_PRICE } from "@/utils/globalStrings";
 
 const HeroSection = () => {
   const router = useRouter();
@@ -30,7 +31,7 @@ const HeroSection = () => {
             className="bg-gradient-to-r from-blue-700 to-indigo-600 hover:from-indigo-600 hover:to-blue-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition duration-300 transform hover:scale-105"
             onClick={() => router.push("/pricing")}
           >
-            Get Started @ ₹20/Day 🔥
+            {STARTING_PRICE}
           </button>
         </div>
       </div>

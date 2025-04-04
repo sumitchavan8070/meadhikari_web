@@ -1,7 +1,4 @@
-// import React from "react";
-
 import OurPresenceSection from "@/app/about/OurPresenceSection";
-import ConversionStripFirst from "@/components/ConversionStripFirst";
 import ConversionStripSecond from "@/components/ConversionStripSecound";
 import OfferBannerSecond from "@/components/OfferBannerSecond";
 

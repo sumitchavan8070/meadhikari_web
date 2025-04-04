@@ -35,29 +35,6 @@ const PricePage = () => {
   const [availableCoupons, setAvailableCoupons] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  // const updateUserDetails = async () => {
-  //   if (user?._id) {
-  //     try {
-  //       const response = await axios.get(`${BASE_URL}/users/${user._id}`);
-  //       console.log("------------", response);
-
-  //       const {
-  //         isSubscriptionActive,
-  //         subscriptionPlanID,
-  //         subscriptionStartDate,
-  //         subscriptionExpiryDate,
-  //       } = response.data.user;
-
-  //       setIsSubscriptionActive(isSubscriptionActive);
-  //       setSubscriptionPlanID(subscriptionPlanID);
-  //       setSubscriptionStartDate(subscriptionStartDate);
-  //       setSubscriptionExpiryDate(subscriptionExpiryDate);
-  //     } catch (error) {
-  //       console.error("Error fetching user details", error);
-  //     }
-  //   }
-  // };
-
   const updateUserDetails = async () => {
     if (user?._id) {
       try {
@@ -118,36 +95,6 @@ const PricePage = () => {
       setError("Failed to load available coupons");
     }
   };
-
-  // useEffect(() => {
-  //   const fetchPlans = async () => {
-  //     try {
-  //       const response = await axios.get(`${BASE_URL}/plans/get-all`);
-  //       setPlans(response.data);
-  //     } catch (error) {
-  //       setError("Failed to load plans. Please try again later.");
-  //     } finally {
-  //       setIsFetchingPlans(false);
-  //     }
-  //   };
-
-  //   const loadRazorpayScript = () => {
-  //     const script = document.createElement("script");
-  //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
-  //     script.onload = () => setRazorpayLoaded(true);
-  //     script.onerror = () =>
-  //       setError("Failed to load Razorpay. Please try again.");
-  //     document.body.appendChild(script);
-  //   };
-
-  //   fetchPlans();
-  //   fetchAvailableCoupons();
-  //   loadRazorpayScript();
-
-  //   if (user?._id) {
-  //     updateUserDetails();
-  //   }
-  // }, [user]);
 
   const handleCouponChange = (e) => setCouponCode(e.target.value);
 
@@ -310,16 +257,6 @@ const PricePage = () => {
 
   return (
     <section className="bg-gradient-to-b from-[#F5F9FF] to-[#E6F0FF] py-12 md:py-20 px-4 sm:px-6 relative">
-      {/* {showConfetti && (
-        <Confetti
-          width={width}
-          height={height}
-          recycle={false}
-          numberOfPieces={2000}
-          gravity={0.2}
-        />
-      )} */}
-
       {showConfetti && (
         <Confetti
           width={width}

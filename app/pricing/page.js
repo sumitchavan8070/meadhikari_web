@@ -1,11 +1,7 @@
-import React from "react";
-import PricePage from "./PricePage";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
 import Headercopy from "@/components/Headercopy";
-import ContactUs from "./ContactUs";
-import { contactInfo } from "../contact/contactInfo";
-import OurPresenceSection from "../about/OurPresenceSection";
 import OfferStrip from "@/components/OfferStrip";
+import PricePage from "./PricePage";
 
 export const metadata = {
   title: "Pricing",

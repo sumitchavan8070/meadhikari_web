@@ -3,15 +3,21 @@ import Headercopy from "@/components/Headercopy";
 import Footer from "@/components/Footer";
 import PaperLandingPage from "./PaperLandingPage"; // Import the PaperLandingPage component
 import axios from "axios";
-import { BASE_URL } from "@/utils/globalStrings";
+import { BASE_URL, LIVE_DOMAIN_URL } from "@/utils/globalStrings";
+
+const PRODUCTION_URL = LIVE_DOMAIN_URL;
+const CANONICAL_URL = `${PRODUCTION_URL}/previous-year-paper`;
 
 export const metadata = {
   title: "Previous Year Papers | MPSC, Talathi, Police Bharti Papers",
   description:
     "Find MPSC previous year papers, Talathi papers, Police Bharti papers, and more. Browse various categories and get access to the latest exam papers.",
   keywords:
-    "MPSC, MPSC previous year paper, Talathi papers, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams",
+    "MPSC, MPSC previous year paper, Talathi papers, Police Bharti papers, exam papers, previous year papers, government exams, question papers, MPSC exams, Talathi exams, Police Bharti exams ,dmer previous year papers, vanrakshak previous year papers, krushi sevak previous year papers , mpsc previous year papers, maharastra police bharti previous year papers, tait previous year papers, maha police bharti previous year papers , group b previous year papers, group c previous years papers, state service previous year papers, mpsc previous year papers, talathi previous year papers, pcmc previous year papers, lipik previous year papers",
   robots: "index, follow", // Allow search engines to index and follow the links
+  alternates: {
+    canonical: CANONICAL_URL,
+  },
 };
 async function fetchCategoriesData() {
   try {

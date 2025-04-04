@@ -25,3 +25,4 @@ export const BLOG_ITEMS_PER_PAGE = 6;
 export const FREE_QUIZ_NUMBER = 2;
 export const QUIZ_BUTTON_NAME_WHEN_ACTIVE_SUBCRIPTION = "Start Test";
 export const QUIZ_BUTTON_NAME_WHEN_NO_SUBCRIPTION = "Start Test 🔐";
+export const STARTING_PRICE = "Get Started @ ₹20/Day 🔥";
