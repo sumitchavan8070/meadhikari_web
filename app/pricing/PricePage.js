@@ -35,12 +35,33 @@ const PricePage = () => {
   const [availableCoupons, setAvailableCoupons] = useState([]);
   const [showConfetti, setShowConfetti] = useState(false);
 
+  // const updateUserDetails = async () => {
+  //   if (user?._id) {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/users/${user._id}`);
+  //       console.log("------------", response);
+
+  //       const {
+  //         isSubscriptionActive,
+  //         subscriptionPlanID,
+  //         subscriptionStartDate,
+  //         subscriptionExpiryDate,
+  //       } = response.data.user;
+
+  //       setIsSubscriptionActive(isSubscriptionActive);
+  //       setSubscriptionPlanID(subscriptionPlanID);
+  //       setSubscriptionStartDate(subscriptionStartDate);
+  //       setSubscriptionExpiryDate(subscriptionExpiryDate);
+  //     } catch (error) {
+  //       console.error("Error fetching user details", error);
+  //     }
+  //   }
+  // };
+
   const updateUserDetails = async () => {
     if (user?._id) {
       try {
-        const response = await axios.get(`${BASE_URL}/users/${user._id}`);
-        console.log("------------", response);
-
+        const response = await axios.get(`${BASE_URL}/${user._id}`);
         const {
           isSubscriptionActive,
           subscriptionPlanID,
@@ -55,16 +76,6 @@ const PricePage = () => {
       } catch (error) {
         console.error("Error fetching user details", error);
       }
-    }
-  };
-
-  const fetchAvailableCoupons = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/coupons/all`);
-      setAvailableCoupons(response.data);
-    } catch (error) {
-      console.error("Error fetching coupons", error);
-      setError("Failed to load available coupons");
     }
   };
 
@@ -90,13 +101,53 @@ const PricePage = () => {
     };
 
     fetchPlans();
-    fetchAvailableCoupons();
     loadRazorpayScript();
+    fetchAvailableCoupons();
 
     if (user?._id) {
       updateUserDetails();
     }
   }, [user]);
+
+  const fetchAvailableCoupons = async () => {
+    try {
+      const response = await axios.get(`${BASE_URL}/coupons/all`);
+      setAvailableCoupons(response.data);
+    } catch (error) {
+      console.error("Error fetching coupons", error);
+      setError("Failed to load available coupons");
+    }
+  };
+
+  // useEffect(() => {
+  //   const fetchPlans = async () => {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/plans/get-all`);
+  //       setPlans(response.data);
+  //     } catch (error) {
+  //       setError("Failed to load plans. Please try again later.");
+  //     } finally {
+  //       setIsFetchingPlans(false);
+  //     }
+  //   };
+
+  //   const loadRazorpayScript = () => {
+  //     const script = document.createElement("script");
+  //     script.src = "https://checkout.razorpay.com/v1/checkout.js";
+  //     script.onload = () => setRazorpayLoaded(true);
+  //     script.onerror = () =>
+  //       setError("Failed to load Razorpay. Please try again.");
+  //     document.body.appendChild(script);
+  //   };
+
+  //   fetchPlans();
+  //   fetchAvailableCoupons();
+  //   loadRazorpayScript();
+
+  //   if (user?._id) {
+  //     updateUserDetails();
+  //   }
+  // }, [user]);
 
   const handleCouponChange = (e) => setCouponCode(e.target.value);
 
@@ -579,7 +630,7 @@ const PricePage = () => {
                   >
                     {isSubscriptionActive ? (
                       <span className="flex items-center justify-center">
-                        <FaLock className="mr-2" /> Active
+                        <FaLock className="mr-2" /> Subscribed
                       </span>
                     ) : (
                       "Choose Plan"
