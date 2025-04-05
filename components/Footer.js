@@ -1,8 +1,5 @@
 "use client";
-import { Context } from "@/Context/Context";
 import Image from "next/image";
-import Link from "next/link";
-import { useContext } from "react";
 
 const Footer = () => {
   // Define color variables

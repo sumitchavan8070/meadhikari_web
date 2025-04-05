@@ -44,7 +44,7 @@ const Header = ({
             <img
               src={paperMeta.logo}
               alt="Paper Logo"
-              className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
+              className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14  object-fit mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
               onError={(e) => {
                 e.target.src = "/images/logo.png"; // Fallback logo
                 e.target.className =

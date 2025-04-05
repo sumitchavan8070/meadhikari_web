@@ -1,4 +1,5 @@
 "use client";
+import { CONVERSION_SECOUND_LITE_MOBILE } from "@/utils/globalStrings";
 import { useRouter, usePathname } from "next/navigation";
 
 const ConversionStripSecond = () => {
@@ -28,7 +29,7 @@ const ConversionStripSecond = () => {
           {/* Images */}
           <div className="w-full max-w-md">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MobileDashWhite.png"
+              src={CONVERSION_SECOUND_LITE_MOBILE}
               alt="Conversion Image"
               className="w-full h-auto rounded-lg shadow-lg hover:shadow-xl transition duration-200"
             />

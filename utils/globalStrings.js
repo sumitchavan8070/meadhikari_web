@@ -26,3 +26,10 @@ export const FREE_QUIZ_NUMBER = 2;
 export const QUIZ_BUTTON_NAME_WHEN_ACTIVE_SUBCRIPTION = "Start Test";
 export const QUIZ_BUTTON_NAME_WHEN_NO_SUBCRIPTION = "Start Test 🔐";
 export const STARTING_PRICE = "Get Started @ ₹20/Day 🔥";
+
+//Conversion Strip
+export const CONVERSION_FIRST_LITE_IMAGE_WEB =
+  "/images/Meadhikari_Web_Lite.png";
+export const CONVERSION_FIRST_DARK_IMAGE_WEB =
+  "/images/Meadhikari_Web_Dark.png";
+export const CONVERSION_SECOUND_LITE_MOBILE = "/images/Meadhikari_Mob_Lite.png";

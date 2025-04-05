@@ -1,3 +1,9 @@
+import {
+  CONVERSION_FIRST_DARK_IMAGE_WEB,
+  CONVERSION_FIRST_LITE_IMAGE_WEB,
+  STARTING_PRICE,
+} from "@/utils/globalStrings";
+
 const ConversionStripFirst = () => {
   return (
     <div className=" bg-[linear-gradient(107.12deg,_#FFFFFF_4.81%,_#BFE0FF_96.97%)]  py-20 md:py-28 relative overflow-hidden my-10">
@@ -16,13 +22,13 @@ const ConversionStripFirst = () => {
               href="/pricing"
               className="bg-white text-gray-900 py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition duration-200"
             >
-              Starting @ 20 ₹/Day🔥
+              {STARTING_PRICE}
             </a>
           </div>
 
           <div className="lg:w-1/2 lg:ml-12 flex justify-center">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariDashDark.png"
+              src={CONVERSION_FIRST_LITE_IMAGE_WEB}
               alt="Tailwind CSS"
               className="rounded-lg shadow-lg hover:shadow-xl transition duration-200"
               style={{ width: "100%", height: "auto" }} // Image now takes 90% of its container
@@ -30,7 +36,7 @@ const ConversionStripFirst = () => {
           </div>
           <div className="lg:w-1/2 lg:ml-12 flex justify-center">
             <img
-              src="https://file-hosting-app.vercel.app/uploads/WebsiteAssest/MeadhikariDashWhite.png"
+              src={CONVERSION_FIRST_DARK_IMAGE_WEB}
               alt="Tailwind CSS"
               className="rounded-lg shadow-lg hover:shadow-xl transition duration-200"
               style={{ width: "100%", height: "auto" }} // Image now takes 90% of its container

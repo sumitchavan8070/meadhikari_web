@@ -1,7 +1,5 @@
 "use client";
 import Link from "next/link";
-import { BsBag } from "react-icons/bs";
-import Mobile from "./Mobile";
 import { useContext, useEffect, useState } from "react";
 // import SideCart from "./SideCart";
 import { Context } from "@/Context/Context";
