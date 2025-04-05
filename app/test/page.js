@@ -149,6 +149,7 @@ const Page = () => {
         showEndModal={showEndModal}
         setShowEndModal={setShowEndModal}
         onSubmitTest={handleSubmitTest}
+        isDarkMode={isDarkMode}
       />
       {showCustomPopup && (
         <CustomPopup

@@ -1,101 +1,49 @@
 // "use client";
 
-// // import { createContext, useState, useContext, useEffect } from "react";
-// // import axios from "axios";
-// // import { BASE_URL } from "@/utils/globalStrings";
-
-// // // Create the Auth Context
-// // const AuthContext = createContext();
-
-// // // AuthProvider Component
-// // export const AuthProvider = ({ children }) => {
-// //   const [user, setUser] = useState(null);
-// //   const [loading, setLoading] = useState(false);
-// //   const [error, setError] = useState(null);
-
-// //   // Check for token and user data on initial load
-// //   useEffect(() => {
-// //     const token = localStorage.getItem("token");
-// //     const storedUser = localStorage.getItem("user");
-
-// //     if (token && storedUser) {
-// //       setUser(JSON.parse(storedUser)); // Parse user data stored in localStorage
-// //     }
-// //   }, []);
-
-// //   // Login function
-// //   const login = async (email, password) => {
-// //     setLoading(true);
-// //     setError(null);
-// //     try {
-// //       const response = await axios.post(`${BASE_URL}/login`, {
-// //         email,
-// //         password,
-// //       });
-// //       // Save token and user to localStorage (or sessionStorage)
-// //       localStorage.setItem("token", response.data.token);
-// //       localStorage.setItem("user", JSON.stringify(response.data.user)); // Save user data
-// //       setUser(response.data.user);
-// //       setLoading(false);
-// //     } catch (err) {
-// //       setError(err.response?.data?.message || "Something went wrong");
-// //       setLoading(false);
-// //     }
-// //   };
-
-// //   // Register function with automatic login
-// //   const register = async (name, username, email, password) => {
-// //     setLoading(true);
-// //     setError(null);
-// //     try {
-// //       const response = await axios.post(`${BASE_URL}/register`, {
-// //         name,
-// //         username,
-// //         email,
-// //         password,
-// //       });
-// //       // After successful registration, automatically log the user in
-// //       login(email, password); // Log in with the email and password provided
-// //       setLoading(false);
-// //     } catch (err) {
-// //       setError(err.response?.data?.message || "Something went wrong");
-// //       setLoading(false);
-// //     }
-// //   };
-
-// //   // Logout function
-// //   const logout = () => {
-// //     localStorage.removeItem("token");
-// //     localStorage.removeItem("user"); // Remove user data from localStorage
-// //     setUser(null);
-// //   };
-
-// //   return (
-// //     <AuthContext.Provider
-// //       value={{ user, login, register, logout, loading, error }}
-// //     >
-// //       {children}
-// //     </AuthContext.Provider>
-// //   );
-// // };
-
-// // // Custom hook to use the AuthContext
-// // export const useAuth = () => useContext(AuthContext);
-
-// // AuthContext.js
-// import { createContext, useState, useContext, useEffect } from "react";
+// import { createContext, useState, useContext, useEffect, useRef } from "react";
+// import LoginPopup from "@/components/LoginPopup";
 
 // const AuthContext = createContext();
 
 // export const AuthProvider = ({ children }) => {
 //   const [user, setUser] = useState(null);
+//   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
+//   const intervalRef = useRef(null);
 
+//   // Initialize user from localStorage
 //   useEffect(() => {
 //     const storedUser = localStorage.getItem("user");
 //     if (storedUser) {
 //       setUser(JSON.parse(storedUser));
 //     }
 //   }, []);
+
+//   // Auto-show popup logic
+//   useEffect(() => {
+//     if (user || isLoginPopupOpen) {
+//       if (intervalRef.current) {
+//         clearInterval(intervalRef.current);
+//         intervalRef.current = null;
+//       }
+//       return;
+//     }
+
+//     intervalRef.current = setInterval(() => {
+//       safeSetLoginPopupOpen(true);
+//     }, 10000);
+
+//     return () => {
+//       if (intervalRef.current) {
+//         clearInterval(intervalRef.current);
+//       }
+//     };
+//   }, [user, isLoginPopupOpen]);
+
+//   const safeSetLoginPopupOpen = (value) => {
+//     // Prevent opening if already open, or closing if already closed
+//     if (value === isLoginPopupOpen) return;
+//     setIsLoginPopupOpen(value);
+//   };
 
 //   const logout = () => {
 //     localStorage.removeItem("user");
@@ -104,8 +52,19 @@
 //   };
 
 //   return (
-//     <AuthContext.Provider value={{ user, setUser, logout }}>
+//     <AuthContext.Provider
+//       value={{
+//         user,
+//         setUser,
+//         logout,
+//         isLoginPopupOpen,
+//         setLoginPopupIsOpen: safeSetLoginPopupOpen,
+//         openLoginPopup: () => safeSetLoginPopupOpen(true),
+//         closeLoginPopup: () => safeSetLoginPopupOpen(false),
+//       }}
+//     >
 //       {children}
+//       {isLoginPopupOpen && <LoginPopup />}
 //     </AuthContext.Provider>
 //   );
 // };
@@ -114,14 +73,19 @@
 "use client";
 
 import { createContext, useState, useContext, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
 import LoginPopup from "@/components/LoginPopup";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const pathname = usePathname();
   const [user, setUser] = useState(null);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const intervalRef = useRef(null);
+
+  // Check if current route is /test
+  const isTestRoute = pathname?.startsWith("/test");
 
   // Initialize user from localStorage
   useEffect(() => {
@@ -133,7 +97,8 @@ export const AuthProvider = ({ children }) => {
 
   // Auto-show popup logic
   useEffect(() => {
-    if (user || isLoginPopupOpen) {
+    // Skip popup logic if on test route or user is logged in
+    if (isTestRoute || user || isLoginPopupOpen) {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
@@ -150,11 +115,11 @@ export const AuthProvider = ({ children }) => {
         clearInterval(intervalRef.current);
       }
     };
-  }, [user, isLoginPopupOpen]);
+  }, [user, isLoginPopupOpen, isTestRoute]);
 
   const safeSetLoginPopupOpen = (value) => {
-    // Prevent opening if already open, or closing if already closed
-    if (value === isLoginPopupOpen) return;
+    // Prevent opening if on test route or no state change needed
+    if (isTestRoute || value === isLoginPopupOpen) return;
     setIsLoginPopupOpen(value);
   };
 
@@ -162,6 +127,26 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     setUser(null);
+  };
+
+  const openLoginPopup = () => {
+    if (!isTestRoute) {
+      safeSetLoginPopupOpen(true);
+      // Clear any existing interval when manually opened
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    }
+  };
+
+  const closeLoginPopup = () => {
+    safeSetLoginPopupOpen(false);
+    // Reset the interval when closed (if not on test route)
+    if (!user && !isTestRoute) {
+      intervalRef.current = setInterval(() => {
+        safeSetLoginPopupOpen(true);
+      }, 10000);
+    }
   };
 
   return (
@@ -172,12 +157,12 @@ export const AuthProvider = ({ children }) => {
         logout,
         isLoginPopupOpen,
         setLoginPopupIsOpen: safeSetLoginPopupOpen,
-        openLoginPopup: () => safeSetLoginPopupOpen(true),
-        closeLoginPopup: () => safeSetLoginPopupOpen(false),
+        openLoginPopup,
+        closeLoginPopup,
       }}
     >
       {children}
-      {isLoginPopupOpen && <LoginPopup />}
+      {isLoginPopupOpen && !isTestRoute && <LoginPopup />}
     </AuthContext.Provider>
   );
 };

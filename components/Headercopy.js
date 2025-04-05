@@ -912,7 +912,7 @@ const Header = () => {
                   </div>
                   <div className="border-t border-gray-100 px-4 py-3 bg-gray-50 rounded-b-lg">
                     <a
-                      href="/exams"
+                      href="/previous-year-paper"
                       className="flex items-center justify-center text-sm font-medium text-blue-600 hover:text-blue-700 transition-colors duration-200"
                       onClick={() => setMenuVisible(false)}
                     >
