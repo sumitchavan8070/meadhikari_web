@@ -4,8 +4,14 @@ import { useAuth } from "@/Context/AuthContext";
 import axios from "axios";
 import { BASE_URL } from "@/utils/globalStrings";
 
-const LoginPopup = ({ isOpen, closePopup }) => {
-  const { setUser } = useAuth();
+const LoginPopup = () => {
+  // const { setUser } = useAuth();
+  const {
+    isLoginPopupOpen,
+    closeLoginPopup,
+    setUser,
+    // ... other auth functions you need
+  } = useAuth();
   const [isRegistering, setIsRegistering] = useState(false);
   const [isForgotPassword, setIsForgotPassword] = useState(false);
   const [email, setEmail] = useState("");
@@ -21,7 +27,8 @@ const LoginPopup = ({ isOpen, closePopup }) => {
   const [suggestedUsernames, setSuggestedUsernames] = useState([]); // State for suggested usernames
   const [isUsernameEditable, setIsUsernameEditable] = useState(false); // Enable editing after selection
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
+  if (!isLoginPopupOpen) return null;
 
   const resetErrors = () => {
     setError(null);
@@ -82,7 +89,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
       localStorage.setItem("user", JSON.stringify(user));
       localStorage.setItem("token", token);
       setUser(user);
-      closePopup();
+      closeLoginPopup();
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -105,7 +112,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
         registeredThrough: "web",
       });
       await handleLogin(e);
-      closePopup();
+      closeLoginPopup();
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
@@ -139,7 +146,7 @@ const LoginPopup = ({ isOpen, closePopup }) => {
         className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full max-h-[90vh] overflow-y-auto relative z-60 mx-4"
       >
         <button
-          onClick={closePopup}
+          onClick={closeLoginPopup}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
         >
           ✕

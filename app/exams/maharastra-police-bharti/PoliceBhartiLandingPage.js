@@ -14,13 +14,15 @@ import PageContentSection from "./PageContentSection";
 import LogoSlider from "@/components/LogoSlider";
 
 const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const { user, openLoginPopup } = useAuth();
+
   const { updatePaperMeta, setQuestions } = useQuestions(); // Use the QuestionsContext
   const router = useRouter();
 
   const [isGridView, setIsGridView] = useState(true); // Toggle between grid and list view
   const [isSubscriptionActive, setIsSubscriptionActive] = useState(false); // Subscription status
-  const [isLoginOpen, setIsLoginOpen] = useState(false); // Login modal state
+  // const [isLoginOpen, setIsLoginOpen] = useState(false); // Login modal state
   const [loadingCard, setLoadingCard] = useState(null); // Loading state for quiz cards
   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false); // Subscription popup state
 
@@ -97,7 +99,8 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
 
   const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
     if (!user) {
-      setIsLoginOpen(true);
+      // setIsLoginOpen(true);
+      openLoginPopup();
       return;
     }
 
@@ -299,10 +302,10 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
         </div>
 
         {/* Login Popup */}
-        <LoginPopup
+        {/* <LoginPopup
           isOpen={isLoginOpen}
           closePopup={() => setIsLoginOpen(false)}
-        />
+        /> */}
 
         {/* Subscription Popup */}
         {isSubscriptionPopupOpen && (

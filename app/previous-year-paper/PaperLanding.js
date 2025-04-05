@@ -9,13 +9,15 @@ import { BASE_URL, FREE_QUIZ_NUMBER } from "@/utils/globalStrings";
 import SubscriptionPopup from "./components/SubscriptionPopup";
 
 const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const { user, openLoginPopup } = useAuth();
+
   const { updatePaperMeta, setQuestions } = useQuestions();
   const router = useRouter();
-
+  //
   const [isGridView, setIsGridView] = useState(false);
   const [isSubscriptionActive, setIsSubscriptionActive] = useState(false);
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  // const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [loadingCard, setLoadingCard] = useState(null);
   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false);
 
@@ -75,7 +77,8 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
 
   const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
     if (!user) {
-      setIsLoginOpen(true);
+      // setIsLoginOpen(true);
+      openLoginPopup();
       return;
     }
 
@@ -282,10 +285,10 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
         </div>
       ))}
 
-      <LoginPopup
+      {/* <LoginPopup
         isOpen={isLoginOpen}
         closePopup={() => setIsLoginOpen(false)}
-      />
+      /> */}
       {isSubscriptionPopupOpen && (
         <SubscriptionPopup
           onClose={() => setIsSubscriptionPopupOpen(false)}

@@ -15,7 +15,9 @@ import { useWindowSize } from "react-use";
 
 const PricePage = () => {
   const { width, height } = useWindowSize();
-  const { user } = useAuth();
+  // const { user } = useAuth();
+  const { user, openLoginPopup } = useAuth();
+
   const [plans, setPlans] = useState([]);
   const [couponCode, setCouponCode] = useState("");
   const [discountDetails, setDiscountDetails] = useState(null);
@@ -23,7 +25,7 @@ const PricePage = () => {
   const [isFetchingPlans, setIsFetchingPlans] = useState(true);
   const [isPurchased, setIsPurchased] = useState(false);
   const [error, setError] = useState("");
-  const [isLoginOpen, setIsLoginOpen] = useState(false);
+  // const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [razorpayLoaded, setRazorpayLoaded] = useState(false);
   const [isSubscriptionActive, setIsSubscriptionActive] = useState(false);
   const [subscriptionPlanID, setSubscriptionPlanID] = useState(null);
@@ -188,7 +190,8 @@ const PricePage = () => {
     }
 
     if (!user) {
-      setIsLoginOpen(true);
+      // setIsLoginOpen(true);
+      openLoginPopup();
     } else if (razorpayLoaded) {
       const options = {
         key: RAZORPAY_LIVE_KEY,
@@ -580,10 +583,10 @@ const PricePage = () => {
       </div>
 
       <ConversionStripFirst />
-      <LoginPopup
+      {/* <LoginPopup
         isOpen={isLoginOpen}
         closePopup={() => setIsLoginOpen(false)}
-      />
+      /> */}
     </section>
   );
 };
