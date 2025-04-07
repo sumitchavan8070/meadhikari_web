@@ -1,9 +1,9 @@
-"use client";
 import React, { useRef, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { toPng } from "html-to-image";
+import html2canvas from "html2canvas";
 import { Pie } from "react-chartjs-2";
 import Chart from "chart.js/auto";
+
 import { FaSun, FaMoon, FaHome, FaDownload, FaTimes } from "react-icons/fa";
 import { useQuestions } from "@/Context/QuestionsContext";
 
@@ -12,6 +12,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
   const resultRef = useRef(null);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [windowWidth, setWindowWidth] = useState(0);
+  const [isCapturing, setIsCapturing] = useState(false);
   const { paperMeta, isLoading } = useQuestions();
 
   useEffect(() => {
@@ -27,18 +28,50 @@ const Result = ({ results, formatTime, questions, onClose }) => {
     if (!resultRef.current) return;
 
     try {
-      const pngData = await toPng(resultRef.current, {
-        cacheBust: true,
+      setIsCapturing(true);
+      const canvas = await html2canvas(resultRef.current, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
         backgroundColor: isDarkTheme ? "#111827" : "#ffffff",
+        logging: false,
+        onclone: (clonedDoc) => {
+          const images = clonedDoc.getElementsByTagName("img");
+          return Promise.all(
+            Array.from(images).map((img) => {
+              if (img.complete) return Promise.resolve();
+              return new Promise((resolve) => {
+                img.onload = resolve;
+                img.onerror = resolve;
+              });
+            })
+          );
+        },
       });
-      const link = document.createElement("a");
-      link.href = pngData;
-      link.download = "meadhikari-test-results.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+
+      canvas.toBlob(
+        (blob) => {
+          if (!blob) {
+            console.error("Failed to create blob");
+            return;
+          }
+
+          const url = URL.createObjectURL(blob);
+          const link = document.createElement("a");
+          link.href = url;
+          link.download = "meadhikari-test-results.png";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+          URL.revokeObjectURL(url);
+        },
+        "image/png",
+        1.0
+      );
     } catch (error) {
       console.error("Failed to export results as PNG:", error);
+    } finally {
+      setIsCapturing(false);
     }
   };
 
@@ -55,11 +88,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           results.wrongAnswers,
           results.unattempted,
         ],
-        backgroundColor: [
-          "#3B82F6", // Blue
-          "#EF4444", // Red
-          "#10B981", // Emerald
-        ],
+        backgroundColor: ["#3B82F6", "#EF4444", "#10B981"],
         borderColor: isDarkTheme ? "#1F2937" : "#E5E7EB",
         borderWidth: 1,
       },
@@ -117,7 +146,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
             : "bg-gradient-to-b from-gray-50 to-white text-gray-800"
         }`}
       >
-        {/* Close Button */}
         <button
           onClick={onClose}
           className={`absolute top-3 right-3 sm:top-4 sm:right-4 p-2 rounded-full ${
@@ -129,7 +157,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           <FaTimes className="h-4 w-4 sm:h-5 sm:w-5" />
         </button>
 
-        {/* Mobile Action Buttons (Top) */}
         <div className="sm:hidden flex flex-wrap gap-2 mb-4">
           <button
             onClick={() => setIsDarkTheme(!isDarkTheme)}
@@ -138,6 +165,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
                 ? "bg-yellow-400 text-gray-900 hover:bg-yellow-300"
                 : "bg-gray-700 text-white hover:bg-gray-600"
             }`}
+            disabled={isCapturing}
           >
             {isDarkTheme ? <FaSun /> : <FaMoon />}
             <span>{isDarkTheme ? "Light" : "Dark"}</span>
@@ -145,6 +173,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           <button
             onClick={() => router.push("/")}
             className="flex-1 flex items-center justify-center gap-1 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm"
+            disabled={isCapturing}
           >
             <FaHome />
             <span>Home</span>
@@ -152,16 +181,14 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           <button
             onClick={handleExportAsPng}
             className="flex-1 flex items-center justify-center gap-1 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm"
+            disabled={isCapturing}
           >
             <FaDownload />
-            <span>Export</span>
+            <span>{isCapturing ? "Exporting..." : "Export"}</span>
           </button>
         </div>
 
-        {/* Header */}
-
         <div className="flex items-center flex-1 min-w-0">
-          {/* Responsive Logo */}
           {isLoading ? (
             <div className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 animate-pulse bg-gray-300 dark:bg-gray-600 rounded-full mr-3" />
           ) : paperMeta.logo ? (
@@ -170,20 +197,19 @@ const Result = ({ results, formatTime, questions, onClose }) => {
               alt="Paper Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
               onError={(e) => {
-                e.target.src = "/images/logo.png"; // Fallback logo
+                e.target.src = "/images/logo.png";
                 e.target.className =
                   "h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all";
               }}
             />
           ) : (
             <img
-              src="/images/logo.png" // Default local logo
+              src="/images/logo.png"
               alt="Default Logo"
               className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 rounded-full object-cover mr-3 border-2 border-transparent hover:border-blue-400 transition-all"
             />
           )}
 
-          {/* Title Section - No truncation on desktop */}
           <div className="flex flex-col min-w-0">
             <h1
               className={`text-lg md:text-xl font-bold ${
@@ -206,12 +232,9 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           </div>
         </div>
 
-        {/* Performance Summary */}
         <div className="mb-6 sm:mb-8">
           <div className="flex flex-col lg:flex-row gap-4 sm:gap-6 items-center">
-            {/* Left Column (Performance + Buttons) */}
             <div className="w-full lg:w-1/2">
-              {/* Performance Bar */}
               <div className="flex justify-between items-center mb-1 sm:mb-2">
                 <span className="text-sm sm:text-base font-medium">
                   Performance:
@@ -231,7 +254,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
                 />
               </div>
 
-              {/* Desktop Buttons (Below Performance Bar) */}
               <div className="hidden sm:flex justify-between gap-3 mt-4">
                 <button
                   onClick={() => setIsDarkTheme(!isDarkTheme)}
@@ -240,6 +262,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
                       ? "bg-yellow-400 text-gray-900 hover:bg-yellow-300"
                       : "bg-gray-700 text-white hover:bg-gray-600"
                   } transition-all duration-200`}
+                  disabled={isCapturing}
                 >
                   {isDarkTheme ? <FaSun /> : <FaMoon />}
                   <span className="text-sm">
@@ -249,6 +272,7 @@ const Result = ({ results, formatTime, questions, onClose }) => {
                 <button
                   onClick={() => router.push("/")}
                   className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-sm hover:from-blue-600 hover:to-cyan-500 transition-all duration-200"
+                  disabled={isCapturing}
                 >
                   <FaHome />
                   <span>Go to Home</span>
@@ -256,14 +280,14 @@ const Result = ({ results, formatTime, questions, onClose }) => {
                 <button
                   onClick={handleExportAsPng}
                   className="flex items-center justify-center gap-2 px-3 py-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 text-white text-sm hover:from-purple-600 hover:to-pink-600 transition-all duration-200"
+                  disabled={isCapturing}
                 >
                   <FaDownload />
-                  <span>Export</span>
+                  <span>{isCapturing ? "Exporting..." : "Export"}</span>
                 </button>
               </div>
             </div>
 
-            {/* Right Column (Pie Chart) */}
             <div className="w-full lg:w-1/2 mt-4 sm:mt-0">
               <h3 className="text-center text-sm sm:text-base font-semibold mb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500">
                 Performance Breakdown
@@ -300,7 +324,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           </div>
         </div>
 
-        {/* Results Table */}
         <div className="mb-6 sm:mb-8">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-green-400">
             Test Summary
@@ -333,7 +356,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           </div>
         </div>
 
-        {/* Question Review */}
         <div className="mb-6 sm:mb-8">
           <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-yellow-400">
             Question Review
@@ -439,7 +461,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
           </div>
         </div>
 
-        {/* Custom Scrollbar Styles */}
         <style jsx>{`
           .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
