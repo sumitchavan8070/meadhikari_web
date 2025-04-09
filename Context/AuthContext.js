@@ -75,10 +75,12 @@
 import { createContext, useState, useContext, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import LoginPopup from "@/components/LoginPopup";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const router = useRouter();
   const pathname = usePathname();
   const [user, setUser] = useState(null);
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
@@ -127,6 +129,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user");
     localStorage.removeItem("token");
     setUser(null);
+    router.push("/");
   };
 
   const openLoginPopup = () => {

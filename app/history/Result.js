@@ -34,7 +34,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
   const [isCapturing, setIsCapturing] = useState(false);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const { paperMeta, isLoading } = useQuestions();
-  const { user } = useAuth();
 
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -42,66 +41,6 @@ const Result = ({ results, formatTime, questions, onClose }) => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  // Save result to MongoDB when component mounts
-  useEffect(() => {
-    if (user?._id && results && paperMeta) {
-      saveTestHistory();
-    }
-  }, [user, results, paperMeta]);
-
-  const saveTestHistory = async () => {
-    try {
-      const historyData = {
-        userId: user._id,
-        paperMeta: {
-          name: paperMeta.name,
-          logo: paperMeta.logo,
-          year: paperMeta.year,
-          category: paperMeta.category,
-        },
-        results: {
-          totalQuestions: results.totalQuestions,
-          correctAnswers: results.correctAnswers,
-          wrongAnswers: results.wrongAnswers,
-          unattempted: results.unattempted,
-          markedForReview: results.markedForReview,
-          totalMarks: results.totalMarks,
-          timeTaken: results.timeTaken,
-          selectedAnswers: results.selectedAnswers,
-          percentage: (
-            (results.correctAnswers / results.totalQuestions) *
-            100
-          ).toFixed(2),
-          accuracy:
-            results.correctAnswers + results.wrongAnswers > 0
-              ? (results.correctAnswers /
-                  (results.correctAnswers + results.wrongAnswers)) *
-                100
-              : 0,
-        },
-        questions: questions,
-        createdAt: new Date(),
-      };
-
-      const response = await fetch(`${BASE_URL}/history`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(historyData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Failed to save test history");
-      }
-
-      const data = await response.json();
-      console.log("Test history saved:", data);
-    } catch (error) {
-      console.error("Error saving test history:", error);
-    }
-  };
 
   if (!results) return null;
 
