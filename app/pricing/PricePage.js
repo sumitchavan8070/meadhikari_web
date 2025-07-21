@@ -190,7 +190,6 @@ const PricePage = () => {
     }
 
     if (!user) {
-      // setIsLoginOpen(true);
       openLoginPopup();
     } else if (razorpayLoaded) {
       const options = {

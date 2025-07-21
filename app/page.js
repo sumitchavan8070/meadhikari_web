@@ -7,6 +7,7 @@ import OfferStrip from "@/components/OfferStrip";
 import Stats from "@/components/Stats";
 import OurPresenceSection from "./about/OurPresenceSection";
 import PricePage from "./pricing/PricePage";
+import ExamHero from "@/components/ExamHero";
 
 // Homepage-specific metadata (overrides layout.js)
 export const metadata = {
@@ -113,6 +114,7 @@ export default function Home() {
       <Headercopy />
       <HeroBanner />
       <ExamCategoryGrid />
+      {/* <ExamHero /> */}
       <Stats />
       <PricePage />
       <OurPresenceSection />
