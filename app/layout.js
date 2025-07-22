@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
     logo: "https://www.meadhikari.com/logo.png",
     founder: {
       "@type": "Person",
-      name: "Shubham Chavan",
+      name: "S Chavan",
     },
     sameAs: [
       "https://t.me/meadhikariacademy",
