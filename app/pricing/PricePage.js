@@ -12,6 +12,9 @@ import { quizzesFirst, quizzesSecound } from "./demoquiz";
 import ConversionStripFirst from "@/components/ConversionStripFirst";
 import Confetti from "react-confetti";
 import { useWindowSize } from "react-use";
+import PaymentMethods from "@/components/PaymentMethods";
+import PaymentMethodsFirstBanner from "@/components/PaymentMethodsFirstBanner";
+import PaymentMethodsOnlyLogos from "@/components/PaymentMethodsOnlyLogos";
 
 const PricePage = () => {
   const { width, height } = useWindowSize();
@@ -276,9 +279,10 @@ const PricePage = () => {
           }}
         />
       )}
+      <PaymentMethodsOnlyLogos />
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto text-center mb-16">
+      <div className="max-w-7xl mx-auto text-center mb-16 mt-5">
         <div className="inline-block mb-4 px-4 py-2 rounded-full bg-[linear-gradient(92.91deg,rgba(27,169,188,0.15)_-0.48%,rgba(41,102,193,0.15)_98.9%)]">
           <span className="text-sm font-semibold bg-clip-text text-transparent bg-[linear-gradient(92.91deg,#1BA9BC_-0.48%,#2966C1_98.9%)]">
             PRICING PLANS
@@ -388,6 +392,8 @@ const PricePage = () => {
               ))}
             </div>
           </div>
+
+          {/* <PaymentMethodsOnlyLogos /> */}
 
           {/* Coupon Section */}
           <div className="flex flex-col lg:flex-row gap-6 mb-16">
@@ -580,6 +586,8 @@ const PricePage = () => {
             );
           })}
       </div>
+
+      <PaymentMethods />
 
       <ConversionStripFirst />
       {/* <LoginPopup
