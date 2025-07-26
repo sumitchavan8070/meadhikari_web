@@ -56,7 +56,7 @@ export const metadata = {
 };
 
 export default function Home() {
-  // Schema for homepage and exam categories
+  // Schema for homepage and exam categorie
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
