@@ -5,7 +5,7 @@ import TalathiLandingPage from "./TalathiLandingPage";
 import { BASE_URL, LIVE_DOMAIN_URL } from "@/utils/globalStrings";
 import OfferStrip from "@/components/OfferStrip";
 
-// Hardcoded production URL for SEO
+// Hardcoded production URL for
 const PRODUCTION_URL = LIVE_DOMAIN_URL;
 const CANONICAL_URL = `${PRODUCTION_URL}/exams/talathi-bharti`;
 
