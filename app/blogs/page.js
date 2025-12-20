@@ -23,69 +23,69 @@ export default function BlogsPage() {
   const [error, setError] = useState(null);
   const [showInitialLoader, setShowInitialLoader] = useState(true);
 
-  // Initial loading animation timer
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowInitialLoader(false);
-    }, INITIAL_LOAD_DELAY);
-    return () => clearTimeout(timer);
-  }, []);
+  // // Initial loading animation timer
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setShowInitialLoader(false);
+  //   }, INITIAL_LOAD_DELAY);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
-  // Fetch data from the backend API
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/blogs/blog-data`);
-        setCategories(response.data.categories);
-        setBlogs(response.data.blogs);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  // // Fetch data from the backend API
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${BASE_URL}/blogs/blog-data`);
+  //       setCategories(response.data.categories);
+  //       setBlogs(response.data.blogs);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setIsLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
-  // Filter blogs based on search query and selected category
-  const filteredBlogs = blogs.filter((blog) => {
-    const title = blog.title[language] || "";
-    const description = blog.description[language] || "";
-    const tags = blog.tags || [];
-    const matchesSearch =
-      title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
-    const matchesCategory =
-      selectedCategory === "All Blogs" || blog.category === selectedCategory;
-    return matchesSearch && matchesCategory;
-  });
+  // // Filter blogs based on search query and selected category
+  // const filteredBlogs = blogs.filter((blog) => {
+  //   const title = blog.title[language] || "";
+  //   const description = blog.description[language] || "";
+  //   const tags = blog.tags || [];
+  //   const matchesSearch =
+  //     title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+  //     tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
+  //   const matchesCategory =
+  //     selectedCategory === "All Blogs" || blog.category === selectedCategory;
+  //   return matchesSearch && matchesCategory;
+  // });
 
-  // Paginate filtered blogs
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const paginatedBlogs = filteredBlogs.slice(
-    startIndex,
-    startIndex + ITEMS_PER_PAGE
-  );
-  const totalPages = Math.ceil(filteredBlogs.length / ITEMS_PER_PAGE);
+  // // Paginate filtered blogs
+  // const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  // const paginatedBlogs = filteredBlogs.slice(
+  //   startIndex,
+  //   startIndex + ITEMS_PER_PAGE
+  // );
+  // const totalPages = Math.ceil(filteredBlogs.length / ITEMS_PER_PAGE);
 
-  // Handle category change
-  const handleCategoryChange = (category) => {
-    setSelectedCategory(category);
-    setCurrentPage(1);
-  };
+  // // Handle category change
+  // const handleCategoryChange = (category) => {
+  //   setSelectedCategory(category);
+  //   setCurrentPage(1);
+  // };
 
-  // Handle search input change
-  const handleSearchChange = (e) => {
-    setSearchQuery(e.target.value);
-    setCurrentPage(1);
-  };
+  // // Handle search input change
+  // const handleSearchChange = (e) => {
+  //   setSearchQuery(e.target.value);
+  //   setCurrentPage(1);
+  // };
 
-  // Handle language change
-  const handleLanguageChange = (lang) => {
-    setLanguage(lang);
-    setCurrentPage(1);
-  };
+  // // Handle language change
+  // const handleLanguageChange = (lang) => {
+  //   setLanguage(lang);
+  //   setCurrentPage(1);
+  // };
 
   if (error) {
     return (
@@ -124,9 +124,8 @@ export default function BlogsPage() {
   return (
     <div className="pt-[100px]">
       <Headercopy />
-      <section className="bg-gradient-to-b from-[#F5F9FF] to-[#E6F0FF] py-16 px-4 sm:px-6 min-h-screen">
+      {/* <section className="bg-gradient-to-b from-[#F5F9FF] to-[#E6F0FF] py-16 px-4 sm:px-6 min-h-screen">
         <div className="max-w-7xl mx-auto">
-          {/* Language Toggle */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,7 +156,6 @@ export default function BlogsPage() {
             </div>
           </motion.div>
 
-          {/* Animated Title */}
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -167,7 +165,6 @@ export default function BlogsPage() {
             {language === "en" ? "Our Blogs" : "माहिती प्रसारण"}
           </motion.h2>
 
-          {/* Search Bar */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -188,7 +185,6 @@ export default function BlogsPage() {
             </div>
           </motion.div>
 
-          {/* Category Filter */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -220,7 +216,6 @@ export default function BlogsPage() {
             ))}
           </motion.div>
 
-          {/* Loading State */}
           {isLoading && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -233,7 +228,6 @@ export default function BlogsPage() {
             </motion.div>
           )}
 
-          {/* Blog Grid */}
           <AnimatePresence>
             {!isLoading && (
               <>
@@ -326,7 +320,6 @@ export default function BlogsPage() {
             )}
           </AnimatePresence>
 
-          {/* Pagination */}
           {!isLoading && totalPages > 1 && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -351,7 +344,39 @@ export default function BlogsPage() {
             </motion.div>
           )}
         </div>
+      </section> */}
+
+      <section className="min-h-screen">
+        {/* Animated Title */}
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="text-4xl font-bold text-center my-8 bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] to-[#1BA9BC]"
+        >
+          Our Blogs
+        </motion.h2>
+
+        {/* Iframe Container */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="max-w-7xl mx-auto px-4"
+        >
+          {/* <div className="w-full h-[calc(300vh-200px)]"> */}
+          <div className="w-full h-[calc(350vh-200px)] overflow-hidden">
+            <iframe
+              src="https://blogs.meadhikari.com"
+              className="w-full h-full border-0 rounded-lg shadow-lg"
+              title="Meadhikari Blogs"
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
+        </motion.div>
       </section>
+
       <ConversionStripFirst />
 
       <Footer />
