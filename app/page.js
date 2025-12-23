@@ -1,13 +1,15 @@
 import ExamCategoryGrid from "@/components/ExamCategoryGrid";
-import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import HeroBanner from "@/components/HeroBanner";
+import HomePageHero from "@/components/HomePageHero";
+import HomePageFeatures from "@/components/HomePageFeatures";
+import HomePageTestimonials from "@/components/HomePageTestimonials";
+import ProductShowcase from "@/components/ProductShowcase";
+import AIFeaturesSection from "@/components/AIFeaturesSection";
 import OfferStrip from "@/components/OfferStrip";
 import Stats from "@/components/Stats";
 import OurPresenceSection from "./about/OurPresenceSection";
 import PricePage from "./pricing/PricePage";
-import ExamHero from "@/components/ExamHero";
 
 // Homepage-specific metadata (overrides layout.js)
 export const metadata = {
@@ -116,16 +118,37 @@ export default function Home() {
       
       {/* Main content with proper spacing for fixed header + sticky offer strip */}
       <main className="pt-0">
-      <HeroBanner />
-      <ExamCategoryGrid />
-      {/* <ExamHero /> */}
-      <Stats />
-      <PricePage />
-      <OurPresenceSection />
-      <FAQ />
-      <section className="bg-[#F9FAFC]">
-        <Footer />
-      </section>
+        {/* Enhanced Hero Section */}
+        <HomePageHero />
+        
+        {/* Stats Section - Single stats section */}
+        <Stats />
+        
+        {/* Exam Categories */}
+        <ExamCategoryGrid />
+        
+        {/* Product Showcase - Mock Tests & Previous Year Papers */}
+        <ProductShowcase />
+        
+        {/* AI Features Section */}
+        <AIFeaturesSection />
+        
+        {/* Features Section */}
+        <HomePageFeatures />
+        
+        {/* Testimonials */}
+        <HomePageTestimonials />
+        
+        {/* Pricing Section */}
+        <PricePage />
+        
+        {/* Our Presence */}
+        <OurPresenceSection />
+        
+        {/* Footer */}
+        <section className="bg-[#F9FAFC]">
+          <Footer />
+        </section>
       </main>
     </div>
   );

@@ -55,15 +55,26 @@ const ExamCategoryGrid = () => {
   };
 
   return (
-    <section className="relative py-12 bg-gradient-to-b from-[#F4F9FD] to-[#E6F2FF]">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Title */}
-        <h1 className="font-semibold text-2xl sm:text-3xl md:text-[32px] text-center bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] to-[#1BA9BC] mb-2">
-          Explore Exam Categories
-        </h1>
-        <p className="text-[#6B7C93] text-center text-sm sm:text-base max-w-2xl mx-auto mb-10">
-          Comprehensive collection of exam preparation resources
-        </p>
+    <section className="relative py-16 sm:py-20 md:py-24 bg-gradient-to-b from-white via-[#F4F9FD] to-[#E6F2FF] overflow-hidden">
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl"></div>
+      </div>
+      
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Enhanced Title */}
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-semibold mb-4">
+            📚 All Exam Categories
+          </div>
+          <h1 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] via-[#1BA9BC] to-[#2966C1] mb-4">
+            Explore Exam Categories
+          </h1>
+          <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto">
+            Comprehensive collection of exam preparation resources for Maharashtra Government Exams
+          </p>
+        </div>
 
         {/* Grid of Categories */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
@@ -85,21 +96,26 @@ const ExamCategoryGrid = () => {
                 <button
                   key={category._id}
                   onClick={() => handleCategoryClick(category)}
-                  className="group flex flex-col items-center justify-center bg-white p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-md hover:shadow-xl transform hover:-translate-y-1 sm:hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer"
+                  className="group relative flex flex-col items-center justify-center bg-white p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 ease-in-out cursor-pointer border border-gray-100 hover:border-[#055AAB]/30 overflow-hidden"
                 >
+                  {/* Hover gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#055AAB]/0 via-[#1BA9BC]/0 to-[#2966C1]/0 group-hover:from-[#055AAB]/5 group-hover:via-[#1BA9BC]/5 group-hover:to-[#2966C1]/5 transition-all duration-300"></div>
                   {/* Image */}
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain mb-3 sm:mb-4 group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <div className="relative z-10 mb-3 sm:mb-4">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#055AAB]/10 to-[#1BA9BC]/10 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="relative z-10 w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
+                    />
+                  </div>
                   {/* Category Name */}
-                  <span className="text-xs sm:text-sm md:text-base lg:text-lg font-semibold text-gray-800 text-center group-hover:text-indigo-600 transition-colors duration-300 leading-tight">
+                  <span className="relative z-10 text-xs sm:text-sm md:text-base lg:text-lg font-bold text-gray-800 text-center group-hover:text-[#055AAB] transition-colors duration-300 leading-tight">
                     {category.shortName || category.name}
                   </span>
                   {/* Call-to-Action */}
-                  <span className="mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm text-gray-500 group-hover:text-indigo-500 transition-colors duration-300">
-                    View Exam →
+                  <span className="relative z-10 mt-1 sm:mt-2 text-[10px] sm:text-xs md:text-sm font-medium text-gray-500 group-hover:text-[#1BA9BC] transition-colors duration-300 flex items-center gap-1">
+                    View Exam <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </span>
                 </button>
               ))}

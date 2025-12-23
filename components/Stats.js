@@ -126,45 +126,62 @@ const Stats = () => {
   ];
 
   return (
-    <section className="relative mb-12 py-12 bg-gradient-to-b from-[#F4F9FD] to-[#E6F2FF]">
-      {/* Background elements could be added here if needed */}
+    <section className="relative mb-12 py-16 sm:py-20 md:py-24 bg-gradient-to-b from-[#E6F2FF] via-[#F4F9FD] to-white overflow-hidden">
+      {/* Enhanced Background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-200/20 rounded-full blur-3xl"></div>
+      </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <p className="font-semibold text-2xl sm:text-3xl md:text-[32px] text-center bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] to-[#1BA9BC] mb-2">
-          Our Outstanding Achievements
-        </p>
-        <p className="text-[#6B7C93] text-center text-sm sm:text-base max-w-2xl mx-auto">
-          Trusted by thousands of students for exam preparation
-        </p>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Enhanced Section Title */}
+        <div className="text-center mb-12 md:mb-16">
+          <div className="inline-block px-4 py-2 bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 rounded-full text-sm font-semibold mb-4 shadow-sm">
+            🏆 Our Achievements
+          </div>
+          <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] via-[#1BA9BC] to-[#2966C1] mb-4">
+            Our Outstanding Achievements
+          </h2>
+          <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto">
+            Trusted by thousands of students for exam preparation
+          </p>
+        </div>
 
-        {/* Stats Grid */}
-        <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-6xl mx-auto">
+        {/* Enhanced Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
           {statsData.map((stat, index) => (
             <div
               key={index}
-              className="flex flex-col items-center bg-white rounded-xl p-4 sm:p-6 shadow-[0_4px_20px_rgba(5,90,171,0.1)] hover:shadow-[0_8px_25px_rgba(5,90,171,0.15)] transition-all duration-300 hover:-translate-y-1"
+              className="group flex flex-col items-center bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 shadow-xl hover:shadow-[0_25px_50px_-12px_rgba(5,90,171,0.25)] transition-all duration-500 transform hover:-translate-y-2 sm:hover:-translate-y-4 border-2 border-gray-100 hover:border-[#055AAB]/40 relative overflow-hidden"
             >
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 mb-3 sm:mb-4">
+              {/* Shimmer effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#055AAB]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+              
+              {/* Gradient overlay on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#055AAB]/0 via-[#1BA9BC]/0 to-[#2966C1]/0 group-hover:from-[#055AAB]/8 group-hover:via-[#1BA9BC]/8 group-hover:to-[#2966C1]/8 transition-all duration-500"></div>
+              
+              <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 mb-3 sm:mb-4 md:mb-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#055AAB]/15 to-[#1BA9BC]/15 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 <Image
                   src={stat.icon}
                   alt={stat.label}
                   fill
-                  className="object-contain hover:scale-110 transition-transform"
+                  className="relative z-10 object-contain group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
                 />
               </div>
-              <p className="font-bold text-2xl sm:text-3xl md:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] to-[#1BA9BC] mb-2 sm:mb-3">
+              <p className="relative z-10 font-extrabold text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] via-[#1BA9BC] to-[#2966C1] mb-2 sm:mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300">
                 {stat.value}
               </p>
-              <p className="font-medium text-xs sm:text-sm md:text-base text-center text-[#4A5568]">
+              <p className="relative z-10 font-bold text-xs sm:text-sm md:text-base lg:text-lg text-center text-gray-700 group-hover:text-[#055AAB] transition-colors duration-300 px-2">
                 {stat.label}
               </p>
+              
+              {/* Decorative glow */}
+              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-[#055AAB]/10 to-[#1BA9BC]/10 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </div>
           ))}
         </div>
 
-        {/* Optional decorative elements */}
-        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#1BA9BC] to-transparent opacity-20"></div>
       </div>
     </section>
   );
