@@ -74,7 +74,7 @@ const SocialProofSection = () => {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-4 italic">"{testimonial.text}"</p>
+                <p className="text-gray-700 mb-4 italic">&quot;{testimonial.text}&quot;</p>
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-bold text-gray-800">{testimonial.name}</p>

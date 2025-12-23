@@ -62,7 +62,7 @@ const TestimonialSection = () => {
                   </svg>
                 ))}
               </div>
-              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 italic leading-relaxed">"{testimonial.content}"</p>
+              <p className="text-sm sm:text-base text-gray-700 mb-4 sm:mb-6 italic leading-relaxed">&quot;{testimonial.content}&quot;</p>
               <div className="pt-3 sm:pt-4 border-t border-gray-100">
                 <div className="font-bold text-sm sm:text-base text-gray-800 mb-1">{testimonial.name}</div>
                 <div className="text-xs sm:text-sm text-gray-600">{testimonial.role}</div>

@@ -101,17 +101,6 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
     }
   }, []);
 
-  // Validate data structure
-  if (!Array.isArray(questionsData) || questionsData.length === 0) {
-    return (
-      <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[50vh] rounded-lg shadow-md">
-        <p className="text-lg md:text-xl lg:text-2xl font-semibold">
-          No quizzes available.
-        </p>
-      </div>
-    );
-  }
-
   // Memoized smooth scrolling function
   const smoothScroll = useCallback((direction) => {
     const container = scrollRefs.current[0]?.current;
@@ -175,6 +164,17 @@ const TalathiLandingPage = ({ questionsData = [] }) => {
 
   const handlePrev = useCallback(() => smoothScroll("prev"), [smoothScroll]);
   const handleNext = useCallback(() => smoothScroll("next"), [smoothScroll]);
+
+  // Validate data structure
+  if (!Array.isArray(questionsData) || questionsData.length === 0) {
+    return (
+      <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[50vh] rounded-lg shadow-md">
+        <p className="text-lg md:text-xl lg:text-2xl font-semibold">
+          No quizzes available.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full">
