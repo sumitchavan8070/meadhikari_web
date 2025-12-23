@@ -43,11 +43,11 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="font-[sans-serif] space-y-6 w-full mx-auto mt-14 px-4 mb-14">
-      <h2 className="text-3xl font-extrabold text-gray-900 mb-6 text-center">
+    <div className="font-[sans-serif] space-y-4 sm:space-y-6 w-full mx-auto mt-8 sm:mt-12 md:mt-14 px-4 sm:px-6 lg:px-8 mb-8 sm:mb-12 md:mb-14">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 sm:mb-6 text-center px-4">
         वारंवार विचारले जाणारे प्रश्न (FAQ)
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-[80%] mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 max-w-7xl mx-auto">
         {faqData.map((faq, index) => (
           <div
             key={index}
@@ -58,9 +58,9 @@ const FAQ = () => {
             <button
               type="button"
               onClick={() => toggleAccordion(index)}
-              className={`toggle-button w-full text-base text-left py-5 px-6 text-gray-800 flex items-center rounded-t-lg focus:outline-none`}
+              className={`toggle-button w-full text-sm sm:text-base text-left py-4 sm:py-5 px-4 sm:px-6 text-gray-800 flex items-center rounded-t-lg focus:outline-none`}
             >
-              <span className="mr-4 font-semibold">{faq.question}</span>
+              <span className="mr-2 sm:mr-4 font-semibold leading-relaxed">{faq.question}</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className={`arrow transition-all w-3 fill-current ml-auto shrink-0 ${
@@ -76,13 +76,13 @@ const FAQ = () => {
               </svg>
             </button>
             <div
-              className={`content px-6 ${
+              className={`content px-4 sm:px-6 ${
                 activeIndex === index
-                  ? "pb-5 max-h-[1000px] opacity-100"
+                  ? "pb-4 sm:pb-5 max-h-[1000px] opacity-100"
                   : "opacity-0 max-h-0"
               } overflow-hidden transition-all duration-300`}
             >
-              <p className="text-sm text-gray-700">{faq.answer}</p>
+              <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
             </div>
           </div>
         ))}

@@ -1,4 +1,4 @@
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import Footer from "@/components/Footer";
 import HistoryPage from "./HistoryPage";
 

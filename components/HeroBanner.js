@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 const HeroBanner = () => {
   return (
-    <div className="container mb-10 mt-0 md:my-12 lg:my-20 relative scroll-smooth z-40">
+    <div className="container mb-10 mt-0 md:my-12 lg:my-20 relative scroll-smooth z-40" style={{ paddingTop: 'calc(70px + 40px)' }}>
       {/* Desktop/Tablet Version */}
       <div className="hidden sm:block">
         {/* Globe */}

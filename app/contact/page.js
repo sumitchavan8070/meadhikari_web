@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import HeroSection from "../about/HeroSection";
 import OurPresenceSection from "../about/OurPresenceSection";
 import ContactUs from "../pricing/ContactUs";

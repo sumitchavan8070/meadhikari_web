@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import axios from "axios";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import { BASE_URL } from "@/utils/globalStrings";
 import { FaEye, FaEyeSlash } from "react-icons/fa"; // Import FaEye and FaEyeSlash icons
 

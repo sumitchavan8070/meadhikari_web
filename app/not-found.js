@@ -20,7 +20,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Footer from "@/components/Footer";
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import OfferStrip from "@/components/OfferStrip";
 import ConversionStripFirst from "@/components/ConversionStripFirst";
 

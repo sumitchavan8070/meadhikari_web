@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import { BASE_URL, LIVE_DOMAIN_URL } from "@/utils/globalStrings";
 import OfferStrip from "@/components/OfferStrip";
 import PoliceBhartiLandingPage from "./PoliceBhartiLandingPage";
@@ -62,10 +62,14 @@ export default async function Page() {
   const questionsData = await fetchPapers();
 
   return (
-    <div className="pt-[23%] sm:pt-[23%] md:pt-[5%] overflow-hidden">
+    <div className="overflow-x-hidden w-full">
       <Headercopy />
       <OfferStrip />
-      <PoliceBhartiLandingPage questionsData={questionsData} />
+      
+      <main>
+        <PoliceBhartiLandingPage questionsData={questionsData} />
+      </main>
+      
       <Footer />
     </div>
   );

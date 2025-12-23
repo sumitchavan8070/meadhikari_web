@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 import SubjectContent from "./SubjectContent";
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export default function LearnPage() {

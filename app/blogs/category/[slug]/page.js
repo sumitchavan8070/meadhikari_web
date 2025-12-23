@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { motion } from "framer-motion";

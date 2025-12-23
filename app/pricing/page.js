@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import OfferStrip from "@/components/OfferStrip";
 import PricePage from "./PricePage";
 

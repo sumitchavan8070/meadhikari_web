@@ -10,22 +10,22 @@ const Footer = () => {
   const hoverColor = "hover:text-deep-purple-accent-400"; // Hover color
 
   return (
-    <footer className={`bg-[${backgroundColor}] px-6 pt-8 lg:px-12`}>
+    <footer className={`bg-[${backgroundColor}] px-4 sm:px-6 md:px-8 lg:px-12 pt-6 sm:pt-8 md:pt-10`}>
       {/* Footer content grid */}
-      <div className="grid gap-10 mb-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-8 sm:gap-10 mb-6 sm:mb-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {/* Logo and description */}
-        <div className="sm:col-span-2">
-          <a href="#" className="inline-flex items-center space-x-3">
+        <div className="sm:col-span-2 lg:col-span-1">
+          <a href="#" className="inline-flex items-center space-x-2 sm:space-x-3">
             <Image
               src="/images/example.png"
               alt="logo"
               width={200}
               height={200}
-              className="object-contain"
+              className="object-contain w-32 sm:w-40 md:w-48 lg:w-52 h-auto"
             />
           </a>
-          <div className="mt-6 max-w-xl">
-            <p className={`text-sm ${textColorPrimary}`}>
+          <div className="mt-4 sm:mt-6 max-w-xl">
+            <p className={`text-xs sm:text-sm ${textColorPrimary} leading-relaxed`}>
               Meadhikari is your ultimate test preparation companion, designed
               to help you succeed in various Maharashtra government exams with
               confidence. Our app provides access to a vast collection of
@@ -36,8 +36,8 @@ const Footer = () => {
         </div>
 
         {/* Services */}
-        <div className="flex flex-col gap-3 text-sm">
-          <p className={`text-lg font-semibold ${textColorAccent}`}>Services</p>
+        <div className="flex flex-col gap-2 sm:gap-3 text-sm">
+          <p className={`text-base sm:text-lg font-semibold ${textColorAccent} mb-1`}>Services</p>
           <a
             href="/previous-year-paper"
             className={`text-sm ${textColorSecondary} hover:${hoverColor}`}
@@ -50,7 +50,7 @@ const Footer = () => {
           >
             Pricing
           </a>
-          <p className={`text-lg font-semibold ${textColorAccent}`}>
+          <p className={`text-base sm:text-lg font-semibold ${textColorAccent} mt-2 sm:mt-3 mb-1`}>
             Who are we
           </p>
           <a
@@ -69,36 +69,38 @@ const Footer = () => {
 
         {/* Contact and social media links */}
         <div>
-          <p className={`text-lg font-semibold ${textColorAccent}`}>
+          <p className={`text-base sm:text-lg font-semibold ${textColorAccent} mb-2 sm:mb-3`}>
             WE ARE ALSO AVAILABLE ON
           </p>
-          <div className="flex items-center gap-2 mt-2">
+          <div className="flex items-center gap-2 sm:gap-3 mt-2 flex-wrap">
             <a
               href="https://play.google.com/store/apps/details?id=com.sc.meadhikari"
-              className="w-full"
+              className="flex-shrink-0"
             >
               <Image
                 src="https://mcqmate.com/public/images/icons/playstore.svg"
                 alt="Playstore Button"
                 width={135}
                 height={70}
+                className="w-24 sm:w-28 md:w-32 lg:w-[135px] h-auto"
               />
             </a>
             <a
               href="https://youtube.com/@meadhikariacademy?si=ymG9R9eYMtouoOe7"
-              className="w-full"
+              className="flex-shrink-0"
             >
               <Image
                 src="https://mcqmate.com/public/images/icons/youtube.svg"
                 alt="Youtube Button"
                 width={135}
                 height={70}
+                className="w-24 sm:w-28 md:w-32 lg:w-[135px] h-auto"
               />
             </a>
           </div>
-          <p className={`text-lg font-semibold ${textColorAccent}`}>Contacts</p>
-          <div className="flex items-center">
-            <p className={`mr-1 ${textColorPrimary}`}>Email:</p>
+          <p className={`text-base sm:text-lg font-semibold ${textColorAccent} mt-4 sm:mt-5 mb-2`}>Contacts</p>
+          <div className="flex items-center flex-wrap">
+            <p className={`mr-1 text-xs sm:text-sm ${textColorPrimary}`}>Email:</p>
             <a
               href="mailto:contact@meadhikari.com"
               className={`text-sm ${textColorSecondary}`}
@@ -110,11 +112,11 @@ const Footer = () => {
       </div>
 
       {/* Footer bottom section */}
-      <div className="flex flex-col-reverse justify-between pt-5 pb-10 border-t border-gray-300 lg:flex-row">
-        <p className={`text-sm ${textColorSecondary}`}>
+      <div className="flex flex-col-reverse justify-between pt-4 sm:pt-5 pb-6 sm:pb-8 md:pb-10 border-t border-gray-300 lg:flex-row gap-4 lg:gap-0">
+        <p className={`text-xs sm:text-sm ${textColorSecondary} text-center lg:text-left`}>
           © 2025 Meadhikari. All rights reserved.
         </p>
-        <ul className="flex space-x-5 sm:space-x-8">
+        <ul className="flex flex-wrap justify-center lg:justify-end gap-3 sm:gap-4 lg:space-x-5 lg:space-x-8">
           <li>
             <a
               href="/privacy-policy"

@@ -1,4 +1,4 @@
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import HeroSection from "./HeroSection";
 import AppImagesSection from "./AppImagesSection";
 import WhyChooseUsSection from "./WhyChooseUsSection";

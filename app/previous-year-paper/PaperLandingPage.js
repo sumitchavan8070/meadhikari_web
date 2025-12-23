@@ -4,6 +4,8 @@ import React, { useRef, useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Sidebar from "./components/Sidebar";
 import OfferStrip from "@/components/OfferStrip";
+import HeroSection from "./components/HeroSection";
+import SocialProofSection from "./components/SocialProofSection";
 import { BASE_URL } from "@/utils/globalStrings";
 import axios from "axios";
 
@@ -94,6 +96,12 @@ const PaperLandingPage = ({ categoriesData }) => {
         <OfferStrip />
       </div>
 
+      {/* Hero Section */}
+      <HeroSection />
+
+      {/* Social Proof Section */}
+      {/* <SocialProofSection /> */}
+
       <div className="relative bg-[linear-gradient(107.12deg,_#E6F3FF_4.81%,_#CCE7FF_96.97%)] py-12 shadow-md sticky top-0 z-10 overflow-hidden">
         {/* Background Animation */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.2)_0%,_transparent_70%)] animate-pulse opacity-50"></div>
@@ -162,7 +170,7 @@ const PaperLandingPage = ({ categoriesData }) => {
         </aside>
 
         {/* <main className="flex-1 p-6 lg:p-8 bg-white rounded-lg shadow-md w-full"> */}
-        <main className="flex-1 w-full bg-white rounded-lg shadow-md">
+        <main className="flex-1 w-full bg-white rounded-lg shadow-md pb-24">
           {loading
             ? [...Array(3)].map((_, index) => (
                 <div

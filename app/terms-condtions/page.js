@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "@/components/Footer"; // Assuming you have a Footer component
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import TermsAndConditions from "./TermsAndConditions";
 
 export const metadata = {

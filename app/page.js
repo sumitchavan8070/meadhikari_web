@@ -1,7 +1,7 @@
 import ExamCategoryGrid from "@/components/ExamCategoryGrid";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
-import Headercopy from "@/components/Headercopy";
+import Header from "@/components/Header";
 import HeroBanner from "@/components/HeroBanner";
 import OfferStrip from "@/components/OfferStrip";
 import Stats from "@/components/Stats";
@@ -98,7 +98,7 @@ export default function Home() {
   };
 
   return (
-    <div className="overflow-x-hidden w-full pt-[23%] sm:pt-[23%] md:pt-[5%]">
+    <div className="overflow-x-hidden w-full">
       {/* Schema Markup */}
       <script
         type="application/ld+json"
@@ -110,8 +110,12 @@ export default function Home() {
       />
 
       {/* Page Content */}
+      <Header />
+
       <OfferStrip />
-      <Headercopy />
+      
+      {/* Main content with proper spacing for fixed header + sticky offer strip */}
+      <main className="pt-0">
       <HeroBanner />
       <ExamCategoryGrid />
       {/* <ExamHero /> */}
@@ -122,6 +126,7 @@ export default function Home() {
       <section className="bg-[#F9FAFC]">
         <Footer />
       </section>
+      </main>
     </div>
   );
 }

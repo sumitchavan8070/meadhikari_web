@@ -88,7 +88,7 @@ const OfferStrip = () => {
   }, [newsData, contentWidth]);
 
   return (
-    <div className="relative bg-[linear-gradient(107.12deg,#055AAB_4.81%,#2966C1_98.9%)] text-white overflow-hidden py-2 font-[sans-serif]">
+    <div className="sticky top-[70px] left-0 w-full z-40 bg-[linear-gradient(107.12deg,#055AAB_4.81%,#2966C1_98.9%)] text-white overflow-hidden py-2 font-[sans-serif]" style={{ marginTop: '0', marginBottom: '0' }}>
       {/* Infinite scrolling content */}
       <div
         ref={textRef}

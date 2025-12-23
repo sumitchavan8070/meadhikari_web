@@ -1,5 +1,5 @@
 import React from "react";
-import Headercopy from "@/components/Headercopy";
+import Headercopy from "@/components/Header";
 import Footer from "@/components/Footer";
 import PaperLandingPage from "./PaperLandingPage"; // Import the PaperLandingPage component
 import axios from "axios";

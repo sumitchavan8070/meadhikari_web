@@ -7,6 +7,7 @@ import axios from "axios";
 import LoginPopup from "@/components/LoginPopup";
 import { BASE_URL, FREE_QUIZ_NUMBER } from "@/utils/globalStrings";
 import SubscriptionPopup from "./components/SubscriptionPopup";
+import ConversionBanner from "./components/ConversionBanner";
 
 const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   // const { user } = useAuth();
@@ -20,6 +21,7 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   // const [isLoginOpen, setIsLoginOpen] = useState(false);
   const [loadingCard, setLoadingCard] = useState(null);
   const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false);
+  const [showStickyBanner, setShowStickyBanner] = useState(false);
 
   useEffect(() => {
     const fetchSubscriptionStatus = async () => {
@@ -35,6 +37,16 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
 
     fetchSubscriptionStatus();
   }, [user]);
+
+  // Show sticky banner on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowStickyBanner(window.scrollY > 500);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const categoriesData = initialCategoriesData.map((category) => ({
     ...category,
@@ -76,30 +88,36 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   };
 
   const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
+    // Check if this is a premium card and user doesn't have subscription
+    const isPremiumCard = cardIndex >= FREE_QUIZ_NUMBER && !isSubscriptionActive;
+
+    // If user is not logged in, show login popup
     if (!user) {
-      // setIsLoginOpen(true);
       openLoginPopup();
       return;
     }
 
+    // If it's a premium card and user doesn't have subscription, show subscription popup
+    if (isPremiumCard) {
+      setIsSubscriptionPopupOpen(true);
+      return;
+    }
+
+    // Otherwise, proceed with loading the test
     setLoadingCard(cardIndex);
 
     try {
-      if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
-        const { data } = await axios.get(
-          `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
-        );
-        setQuestions(data.questions);
-        updatePaperMeta({
-          name: paper?.title,
-          logo: categoriesData[0].image,
-          year: paper?.paper?.QPYear,
-        });
+      const { data } = await axios.get(
+        `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
+      );
+      setQuestions(data.questions);
+      updatePaperMeta({
+        name: paper?.title,
+        logo: categoriesData[0].image,
+        year: paper?.paper?.QPYear,
+      });
 
-        router.push("/test");
-      } else {
-        setIsSubscriptionPopupOpen(true);
-      }
+      router.push("/test");
     } catch (error) {
       console.error("Fetch error:", error);
       updatePaperMeta({
@@ -112,13 +130,31 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
   };
   return (
     <div className="container mx-auto px-4 py-8 md:px-6 lg:px-8">
+      {/* Conversion Banner - Show after first category */}
+      {categoriesData.length > 0 && (
+        <div className="mb-8" data-category>
+          <ConversionBanner />
+        </div>
+      )}
+
       {categoriesData.map((category, categoryIndex) => (
         <div key={categoryIndex} className="mb-12">
           {/* Category Header with Navigation */}
-          <div className="flex items-center justify-between mb-6 px-2">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-800 bg-clip-text text-transparent bg-[linear-gradient(107.12deg,_#055AAB_4.81%,_#2966C1_96.97%)]">
-              {category.name}
-            </h2>
+          <div className="flex items-center justify-between mb-6 px-2" data-category>
+            <div className="flex-1">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 bg-clip-text text-transparent bg-[linear-gradient(107.12deg,_#055AAB_4.81%,_#2966C1_96.97%)] mb-2">
+                {category.name}
+              </h2>
+              <p className="text-sm text-gray-600">
+                {category.questionsData.length} papers available
+                {category.questionsData.length > FREE_QUIZ_NUMBER && (
+                  <span className="ml-2">
+                    • {FREE_QUIZ_NUMBER} free •{" "}
+                    {category.questionsData.length - FREE_QUIZ_NUMBER} premium
+                  </span>
+                )}
+              </p>
+            </div>
 
             <div className="flex items-center space-x-3">
               {!isGridView && (
@@ -236,7 +272,7 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
                         ? "Loading..."
                         : qIndex < FREE_QUIZ_NUMBER || isSubscriptionActive
                         ? "Start Test"
-                        : "Start Test 🔐"
+                        : "Unlock Premium"
                     }
                     free={quiz.free}
                     live={quiz.live}
@@ -249,7 +285,20 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
                         quiz
                       )
                     }
+                    onUnlockClick={() =>
+                      handleStartTest(
+                        quiz.paper.catID,
+                        quiz.paper.subCatId,
+                        quiz.paper.yearId,
+                        qIndex,
+                        quiz
+                      )
+                    }
                     paper={quiz.paper}
+                    cardIndex={qIndex}
+                    isSubscriptionActive={isSubscriptionActive}
+                    FREE_QUIZ_NUMBER={FREE_QUIZ_NUMBER}
+                    user={user}
                   />
                 </div>
               ))
@@ -294,6 +343,11 @@ const PaperLanding = ({ categoriesData: initialCategoriesData }) => {
           onClose={() => setIsSubscriptionPopupOpen(false)}
           onRedirect={() => router.push("/pricing")}
         />
+      )}
+
+      {/* Sticky Conversion Banner - Only show when scrolled */}
+      {showStickyBanner && !isSubscriptionActive && (
+        <ConversionBanner variant="sticky" />
       )}
     </div>
   );

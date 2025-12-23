@@ -1,41 +1,58 @@
-"use client"; // Mark this as a Client Component
+"use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import QuizCard from "@/app/previous-year-paper/components/QuizCard";
 import { useAuth } from "@/Context/AuthContext";
 import { BASE_URL, FREE_QUIZ_NUMBER } from "@/utils/globalStrings";
 import SubscriptionPopup from "@/app/previous-year-paper/components/SubscriptionPopup";
-import LoginPopup from "@/components/LoginPopup";
 import axios from "axios";
 import { useQuestions } from "@/Context/QuestionsContext";
-import HeroSection from "./HeroSection";
-import PageContentSection from "./PageContentSection";
-import LogoSlider from "@/components/LogoSlider";
+import dynamic from "next/dynamic";
+import BenefitsSection from "./components/BenefitsSection";
+import ConversionBanner from "./components/ConversionBanner";
+import TestimonialSection from "./components/TestimonialSection";
 
-const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
-  // const { user } = useAuth();
+// Lazy load heavy components
+const HeroSection = dynamic(() => import("./HeroSection"), {
+  loading: () => <div className="h-64 bg-gray-100 animate-pulse rounded-lg" />,
+});
+const PageContentSection = dynamic(() => import("./PageContentSection"), {
+  loading: () => <div className="h-96 bg-gray-100 animate-pulse rounded-lg" />,
+});
+const LogoSlider = dynamic(() => import("@/components/LogoSlider"), {
+  loading: () => <div className="h-24 bg-gray-100 animate-pulse rounded-lg" />,
+});
+
+const VanrakshakLandingPage = ({ questionsData = [] }) => {
   const { user, openLoginPopup } = useAuth();
-
-  const { updatePaperMeta, setQuestions } = useQuestions(); // Use the QuestionsContext
+  const { updatePaperMeta, setQuestions } = useQuestions();
   const router = useRouter();
 
-  const [isGridView, setIsGridView] = useState(true); // Toggle between grid and list view
-  const [isSubscriptionActive, setIsSubscriptionActive] = useState(false); // Subscription status
-  // const [isLoginOpen, setIsLoginOpen] = useState(false); // Login modal state
-  const [loadingCard, setLoadingCard] = useState(null); // Loading state for quiz cards
-  const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false); // Subscription popup state
+  const [isGridView, setIsGridView] = useState(true);
+  const [isSubscriptionActive, setIsSubscriptionActive] = useState(false);
+  const [loadingCard, setLoadingCard] = useState(null);
+  const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false);
 
-  // State to store enriched data with random attempted counts
-  const [enrichedQuestionsData, setEnrichedQuestionsData] = useState([]);
+  const scrollRefs = useRef([React.createRef()]);
+  const [visibleCount, setVisibleCount] = useState(2);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Fetch subscription status when the component mounts or when the user changes
+  const enrichedQuestionsData = useMemo(() => {
+    return questionsData.map((quiz) => ({
+      ...quiz,
+      attempted: `${(Math.random() * 4 + 1).toFixed(1)}k`,
+    }));
+  }, [questionsData]);
+
   useEffect(() => {
+    let isMounted = true;
     const fetchSubscriptionStatus = async () => {
-      if (user) {
+      if (user && isMounted) {
         try {
           const response = await axios.get(`${BASE_URL}/${user._id}`);
-          setIsSubscriptionActive(response.data.user.isSubscriptionActive);
+          if (isMounted) {
+            setIsSubscriptionActive(response.data.user.isSubscriptionActive);
+          }
         } catch (error) {
           console.error("Error fetching subscription status:", error);
         }
@@ -43,39 +60,37 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
     };
 
     fetchSubscriptionStatus();
+    return () => {
+      isMounted = false;
+    };
   }, [user]);
 
-  // Enrich questionsData with random attempted counts on the client side
-  useEffect(() => {
-    const enrichedData = questionsData.map((quiz) => ({
-      ...quiz,
-      attempted: `${(Math.random() * 4 + 1).toFixed(1)}k`,
-    }));
-    setEnrichedQuestionsData(enrichedData);
-  }, [questionsData]);
-
-  const scrollRefs = useRef([React.createRef()]);
-  const [visibleCount, setVisibleCount] = useState(2);
-
-  // Dynamically adjust visible count based on screen size
   useEffect(() => {
     const getVisibleCount = () => {
+      if (typeof window === "undefined") return 2;
       if (window.innerWidth >= 1024) return 5;
       if (window.innerWidth >= 768) return 3;
       return 2;
     };
 
+    let timeoutId;
     const handleResize = () => {
-      setVisibleCount(getVisibleCount());
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setVisibleCount(getVisibleCount());
+      }, 150);
     };
 
-    window.addEventListener("resize", handleResize);
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
+    if (typeof window !== "undefined") {
+      setVisibleCount(getVisibleCount());
+      window.addEventListener("resize", handleResize);
+      return () => {
+        clearTimeout(timeoutId);
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
-  // Validate data structure
   if (!Array.isArray(questionsData) || questionsData.length === 0) {
     return (
       <div className="flex justify-center items-center bg-gray-100 text-gray-600 w-full h-[50vh] rounded-lg shadow-md">
@@ -86,46 +101,40 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
     );
   }
 
-  // Smooth scrolling function
-  const smoothScroll = (direction) => {
-    const container = scrollRefs.current[0].current;
+  const smoothScroll = useCallback((direction) => {
+    const container = scrollRefs.current[0]?.current;
+    if (!container) return;
+    
     const scrollAmount = container.offsetWidth / visibleCount;
-
     container.scrollBy({
       left: direction === "next" ? scrollAmount : -scrollAmount,
       behavior: "smooth",
     });
-  };
+  }, [visibleCount]);
 
-  const handleStartTest = async (catID, subcatId, yearId, cardIndex, paper) => {
+  const handleStartTest = useCallback(async (catID, subcatId, yearId, cardIndex, paper) => {
     if (!user) {
-      // setIsLoginOpen(true);
       openLoginPopup();
       return;
     }
 
     setLoadingCard(cardIndex);
+    setIsLoading(true);
 
     try {
       if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
-        // First, fetch all categories
-        const categoriesResponse = await axios.get(
-          `${BASE_URL}/exam-categories/get-all-exam-category`
-        );
-        const allCategories = categoriesResponse.data;
+        const [categoriesResponse, papersResponse] = await Promise.all([
+          axios.get(`${BASE_URL}/exam-categories/get-all-exam-category`),
+          axios.get(`${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`)
+        ]);
 
-        // Find the specific category by ID
+        const allCategories = categoriesResponse.data;
         const categoryDetail = allCategories.find((cat) => cat._id === catID);
 
-        // Then proceed with your existing paper fetch
-        const { data } = await axios.get(
-          `${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`
-        );
-
-        setQuestions(data.questions);
+        setQuestions(papersResponse.data.questions);
         updatePaperMeta({
           name: paper?.title,
-          logo: categoryDetail.image,
+          logo: categoryDetail?.image || "/default-error-logo.png",
           year: paper?.paper?.QPYear,
         });
 
@@ -141,182 +150,105 @@ const PoliceBhartiLandingPage = ({ questionsData = [] }) => {
       });
     } finally {
       setLoadingCard(null);
+      setIsLoading(false);
     }
-  };
+  }, [user, isSubscriptionActive, openLoginPopup, router, setQuestions, updatePaperMeta]);
+
+  const toggleGridView = useCallback(() => {
+    setIsGridView(prev => !prev);
+  }, []);
+
+  const handlePrev = useCallback(() => smoothScroll("prev"), [smoothScroll]);
+  const handleNext = useCallback(() => smoothScroll("next"), [smoothScroll]);
 
   return (
-    <div>
+    <div className="w-full">
       {/* Hero Section */}
       <HeroSection />
+      
       <LogoSlider />
 
-      <PageContentSection />
+      <PageContentSection questionsData={enrichedQuestionsData} />
 
-      {/* Main Content */}
-      <div className="container mx-auto p-6">
-        <div className="mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl font-bold"></h2>
+      {/* Conversion Banner */}
+      <ConversionBanner isSubscriptionActive={isSubscriptionActive} />
 
-            <div className="flex items-center space-x-3">
-              {!isGridView && (
-                <>
-                  <button
-                    className="p-2 rounded-full bg-white shadow-[0_4px_15px_rgba(5,90,171,0.15)] hover:shadow-[0_6px_20px_rgba(5,90,171,0.25)] transition-all duration-300 border border-[rgba(5,90,171,0.2)]"
-                    onClick={() => smoothScroll(categoryIndex, "prev")}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="w-5 h-5 text-[#055AAB]"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15 19l-7-7 7-7"
-                      />
-                    </svg>
-                  </button>
-                  <button
-                    className="p-2 rounded-full bg-white shadow-[0_4px_15px_rgba(5,90,171,0.15)] hover:shadow-[0_6px_20px_rgba(5,90,171,0.25)] transition-all duration-300 border border-[rgba(5,90,171,0.2)]"
-                    onClick={() => smoothScroll(categoryIndex, "next")}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth="2"
-                      stroke="currentColor"
-                      className="w-5 h-5 text-[#055AAB]"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 5l7 7-7 7"
-                      />
-                    </svg>
-                  </button>
-                </>
-              )}
+      {/* Benefits Section */}
+      <BenefitsSection />
 
-              {/* View Toggle Button */}
+      {/* Testimonial Section */}
+      <TestimonialSection />
+
+      {/* Final CTA Section */}
+      {!isSubscriptionActive && (
+        <section className="bg-gradient-to-r from-[#055AAB] via-[#1BA9BC] to-[#2966C1] py-16 sm:py-20 md:py-24 mt-12 relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0">
+            <div className="absolute top-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-yellow-400 text-yellow-900 rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6 animate-pulse">
+              🎯 Limited Time Offer
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-4 sm:mb-6 leading-tight px-2">
+              Ready to Ace Your Exam?
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-blue-100 mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto leading-relaxed px-2">
+              Join <span className="font-bold text-white">{enrichedQuestionsData.length * 100}+</span> successful candidates. Get unlimited access to all papers today!
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 px-2">
               <button
-                onClick={() => setIsGridView(!isGridView)}
-                className="p-2 rounded-full bg-[linear-gradient(92.91deg,_#1BA9BC_-0.48%,_#2966C1_98.9%)] text-white shadow-md hover:opacity-90 transition-opacity duration-300"
-                aria-label={
-                  isGridView ? "Switch to carousel view" : "Switch to grid view"
-                }
+                onClick={() => router.push("/pricing")}
+                className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-white text-[#055AAB] font-bold rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-auto"
               >
-                {isGridView ? (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  </svg>
-                ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    stroke="currentColor"
-                    className="w-5 h-5"
-                  >
-                    <rect x="3" y="3" width="7" height="7" rx="1" />
-                    <rect x="14" y="3" width="7" height="7" rx="1" />
-                    <rect x="3" y="14" width="7" height="7" rx="1" />
-                    <rect x="14" y="14" width="7" height="7" rx="1" />
-                  </svg>
-                )}
+                Get Full Access Now →
+              </button>
+              <button
+                onClick={() => {
+                  setTimeout(() => {
+                    const element = document.querySelector('[data-section="tabs"]');
+                    element?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }, 100);
+                }}
+                className="px-6 sm:px-8 md:px-10 py-3 sm:py-4 md:py-5 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 transition-all duration-300 text-sm sm:text-base md:text-lg lg:text-xl w-full sm:w-auto"
+              >
+                Browse Papers First
               </button>
             </div>
-          </div>
-
-          <div
-            ref={scrollRefs.current[0]}
-            className={`relative ${
-              isGridView
-                ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"
-                : "flex overflow-x-auto scrollbar-hide pb-4"
-            }`}
-          >
-            {enrichedQuestionsData.length > 0 ? (
-              enrichedQuestionsData.map((quiz, qIndex) => (
-                <div
-                  key={qIndex}
-                  className={
-                    isGridView
-                      ? "w-full"
-                      : "flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] lg:w-[340px] px-2"
-                  }
-                >
-                  <QuizCard
-                    title={quiz.title}
-                    time={`${quiz.time} min`}
-                    questions={`${quiz.questions} Questions`}
-                    marks={`${quiz.marks} Marks`}
-                    languages={quiz.languages.join(", ")}
-                    attempted={quiz.attempted}
-                    buttonText={
-                      loadingCard === qIndex
-                        ? "Loading..."
-                        : qIndex < FREE_QUIZ_NUMBER || isSubscriptionActive
-                        ? "Start Test"
-                        : "Start Test 🔐"
-                    }
-                    free={quiz.free}
-                    live={quiz.live}
-                    onButtonClick={() =>
-                      handleStartTest(
-                        quiz.paper.catID,
-                        quiz.paper.subCatId,
-                        quiz.paper.yearId,
-                        qIndex,
-                        quiz
-                      )
-                    }
-                    paper={quiz.paper}
-                  />
-                </div>
-              ))
-            ) : (
-              <div className="col-span-full flex justify-center items-center bg-gradient-to-br from-[#f7faff] to-[#e6f1ff] text-gray-600 w-full h-[200px] rounded-xl shadow-inner">
-                <p className="text-lg md:text-xl font-medium text-[#055AAB]">
-                  No question papers found for this category.
-                </p>
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-blue-100 px-2">
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Instant Access</span>
               </div>
-            )}
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Money Back Guarantee</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                <span>24/7 Support</span>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
+      )}
 
-        {/* Login Popup */}
-        {/* <LoginPopup
-          isOpen={isLoginOpen}
-          closePopup={() => setIsLoginOpen(false)}
-        /> */}
-
-        {/* Subscription Popup */}
-        {isSubscriptionPopupOpen && (
-          <SubscriptionPopup
-            onClose={() => setIsSubscriptionPopupOpen(false)}
-            onRedirect={() => router.push("/pricing")}
-          />
-        )}
-      </div>
+      {isSubscriptionPopupOpen && (
+        <SubscriptionPopup
+          onClose={() => setIsSubscriptionPopupOpen(false)}
+          onRedirect={() => router.push("/pricing")}
+        />
+      )}
     </div>
   );
 };
 
-export default PoliceBhartiLandingPage;
+export default VanrakshakLandingPage;

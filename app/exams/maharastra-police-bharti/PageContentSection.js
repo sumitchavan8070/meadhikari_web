@@ -247,19 +247,47 @@
 
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import "./syllabusStyles.css"; // Import the CSS file for scoped styling
+import QuizCard from "@/app/previous-year-paper/components/QuizCard";
+import { useAuth } from "@/Context/AuthContext";
+import { useQuestions } from "@/Context/QuestionsContext";
+import { useRouter } from "next/navigation";
+import { BASE_URL, FREE_QUIZ_NUMBER } from "@/utils/globalStrings";
+import axios from "axios";
+import SubscriptionPopup from "@/app/previous-year-paper/components/SubscriptionPopup";
 
-const PageContentSection = () => {
+const PageContentSection = ({ questionsData = [] }) => {
   const [activeTab, setActiveTab] = useState(""); // Default active tab will be set dynamically
   const [tabConfig, setTabConfig] = useState([]); // Dynamically populated tab configuration
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSubscriptionActive, setIsSubscriptionActive] = useState(false);
+  const [loadingCard, setLoadingCard] = useState(null);
+  const [isSubscriptionPopupOpen, setIsSubscriptionPopupOpen] = useState(false);
+  const { user, openLoginPopup } = useAuth();
+  const { updatePaperMeta, setQuestions } = useQuestions();
+  const router = useRouter();
   const solvePaperRef = useRef(null); // Reference to the "Solve Paper" section
+
+  // Enrich questionsData with attempted counts
+  const enrichedQuestionsData = useMemo(() => {
+    return questionsData.map((quiz) => ({
+      ...quiz,
+      attempted: quiz.attempted || `${(Math.random() * 4 + 1).toFixed(1)}k`,
+    }));
+  }, [questionsData]);
 
   // Fetch tab configuration from an external source (e.g., API or JSON file)
   useEffect(() => {
     // Simulate fetching data from an API or JSON file
     const fetchTabConfig = async () => {
       const dynamicConfig = [
+        {
+          label: "Previous Year Papers",
+          value: "papers",
+          isVisible: true,
+          type: "papers", // Special type to show QuizCards
+        },
         {
           label: "About Exam",
           value: "syllabus",
@@ -1784,16 +1812,6 @@ const PageContentSection = () => {
           type: "html", // Type of content (e.g., HTML, array, URL)
         },
         {
-          label: "Previous Year Papers",
-          value: "papers",
-          isVisible: true,
-          content: [
-            // { year: 2024, name: "Talathi Bharti 2024", link: null },
-            // { year: 2023, name: "Talathi Bharti 2023", link: "#" },
-          ],
-          type: "array", // Type of content (array of objects)
-        },
-        {
           label: "Current News",
           value: "news",
           isVisible: true,
@@ -1823,35 +1841,113 @@ const PageContentSection = () => {
       // Simulate a delay (e.g., network request)
       setTimeout(() => {
         setTabConfig(dynamicConfig);
-        setActiveTab(dynamicConfig[0]?.value || ""); // Set the first visible tab as active
+        // Set "papers" tab as active first (Previous Year Papers)
+        const papersTab = dynamicConfig.find(tab => tab.value === "papers" && tab.isVisible);
+        setActiveTab(papersTab?.value || dynamicConfig[0]?.value || "");
+        setIsLoading(false);
       }, 1000);
     };
 
     fetchTabConfig();
   }, []);
 
-  const scrollToSolvePaper = () => {
+  // Fetch subscription status
+  useEffect(() => {
+    const fetchSubscriptionStatus = async () => {
+      if (user) {
+        try {
+          const response = await axios.get(`${BASE_URL}/${user._id}`);
+          setIsSubscriptionActive(response.data.user.isSubscriptionActive);
+        } catch (error) {
+          console.error("Error fetching subscription status:", error);
+        }
+      }
+    };
+    fetchSubscriptionStatus();
+  }, [user]);
+
+  // Handle start test
+  const handleStartTest = useCallback(async (catID, subcatId, yearId, cardIndex, paper) => {
+    if (!user) {
+      openLoginPopup();
+      return;
+    }
+
+    setLoadingCard(cardIndex);
+
+    try {
+      if (cardIndex < FREE_QUIZ_NUMBER || isSubscriptionActive) {
+        const [categoriesResponse, papersResponse] = await Promise.all([
+          axios.get(`${BASE_URL}/exam-categories/get-all-exam-category`),
+          axios.get(`${BASE_URL}/papers/${catID}/${subcatId}/${yearId}`)
+        ]);
+
+        const allCategories = categoriesResponse.data;
+        const categoryDetail = allCategories.find((cat) => cat._id === catID);
+
+        setQuestions(papersResponse.data.questions);
+        updatePaperMeta({
+          name: paper?.title,
+          logo: categoryDetail?.image || "/default-error-logo.png",
+          year: paper?.paper?.QPYear,
+        });
+
+        router.push("/test");
+      } else {
+        setIsSubscriptionPopupOpen(true);
+      }
+    } catch (error) {
+      console.error("Fetch error:", error);
+      updatePaperMeta({
+        name: "Error Loading Paper",
+        logo: "/default-error-logo.png",
+      });
+    } finally {
+      setLoadingCard(null);
+    }
+  }, [user, isSubscriptionActive, openLoginPopup, router, setQuestions, updatePaperMeta]);
+
+  const scrollToSolvePaper = useCallback(() => {
     if (solvePaperRef.current) {
       solvePaperRef.current.scrollIntoView({ behavior: "smooth" });
     }
-  };
+  }, []);
 
-  // Filter visible tabs
-  const visibleTabs = tabConfig.filter((tab) => tab.isVisible);
+  // Memoize visible tabs to prevent unnecessary recalculations
+  const visibleTabs = useMemo(() => {
+    return tabConfig.filter((tab) => tab.isVisible);
+  }, [tabConfig]);
+
+  // Memoize tab change handler
+  const handleTabChange = useCallback((value) => {
+    setActiveTab(value);
+  }, []);
 
   return (
-    <section className="container mx-auto p-4 md:p-8 mt-16">
+    <section data-section="tabs" className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 md:py-16">
+      {/* Section Header */}
+      <div className="text-center mb-6 sm:mb-8 md:mb-12">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 px-2">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#055AAB] via-[#1BA9BC] to-[#2966C1]">
+            Complete Exam Resources
+          </span>
+        </h2>
+        <p className="text-gray-600 text-sm sm:text-base md:text-lg max-w-2xl mx-auto px-4">
+          Access previous year papers, syllabus, news, and official information all in one place
+        </p>
+      </div>
+
       {/* Horizontal Navigation Bar */}
-      <div className="flex flex-wrap gap-2 justify-center mb-8">
+      <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center mb-6 sm:mb-8 md:mb-12 px-2">
         {visibleTabs.map((tab) => (
           <button
             key={tab.value}
-            className={`px-4 py-2 rounded-full transition-all duration-300 font-medium text-sm sm:text-base ${
+            className={`px-3 sm:px-4 md:px-5 lg:px-6 py-2 sm:py-2.5 md:py-3 rounded-full transition-all duration-300 font-semibold text-xs sm:text-sm md:text-base whitespace-nowrap ${
               activeTab === tab.value
-                ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-md"
-                : "bg-gray-200 text-gray-700 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                ? "bg-gradient-to-r from-[#055AAB] to-[#2966C1] text-white shadow-lg transform scale-105"
+                : "bg-white text-gray-700 hover:bg-gray-50 border-2 border-gray-200 hover:border-[#055AAB] focus:outline-none focus:ring-2 focus:ring-[#055AAB] shadow-sm"
             }`}
-            onClick={() => setActiveTab(tab.value)}
+            onClick={() => handleTabChange(tab.value)}
             aria-label={`Switch to ${tab.label} tab`}
           >
             {tab.label}
@@ -1860,11 +1956,86 @@ const PageContentSection = () => {
       </div>
 
       {/* Content Area */}
-      <div className="w-full bg-white rounded-2xl shadow-lg p-6 md:p-8">
+      <div className="w-full bg-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-xl border border-gray-100 p-4 sm:p-6 md:p-8 lg:p-10">
         {/* Render content based on activeTab */}
         {visibleTabs.map((tab) => {
           if (activeTab === tab.value) {
             switch (tab.type) {
+              case "papers":
+                // Show QuizCards for Previous Year Papers
+                return (
+                  <div key={tab.value} className="animate-fade-in">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 sm:mb-6 gap-3 sm:gap-4">
+                      <div className="flex-1">
+                        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#055AAB] to-[#1BA9BC] mb-1 sm:mb-2">
+                          {tab.label}
+                        </h2>
+                        <p className="text-gray-600 text-xs sm:text-sm md:text-base">
+                          Practice with {enrichedQuestionsData.length}+ authentic previous year papers
+                        </p>
+                      </div>
+                      {!isSubscriptionActive && (
+                        <div className="flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-orange-50 border border-orange-200 rounded-lg w-full sm:w-auto">
+                          <span className="text-xs sm:text-sm text-orange-600 font-semibold">
+                            Free: {FREE_QUIZ_NUMBER} | Premium: {enrichedQuestionsData.length - FREE_QUIZ_NUMBER}+
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    {enrichedQuestionsData && enrichedQuestionsData.length > 0 ? (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
+                        {enrichedQuestionsData.map((quiz, qIndex) => (
+                          <QuizCard
+                            key={`${quiz.paper?.catID}-${quiz.paper?.yearId}-${qIndex}`}
+                            title={quiz.title}
+                            time={`${quiz.time} min`}
+                            questions={`${quiz.questions} Questions`}
+                            marks={`${quiz.marks} Marks`}
+                            languages={quiz.languages.join(", ")}
+                            attempted={quiz.attempted}
+                            buttonText={
+                              loadingCard === qIndex
+                                ? "Loading..."
+                                : qIndex < FREE_QUIZ_NUMBER || isSubscriptionActive
+                                ? "Start Test"
+                                : "Unlock Premium"
+                            }
+                            free={quiz.free}
+                            live={quiz.live}
+                            onButtonClick={() =>
+                              handleStartTest(
+                                quiz.paper.catID,
+                                quiz.paper.subCatId,
+                                quiz.paper.yearId,
+                                qIndex,
+                                quiz
+                              )
+                            }
+                            onUnlockClick={() =>
+                              handleStartTest(
+                                quiz.paper.catID,
+                                quiz.paper.subCatId,
+                                quiz.paper.yearId,
+                                qIndex,
+                                quiz
+                              )
+                            }
+                            paper={quiz.paper}
+                            cardIndex={qIndex}
+                            isSubscriptionActive={isSubscriptionActive}
+                            FREE_QUIZ_NUMBER={FREE_QUIZ_NUMBER}
+                            user={user}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="text-center text-gray-500 py-8">
+                        <p>No papers available yet.</p>
+                      </div>
+                    )}
+                  </div>
+                );
+
               case "html":
                 return (
                   <div key={tab.value} className="syllabus-container">
@@ -2080,12 +2251,13 @@ const PageContentSection = () => {
         })}
       </div>
 
-      {/* Solve Paper Section */}
-      <div ref={solvePaperRef} className="mt-16">
-        <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 animate-gradient">
-          Available Previous Year Papers
-        </h2>
-      </div>
+      {/* Subscription Popup */}
+      {isSubscriptionPopupOpen && (
+        <SubscriptionPopup
+          onClose={() => setIsSubscriptionPopupOpen(false)}
+          onRedirect={() => router.push("/pricing")}
+        />
+      )}
     </section>
   );
 };
